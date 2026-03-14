@@ -1,0 +1,20 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const contactSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'ContactPage',
+  name: 'Contact Orderflow',
+  description: 'Get in touch with the Orderflow team. Schedule a demo or ask questions about AI-powered order processing.',
+  url: 'https://orderflow.com/contact',
+};
+---
+
+<BaseLayout
+  title="Contact Us | Orderflow"
+  description="Get in touch with the Orderflow team. Schedule a demo of AI-powered order processing for your distribution business."
+  canonical="https://orderflow.com/contact"
+  jsonLd={contactSchema}
+>
+  <p>Contact page content will be migrated from static HTML.</p>
+</BaseLayout>

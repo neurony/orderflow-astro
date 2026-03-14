@@ -1,0 +1,59 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const articles = await getCollection('articles');
+  return articles.map((article) => ({
+    params: { slug: article.slug },
+    props: { article },
+  }));
+}
+
+const { article } = Astro.props;
+const { Content } = await article.render();
+
+const articleSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BlogPosting',
+  headline: article.data.title,
+  description: article.data.description,
+  image: article.data.image ? `https://orderflow.com${article.data.image}` : undefined,
+  datePublished: article.data.date,
+  author: article.data.author ? { '@type': 'Person', name: article.data.author.name, jobTitle: article.data.author.role } : undefined,
+  publisher: { '@id': 'https://orderflow.com/#organization' },
+  mainEntityOfPage: { '@type': 'WebPage', '@id': `https://orderflow.com/articles/${article.slug}` },
+};
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://orderflow.com' },
+    { '@type': 'ListItem', position: 2, name: 'Insights', item: 'https://orderflow.com/insights' },
+    { '@type': 'ListItem', position: 3, name: article.data.title },
+  ],
+};
+---
+
+<BaseLayout
+  title={`${article.data.title} | Orderflow`}
+  description={article.data.description || ''}
+  ogType="article"
+  ogImage={article.data.image}
+  article={{ publishedTime: article.data.date, author: article.data.author?.name, section: article.data.category }}
+  jsonLd={[articleSchema, breadcrumbSchema]}
+>
+  <main>
+    <nav aria-label="Breadcrumb">
+      <a href="/">Home</a> / <a href="/insights">Insights</a> / <span>{article.data.title}</span>
+    </nav>
+    <article>
+      {article.data.image && <img src={article.data.image} alt={article.data.title} width="1200" height="630" />}
+      <h1>{article.data.title}</h1>
+      {article.data.author && <p>By {article.data.author.name}{article.data.author.role ? `, ${article.data.author.role}` : ''}</p>}
+      <time datetime={article.data.date}>{article.data.date}</time>
+      <Content />
+    </article>
+  </main>
+</BaseLayout>

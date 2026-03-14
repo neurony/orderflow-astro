@@ -1,0 +1,35 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const softwareAppSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'SoftwareApplication',
+  name: 'Orderflow',
+  applicationCategory: 'BusinessApplication',
+  operatingSystem: 'Web-based',
+  description: 'AI-powered order processing automation that converts emails, WhatsApp, PDFs, scans, and handwritten notes into structured ERP-ready data.',
+  url: 'https://orderflow.com',
+  featureList: ['Multi-format order processing', 'AI-powered SKU matching', 'WhatsApp order capture', 'Handwritten note recognition', 'ERP integration'],
+  offers: { '@type': 'Offer', priceCurrency: 'EUR', availability: 'https://schema.org/OnlineOnly' },
+  publisher: { '@id': 'https://orderflow.com/#organization' },
+};
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    { '@type': 'Question', name: 'How does Orderflow process orders from different formats?', acceptedAnswer: { '@type': 'Answer', text: 'Orderflow monitors your email and WhatsApp continuously, extracting information from messages, PDFs, scans, and handwritten notes. It matches products to your catalog and delivers ERP-ready data automatically.' } },
+    { '@type': 'Question', name: 'What accuracy does Orderflow achieve?', acceptedAnswer: { '@type': 'Answer', text: 'Approximately 98% of orders are processed without manual modification, with 80%+ fully or partially product-mapped on first pass.' } },
+  ],
+};
+---
+
+<BaseLayout
+  title="Orderflow — Stop manually processing orders | AI Order Automation"
+  description="Orderflow automates order processing for distribution businesses. Convert emails, WhatsApp, PDFs, scans and handwritten notes into ERP-ready data. ~98% accuracy."
+  ogImage="/images/og-default.jpg"
+  jsonLd={[softwareAppSchema, faqSchema]}
+>
+  <p>Homepage content will be migrated from static HTML.</p>
+  <!-- TODO: Import full homepage sections as Astro components -->
+</BaseLayout>

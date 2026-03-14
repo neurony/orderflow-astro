@@ -1,0 +1,111 @@
+---
+import SEO from '../components/SEO.astro';
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description: string;
+  canonical?: string;
+  ogImage?: string;
+  ogType?: string;
+  article?: {
+    publishedTime: string;
+    modifiedTime?: string;
+    author?: string;
+    section?: string;
+  };
+  noindex?: boolean;
+  jsonLd?: Record<string, any> | Record<string, any>[];
+}
+
+const props = Astro.props;
+
+// Organization JSON-LD (on every page)
+const organizationSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Corporation',
+  '@id': 'https://orderflow.com/#organization',
+  name: 'Orderflow',
+  legalName: 'Orderflow by Neurony',
+  url: 'https://orderflow.com',
+  logo: {
+    '@type': 'ImageObject',
+    url: 'https://orderflow.com/images/logomark.svg',
+  },
+  description: 'AI-powered order processing automation for distribution businesses. Converts emails, WhatsApp messages, PDFs, scans, and handwritten notes into structured ERP-ready data.',
+  foundingDate: '2024',
+  areaServed: [
+    { '@type': 'Country', name: 'Romania' },
+    { '@type': 'Country', name: 'Germany' },
+    { '@type': 'Country', name: 'Austria' },
+    { '@type': 'Country', name: 'Switzerland' },
+  ],
+  contactPoint: {
+    '@type': 'ContactPoint',
+    contactType: 'sales',
+    availableLanguage: ['English', 'Romanian', 'German'],
+  },
+  sameAs: [
+    'https://linkedin.com/company/orderflow',
+    'https://instagram.com/orderflow',
+    'https://facebook.com/orderflow',
+    'https://twitter.com/orderflow',
+  ],
+};
+
+// WebPage schema
+const webPageSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  name: props.title,
+  description: props.description,
+  url: props.canonical || Astro.url.href,
+  isPartOf: {
+    '@type': 'WebSite',
+    name: 'Orderflow',
+    url: 'https://orderflow.com',
+  },
+  publisher: { '@id': 'https://orderflow.com/#organization' },
+};
+
+const allJsonLd = [
+  organizationSchema,
+  webPageSchema,
+  ...(Array.isArray(props.jsonLd) ? props.jsonLd : props.jsonLd ? [props.jsonLd] : []),
+];
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0f172b" />
+
+  <!-- Preconnect to critical origins -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Stack+Sans+Headline:wght@400;500;600&family=Caveat:wght@400&display=swap" rel="stylesheet" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png" />
+
+  <!-- SEO -->
+  <SEO {...props} jsonLd={allJsonLd} />
+
+  <!-- Speculation Rules for instant navigation -->
+  <script type="speculationrules">
+  {
+    "prefetch": [{ "where": { "href_matches": "/*" }, "eagerness": "moderate" }]
+  }
+  </script>
+</head>
+<body>
+  <div id="app">
+    <slot />
+  </div>
+</body>
+</html>
