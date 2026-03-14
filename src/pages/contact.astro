@@ -152,7 +152,7 @@ const contactSchema = {
     </footer>
   </main>
 
-  <script>
+  <script is:inline>
     document.querySelector('.mobile-menu-toggle').addEventListener('click', function() {
       const expanded = this.getAttribute('aria-expanded') === 'true';
       this.setAttribute('aria-expanded', !expanded);
@@ -160,7 +160,7 @@ const contactSchema = {
     });
   </script>
 
-  <script>
+  <script is:inline>
     (function() {
       if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
         document.querySelectorAll('[data-reveal]').forEach(function(el) { el.classList.add('revealed'); });
