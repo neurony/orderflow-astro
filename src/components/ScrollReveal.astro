@@ -1,0 +1,71 @@
+<script>
+  // Accordion toggle for "How it works" steps
+  document.querySelectorAll('.step__header').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var step = btn.closest('.step');
+      var isExpanded = step.classList.contains('step--expanded');
+
+      // Close all steps
+      document.querySelectorAll('.step').forEach(function(s) {
+        s.classList.remove('step--expanded');
+        s.querySelector('.step__header').setAttribute('aria-expanded', 'false');
+        // Switch icon to plus
+        s.querySelector('.step__icon').innerHTML = '<path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>';
+      });
+
+      // If it wasn't expanded, open it
+      if (!isExpanded) {
+        step.classList.add('step--expanded');
+        btn.setAttribute('aria-expanded', 'true');
+        // Switch icon to minus
+        step.querySelector('.step__icon').innerHTML = '<path d="M5 12h14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>';
+      }
+    });
+  });
+
+  // Mobile menu toggle
+  document.querySelector('.mobile-menu-toggle').addEventListener('click', function() {
+    const expanded = this.getAttribute('aria-expanded') === 'true';
+    this.setAttribute('aria-expanded', !expanded);
+    document.getElementById('nav-menu').classList.toggle('nav-links--open', !expanded);
+  });
+
+  // Scroll reveal with Intersection Observer
+  (function() {
+    // Respect reduced motion preference
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      document.querySelectorAll('[data-reveal]').forEach(function(el) {
+        el.classList.add('revealed');
+      });
+      return;
+    }
+
+    // Apply staggered delays to children within data-reveal-stagger containers
+    document.querySelectorAll('[data-reveal-stagger]').forEach(function(container) {
+      var children = container.querySelectorAll(':scope > [data-reveal]');
+      children.forEach(function(child, i) {
+        if (!child.style.getPropertyValue('--delay')) {
+          child.style.setProperty('--delay', (i * 0.1) + 's');
+        }
+      });
+    });
+
+    // Create Intersection Observer
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('revealed');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.15,
+      rootMargin: '0px 0px -50px 0px'
+    });
+
+    // Observe all reveal elements
+    document.querySelectorAll('[data-reveal]').forEach(function(el) {
+      observer.observe(el);
+    });
+  })();
+</script>

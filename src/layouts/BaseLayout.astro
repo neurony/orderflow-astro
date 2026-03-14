@@ -1,5 +1,8 @@
 ---
 import SEO from '../components/SEO.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import ScrollReveal from '../components/ScrollReveal.astro';
 import '../styles/global.css';
 
 interface Props {
@@ -105,7 +108,10 @@ const allJsonLd = [
 </head>
 <body>
   <div id="app">
+    <Header />
     <slot />
+    <Footer />
+    <ScrollReveal />
   </div>
 </body>
 </html>

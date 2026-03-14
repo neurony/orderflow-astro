@@ -7,10 +7,21 @@ const softwareAppSchema = {
   name: 'Orderflow',
   applicationCategory: 'BusinessApplication',
   operatingSystem: 'Web-based',
-  description: 'AI-powered order processing automation that converts emails, WhatsApp, PDFs, scans, and handwritten notes into structured ERP-ready data.',
+  description: 'AI-powered order processing automation that converts emails, WhatsApp messages, PDFs, scans, and handwritten notes into structured ERP-ready data.',
   url: 'https://orderflow.com',
-  featureList: ['Multi-format order processing', 'AI-powered SKU matching', 'WhatsApp order capture', 'Handwritten note recognition', 'ERP integration'],
-  offers: { '@type': 'Offer', priceCurrency: 'EUR', availability: 'https://schema.org/OnlineOnly' },
+  screenshot: 'https://orderflow.com/images/how-it-works.jpg',
+  featureList: [
+    'Multi-format order processing',
+    'AI-powered SKU matching',
+    'WhatsApp order capture',
+    'Handwritten note recognition',
+    'ERP integration',
+  ],
+  offers: {
+    '@type': 'Offer',
+    priceCurrency: 'EUR',
+    availability: 'https://schema.org/OnlineOnly',
+  },
   publisher: { '@id': 'https://orderflow.com/#organization' },
 };
 
@@ -18,8 +29,22 @@ const faqSchema = {
   '@context': 'https://schema.org',
   '@type': 'FAQPage',
   mainEntity: [
-    { '@type': 'Question', name: 'How does Orderflow process orders from different formats?', acceptedAnswer: { '@type': 'Answer', text: 'Orderflow monitors your email and WhatsApp continuously, extracting information from messages, PDFs, scans, and handwritten notes. It matches products to your catalog and delivers ERP-ready data automatically.' } },
-    { '@type': 'Question', name: 'What accuracy does Orderflow achieve?', acceptedAnswer: { '@type': 'Answer', text: 'Approximately 98% of orders are processed without manual modification, with 80%+ fully or partially product-mapped on first pass.' } },
+    {
+      '@type': 'Question',
+      name: 'How does Orderflow process orders from different formats?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Orderflow monitors your email and WhatsApp continuously, extracting all relevant information from messages, PDFs, scans, and handwritten notes the moment they arrive. It then matches products to your catalog and delivers ERP-ready data automatically.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'What accuracy does Orderflow achieve?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Approximately 98% of orders are processed without any manual modification, with 80%+ of orders fully or partially product-mapped on first pass. Accuracy improves over time as the system learns.',
+      },
+    },
   ],
 };
 ---
@@ -30,6 +55,409 @@ const faqSchema = {
   ogImage="/images/og-default.jpg"
   jsonLd={[softwareAppSchema, faqSchema]}
 >
-  <p>Homepage content will be migrated from static HTML.</p>
-  <!-- TODO: Import full homepage sections as Astro components -->
+  <main>
+
+    <!-- =============================================
+         HERO SECTION
+         ============================================= -->
+    <section class="section section--hero" aria-labelledby="hero-heading">
+      <div class="section__card section__card--muted">
+        <div class="hero__text">
+          <h1 id="hero-heading" class="hero__title" data-reveal="up">Stop manually processing orders</h1>
+          <p class="hero__subtitle" data-reveal="up" style="--delay:0.1s">Every order, any format, automated.</p>
+          <div class="hero__cta" data-reveal="up" style="--delay:0.2s">
+            <a href="/demo" class="btn btn--dark">See it in action</a>
+          </div>
+        </div>
+
+        <!-- Hero visual: floating format cards -->
+        <div class="hero__visual" aria-label="Order formats Orderflow can process">
+          <div class="hero__badges-mobile" aria-hidden="true">
+            <span class="hero-badge" style="transform:translate(-50%,-50%) rotate(-25.4deg);left:22%;top:20.4%">📧 Email</span>
+            <span class="hero-badge" style="transform:translate(-50%,-50%) rotate(-14.3deg);left:41.2%;top:31.2%">🖼 Photos</span>
+            <span class="hero-badge" style="transform:translate(-50%,-50%) rotate(12.1deg);left:75.3%;top:29.7%">💬 Whatsapp</span>
+            <span class="hero-badge" style="transform:translate(-50%,-50%) rotate(2.9deg);left:22%;top:53.3%">📄 PDF files</span>
+            <span class="hero-badge" style="transform:translate(-50%,-50%) rotate(-3.7deg);left:56.7%;top:51.2%">📋 Scans</span>
+            <span class="hero-badge" style="transform:translate(-50%,-50%) rotate(-10.9deg);left:34.9%;top:72.7%">📊 Spreadsheets</span>
+            <span class="hero-badge" style="transform:translate(-50%,-50%) rotate(-16.6deg);left:76.8%;top:62.2%">📝 Free-text</span>
+            <span class="hero-badge" style="transform:translate(-50%,-50%) rotate(3.8deg);left:65.7%;top:86.2%">✍️ Handwritten notes</span>
+          </div>
+
+          <!-- LEFT SIDE -->
+          <div class="format-float format-float--freetext" aria-hidden="true">
+            <div class="format-tag">
+              <svg width="20" height="20" viewBox="0 0 26 26" fill="none" style="transform: rotate(2.92deg)"><path d="M12.4422 9.5987L22.1796 9.10281C22.3782 9.09269 22.5728 9.16191 22.7204 9.29522C22.868 9.42854 22.9566 9.61504 22.9668 9.81369C22.9769 10.0123 22.9077 10.2069 22.7744 10.3545C22.641 10.5021 22.4545 10.5908 22.2559 10.6009L12.5185 11.0968C12.3198 11.1069 12.1253 11.0377 11.9777 10.9043C11.8301 10.771 11.7414 10.5845 11.7313 10.3859C11.7212 10.1872 11.7904 9.99269 11.9237 9.84506C12.0571 9.69744 12.2436 9.60882 12.4422 9.5987ZM22.3322 12.0989L12.5948 12.5948C12.3961 12.6049 12.2096 12.6936 12.0763 12.8412C11.943 12.9888 11.8738 13.1833 11.8839 13.382C11.894 13.5807 11.9826 13.7672 12.1303 13.9005C12.2779 14.0338 12.4724 14.103 12.6711 14.0929L22.4085 13.597C22.6071 13.5869 22.7936 13.4983 22.9269 13.3506C23.0602 13.203 23.1295 13.0085 23.1193 12.8098C23.1092 12.6112 23.0206 12.4247 22.873 12.2913C22.7254 12.158 22.5308 12.0888 22.3322 12.0989ZM22.4848 15.095L8.2532 15.8198C8.05454 15.8299 7.86804 15.9185 7.73473 16.0662C7.60141 16.2138 7.5322 16.4083 7.54231 16.607C7.55243 16.8056 7.64105 16.9921 7.78867 17.1255C7.9363 17.2588 8.13083 17.328 8.32949 17.3179L22.561 16.5931C22.7597 16.583 22.9462 16.4944 23.0795 16.3467C23.2128 16.1991 23.282 16.0046 23.2719 15.8059C23.2618 15.6073 23.1732 15.4208 23.0256 15.2875C22.8779 15.1541 22.6834 15.0849 22.4848 15.095ZM22.6373 18.0912L8.40578 18.8159C8.20712 18.826 8.02062 18.9147 7.88731 19.0623C7.75399 19.2099 7.68478 19.4044 7.69489 19.6031C7.70501 19.8018 7.79363 19.9883 7.94125 20.1216C8.08888 20.2549 8.28342 20.3241 8.48207 20.314L22.7136 19.5892C22.9123 19.5791 23.0988 19.4905 23.2321 19.3429C23.3654 19.1952 23.4346 19.0007 23.4245 18.802C23.4144 18.6034 23.3258 18.4169 23.1782 18.2836C23.0305 18.1503 22.836 18.081 22.6373 18.0912ZM9.67496 14.2455C9.87362 14.2353 10.0601 14.1467 10.1934 13.9991C10.3268 13.8515 10.396 13.6569 10.3858 13.4583C10.3757 13.2596 10.2871 13.0731 10.1395 12.9398C9.99186 12.8065 9.79733 12.7373 9.59867 12.7474L8.84964 12.7855L8.54448 6.79331L11.5406 6.64073L11.5787 7.38976C11.5889 7.58842 11.6775 7.77492 11.8251 7.90823C11.9727 8.04155 12.1673 8.11076 12.3659 8.10064C12.5646 8.09053 12.7511 8.00191 12.8844 7.85429C13.0177 7.70666 13.0869 7.51212 13.0768 7.31347L13.0005 5.81541C12.9904 5.61676 12.9018 5.43026 12.7542 5.29694C12.6065 5.16362 12.412 5.09441 12.2133 5.10453L3.22498 5.56228C3.02633 5.57239 2.83983 5.66101 2.70651 5.80863C2.57319 5.95626 2.50398 6.1508 2.5141 6.34945L2.59039 7.84751C2.60051 8.04616 2.68912 8.23266 2.83675 8.36598C2.98437 8.4993 3.17891 8.56851 3.37756 8.55839C3.57622 8.54828 3.76272 8.45966 3.89603 8.31203C4.02935 8.16441 4.09856 7.96987 4.08845 7.77122L4.0503 7.02219L7.04642 6.86961L7.35158 12.8618L6.60255 12.9C6.4039 12.9101 6.2174 12.9987 6.08408 13.1463C5.95077 13.294 5.88155 13.4885 5.89167 13.6872C5.90179 13.8858 5.99041 14.0723 6.13803 14.2056C6.28565 14.3389 6.48019 14.4082 6.67885 14.398L9.67496 14.2455Z" fill="#2B7FFF"/></svg>
+              Free-text
+            </div>
+            <div class="doc-card doc-card--text">
+              <p><strong>We want to order:</strong></p>
+              <p>Bronze frame = 10pcs.</p>
+              <p>Metallic rod&nbsp;&nbsp;= 5pcs.</p>
+              <svg width="135" height="70" viewBox="0 0 135 70" fill="none" style="margin-top:8px; transform: rotate(2.92deg)">
+                <rect x="-0.198181" y="5.54907" width="113" height="16" rx="4" transform="rotate(-2.91537 -0.198181 5.54907)" fill="#E5E7EB"/>
+                <rect x="1.02249" y="29.518" width="88" height="16" rx="4" transform="rotate(-2.91537 1.02249 29.518)" fill="#E5E7EB"/>
+                <rect x="2.24313" y="53.4869" width="132" height="16" rx="4" transform="rotate(-2.91537 2.24313 53.4869)" fill="#E5E7EB"/>
+              </svg>
+            </div>
+          </div>
+
+          <div class="format-float format-float--email" aria-hidden="true">
+            <svg width="108" height="108" viewBox="0 0 108 108" fill="none">
+              <g filter="url(#filter0_email)">
+                <rect x="30.8232" y="13.5814" width="56" height="56" rx="16" transform="rotate(9.49914 30.8232 13.5814)" fill="#51A2FF" shape-rendering="crispEdges"/>
+                <path d="M54.9794 38.8795L37.3432 31.1703L33.4721 54.3052L51.8843 57.3861L54.6661 47.7261L55.0733 38.872L54.9794 38.8795Z" fill="#E5E7EB"/>
+                <path d="M74.1646 37.3315L54.9809 38.8794L51.8843 57.3861L70.2935 60.4664L74.1646 37.3315Z" fill="#D1D5DC"/>
+                <path d="M37.3432 31.1703L53.4426 48.0639L53.5518 47.8534L55.8797 40.3614L55.7554 34.2511L37.3432 31.1703Z" fill="white"/>
+                <path d="M55.7554 34.2512L53.4443 48.0631L74.1646 37.3315L55.7554 34.2512Z" fill="#F3F4F6"/>
+              </g>
+              <defs>
+                <filter id="filter0_email" x="-2.41858" y="-2.41864" width="112.474" height="112.474" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                  <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                  <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+                  <feOffset dy="8"/>
+                  <feGaussianBlur stdDeviation="12"/>
+                  <feComposite in2="hardAlpha" operator="out"/>
+                  <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.1 0"/>
+                  <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_2463_66"/>
+                  <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_2463_66" result="shape"/>
+                </filter>
+              </defs>
+            </svg>
+          </div>
+
+          <div class="format-float format-float--pdf" aria-hidden="true">
+            <div class="format-tag">
+              <svg width="20" height="20" viewBox="0 0 27 27" fill="none" style="transform: rotate(5.99deg)"><path d="M22.3728 14.4853C22.3936 14.6832 22.3349 14.8811 22.2097 15.0357C22.0845 15.1903 21.9031 15.2888 21.7052 15.3095L19.4675 15.5444L19.6241 17.0362L21.1159 16.8796C21.3137 16.8589 21.5117 16.9175 21.6663 17.0427C21.8208 17.1679 21.9193 17.3494 21.9401 17.5472C21.9609 17.7451 21.9022 17.943 21.777 18.0976C21.6518 18.2522 21.4703 18.3507 21.2725 18.3714L19.7807 18.528L19.9373 20.0198C19.958 20.2177 19.8994 20.4156 19.7742 20.5702C19.649 20.7248 19.4675 20.8233 19.2697 20.844C19.0718 20.8648 18.8739 20.8061 18.7193 20.6809C18.5647 20.5557 18.4662 20.3742 18.4455 20.1764L17.8974 14.9551C17.8767 14.7573 17.9353 14.5593 18.0605 14.4047C18.1857 14.2502 18.3672 14.1517 18.565 14.1309L21.5486 13.8177C21.7465 13.797 21.9444 13.8556 22.099 13.9808C22.2536 14.106 22.3521 14.2875 22.3728 14.4853ZM10.2612 17.6419C10.3339 18.3343 10.1285 19.0272 9.6903 19.5682C9.2521 20.1092 8.61693 20.4539 7.92455 20.5266L7.17864 20.6049L7.25693 21.3508C7.2777 21.5486 7.21903 21.7466 7.09383 21.9012C6.96862 22.0557 6.78715 22.1542 6.58932 22.175C6.3915 22.1958 6.19353 22.1371 6.03896 22.0119C5.88439 21.8867 5.78589 21.7052 5.76513 21.5074L5.21709 16.2861C5.19632 16.0882 5.25499 15.8903 5.3802 15.7357C5.5054 15.5811 5.68687 15.4826 5.8847 15.4619L7.3765 15.3053C8.06889 15.2326 8.76179 15.438 9.30278 15.8762C9.84376 16.3144 10.1885 16.9495 10.2612 17.6419ZM8.76938 17.7985C8.73823 17.5018 8.59048 17.2296 8.35863 17.0418C8.12678 16.854 7.82982 16.7659 7.53309 16.7971L6.78718 16.8754L7.02206 19.1131L7.76796 19.0348C8.0647 19.0036 8.33691 18.8559 8.52471 18.624C8.71252 18.3922 8.80052 18.0952 8.76938 17.7985ZM17.0526 17.6832C17.146 18.5734 16.882 19.4643 16.3186 20.1598C15.7552 20.8554 14.9386 21.2986 14.0483 21.3921L12.5565 21.5487C12.3587 21.5694 12.1607 21.5107 12.0062 21.3855C11.8516 21.2603 11.7531 21.0789 11.7323 20.881L11.1843 15.6597C11.1635 15.4619 11.2222 15.2639 11.3474 15.1094C11.4726 14.9548 11.6541 14.8563 11.8519 14.8355L13.3437 14.6789C14.2339 14.5855 15.1248 14.8495 15.8204 15.4129C16.5159 15.9763 16.9592 16.793 17.0526 17.6832ZM15.5608 17.8398C15.5089 17.3452 15.2626 16.8915 14.8762 16.5785C14.4898 16.2655 13.9949 16.1188 13.5003 16.1708L12.7544 16.249L13.1459 19.9786L13.8918 19.9003C14.3863 19.8484 14.84 19.6021 15.153 19.2157C15.466 18.8293 15.6127 18.3343 15.5608 17.8398ZM4.82563 12.5565L4.121 5.84343C4.07947 5.44778 4.19682 5.05183 4.44722 4.7427C4.69762 4.43357 5.06057 4.23657 5.45622 4.19504L14.407 3.25554C14.505 3.24518 14.6041 3.25422 14.6986 3.28215C14.793 3.31008 14.8811 3.35635 14.9577 3.41832L20.727 8.0916C20.8036 8.15365 20.8671 8.23017 20.914 8.31679C20.961 8.40341 20.9904 8.49843 21.0006 8.59642L21.2355 10.8341C21.2562 11.032 21.1976 11.2299 21.0724 11.3845C20.9472 11.5391 20.7657 11.6376 20.5679 11.6583C20.37 11.6791 20.1721 11.6204 20.0175 11.4952C19.8629 11.37 19.7644 11.1885 19.7437 10.9907L19.5871 9.49891L15.1117 9.96866C14.9139 9.98942 14.7159 9.93075 14.5613 9.80555C14.4067 9.68035 14.3082 9.49887 14.2875 9.30105L13.8177 4.82563L5.61281 5.68684L6.31743 12.4C6.3382 12.5978 6.27952 12.7958 6.15432 12.9503C6.02912 13.1049 5.84765 13.2034 5.64982 13.2242C5.452 13.2449 5.25402 13.1863 5.09946 13.0611C4.94489 12.9358 4.84639 12.7544 4.82563 12.5565ZM15.701 8.39856L18.376 8.11779L15.4202 5.72357L15.701 8.39856Z" fill="#FB2C36"/></svg>
+              PDF files
+            </div>
+            <div class="doc-card">
+              <svg width="44" height="44" viewBox="0 0 44 44" fill="none" aria-hidden="true" class="doc-card__icon" style="transform: rotate(5.99deg)">
+                <g clip-path="url(#clip0_pdf)">
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M10.1939 3.10564L23.4941 1.70961L35.9998 12.276L38.3985 35.129C38.699 37.9918 36.626 40.551 33.7731 40.8504L14.3694 42.8871C11.5066 43.1876 8.94742 41.1146 8.64693 38.2518L5.55855 8.82816C5.25801 5.96534 7.33101 3.40613 10.1939 3.10564Z" fill="#E5252A"/>
+                  <path opacity="0.302" fill-rule="evenodd" clip-rule="evenodd" d="M23.4841 1.71063L24.708 13.3707L35.9904 12.1865L23.4841 1.71063Z" fill="white"/>
+                  <path d="M13.8859 32.7271L13.1232 25.4607L16.2146 25.1362C16.9801 25.0559 17.6084 25.201 18.1105 25.5804C18.6115 25.9499 18.8997 26.4925 18.9737 27.1983C19.0478 27.904 18.8786 28.4947 18.4652 28.9601C18.0528 29.4356 17.4684 29.708 16.7029 29.7883L15.4703 29.9177L15.7447 32.532L13.8859 32.7271ZM15.3044 28.3372L16.3283 28.2297C16.6066 28.2005 16.819 28.1179 16.9536 27.9631C17.0891 27.8182 17.1499 27.631 17.1248 27.3924C17.0998 27.1538 17.0015 26.9833 16.8388 26.8697C16.6751 26.7461 16.4502 26.7095 16.1718 26.7387L15.1479 26.8462L15.3044 28.3372ZM20.2577 32.0583L19.495 24.7919L22.0695 24.5217C22.5765 24.4684 23.0609 24.4879 23.5239 24.5901C23.9868 24.6922 24.4163 24.8583 24.8044 25.109C25.1915 25.3497 25.5194 25.6972 25.7782 26.1524C26.0271 26.6087 26.1939 27.144 26.2586 27.7602C26.3222 28.3666 26.2703 28.9248 26.1215 29.4228C25.9629 29.9219 25.7142 30.3298 25.3856 30.6457C25.0579 30.9715 24.6723 31.2231 24.2407 31.4191C23.809 31.6152 23.3392 31.7349 22.8322 31.7881L20.2577 32.0583ZM21.9109 30.2869L22.4476 30.2306C22.7359 30.2003 23.0012 30.1423 23.2424 30.0466C23.4736 29.952 23.6908 29.8186 23.8938 29.6466C24.0869 29.4756 24.234 29.2491 24.3241 28.9582C24.4141 28.6674 24.4394 28.3331 24.3997 27.9554C24.359 27.5677 24.2649 27.2459 24.1164 26.9801C23.968 26.7143 23.7771 26.5233 23.5527 26.3961C23.3183 26.27 23.0782 26.1846 22.8323 26.1401C22.5765 26.0966 22.305 26.0949 22.0167 26.1252L21.4799 26.1815L21.9109 30.2869ZM27.5738 31.2904L26.8111 24.024L31.9801 23.4814L32.146 25.062L28.8358 25.4094L28.9579 26.5724L31.602 26.2949L31.7669 27.8655L29.1228 28.143L29.4327 31.0953L27.5738 31.2904Z" fill="white"/>
+                </g>
+                <defs>
+                  <clipPath id="clip0_pdf">
+                    <rect width="40" height="40" fill="white" transform="translate(0 4.1756) rotate(-5.99198)"/>
+                  </clipPath>
+                </defs>
+              </svg>
+              <span class="doc-card__name">HardwareOrder.pdf</span>
+            </div>
+          </div>
+
+          <div class="format-float format-float--spreadsheet" aria-hidden="true">
+            <div class="format-tag">
+              <svg width="20" height="20" viewBox="0 0 27 27" fill="none" style="transform: rotate(-5.1deg)"><path d="M22.651 6.3498L4.72237 4.74895C4.52425 4.73126 4.32721 4.793 4.1746 4.92059C4.022 5.04817 3.92633 5.23115 3.90864 5.42928L2.77471 18.1288C2.73933 18.525 2.86281 18.9191 3.11798 19.2243C3.37315 19.5295 3.73911 19.7208 4.13536 19.7562L20.57 21.2237C20.9662 21.259 21.3603 21.1356 21.6655 20.8804C21.9707 20.6252 22.1621 20.2592 22.1974 19.863L23.3314 7.16353C23.3491 6.9654 23.2873 6.76836 23.1597 6.61576C23.0321 6.46316 22.8492 6.36749 22.651 6.3498ZM4.93578 10.7919L8.67092 11.1254L8.40412 14.1135L4.66898 13.78L4.93578 10.7919ZM10.165 11.2588L21.3704 12.2593L21.1036 15.2474L9.89817 14.2469L10.165 11.2588ZM21.7706 7.77715L21.5038 10.7653L5.06919 9.29782L5.33599 6.30971L21.7706 7.77715ZM4.53557 15.274L8.27071 15.6076L8.00391 18.5957L4.26877 18.2622L4.53557 15.274ZM20.7034 19.7296L9.49796 18.7291L9.76477 15.741L20.9702 16.7415L20.7034 19.7296Z" fill="#00A63E"/></svg>
+              Spreadsheets
+            </div>
+            <div class="mini-table">
+              <div class="mini-table__row mini-table__row--header">
+                <span>Order list</span><span>Qty.</span>
+              </div>
+              <div class="mini-table__row">
+                <span>White paint 20l</span><span>3pcs.</span>
+              </div>
+              <div class="mini-table__row">
+                <span>Pigment 80ml</span><span>10pcs.</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- CENTER CARD: Structured ERP Data -->
+          <div class="hero-card hero-card--center">
+            <div class="hero-card__inner">
+              <div class="hero-card__header">
+                <div class="hero-card__logo">
+                  <svg width="56" height="56" viewBox="0 0 56 56" fill="none" aria-hidden="true">
+                    <rect width="56" height="56" rx="16" fill="#FFD230"/>
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M18.5166 28.9213H11.9504L11.95 29.0552C11.95 32.4778 12.6467 35.5225 14.0394 38.1889C15.4719 40.8553 17.4612 42.9454 20.0081 44.4577C22.555 45.9302 25.5596 46.6666 29.0217 46.6666C32.4837 46.6666 35.4883 45.9301 38.0352 44.4577C40.5822 42.9454 42.5518 40.8553 43.9447 38.1889C45.3772 35.5224 46.0943 32.4778 46.0943 29.0552C46.0943 25.5929 45.3772 22.5288 43.9447 19.8624C42.5518 17.196 40.5822 15.1068 38.0352 13.5945C35.6045 12.1511 32.7568 11.396 29.4921 11.3301V17.1839C31.4795 17.2507 33.1937 17.7453 34.6333 18.6682C36.1851 19.6233 37.379 20.9965 38.2147 22.7873C39.0504 24.5781 39.468 26.6675 39.468 29.0552C39.468 31.4032 39.0504 33.4731 38.2147 35.2639C37.379 37.0149 36.1851 38.3881 34.6333 39.383C33.0812 40.3382 31.2104 40.8159 29.0217 40.8159C26.8332 40.8158 24.9425 40.3382 23.3508 39.383C21.799 38.3881 20.6051 37.0149 19.7694 35.2639C18.9338 33.4731 18.5161 31.4032 18.5161 29.0552L18.5166 28.9213Z" fill="#101828"/>
+                    <path d="M26.6941 26.1232L11.9758 26.1232L11.9758 21.5941L18.9631 21.5941L9.90564 12.5359L13.1079 9.3334L22.1654 18.3915L22.1654 11.4037L26.6941 11.4037L26.6941 26.1232Z" fill="white"/>
+                  </svg>
+                </div>
+                <p class="hero-card__label">Structured ERP Data</p>
+              </div>
+              <ul class="sku-list" role="list">
+                <li class="sku-list__item">
+                  <span class="sku-list__code sku-list__code--matched">A5006-00</span>
+                  <span class="sku-list__name">Componeant A5006</span>
+                  <svg class="sku-list__check" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-label="Matched"><circle cx="10" cy="10" r="10" fill="#00A63E"/><path d="M6.25 10L8.75 12.5L13.75 7.5" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </li>
+                <li class="sku-list__item">
+                  <span class="sku-list__code sku-list__code--matched">K2001-05</span>
+                  <span class="sku-list__name">K-Series 2001-05</span>
+                  <svg class="sku-list__check" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-label="Matched"><circle cx="10" cy="10" r="10" fill="#00A63E"/><path d="M6.25 10L8.75 12.5L13.75 7.5" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </li>
+                <li class="sku-list__item">
+                  <span class="sku-list__code sku-list__code--matched">WPLM-20L</span>
+                  <span class="sku-list__name">White paint 20l</span>
+                  <svg class="sku-list__check" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-label="Matched"><circle cx="10" cy="10" r="10" fill="#00A63E"/><path d="M6.25 10L8.75 12.5L13.75 7.5" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </li>
+                <li class="sku-list__item">
+                  <span class="sku-list__code sku-list__code--matched">CEBZ-33</span>
+                  <span class="sku-list__name">Bronze frame</span>
+                  <svg class="sku-list__check" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-label="Matched"><circle cx="10" cy="10" r="10" fill="#00A63E"/><path d="M6.25 10L8.75 12.5L13.75 7.5" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </li>
+                <li class="sku-list__item sku-list__item--pending">
+                  <span class="sku-list__code sku-list__code--pending">Matching SKU</span>
+                  <svg class="sku-list__spinner" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-label="Processing">
+                    <path d="M10 2V5M10 15V18M3.51 6.5L6.16 8M13.84 12L16.49 13.5M2 10H5M15 10H18M3.51 13.5L6.16 12M13.84 8L16.49 6.5" stroke="#6A7282" stroke-width="1.5" stroke-linecap="round"/>
+                  </svg>
+                </li>
+              </ul>
+              <img src="/ai-bar.svg" alt="AI Extraction in progress" class="hero-card__ai-bar-img">
+            </div>
+          </div>
+
+          <!-- RIGHT SIDE -->
+          <div class="format-float format-float--handwritten" aria-hidden="true">
+            <div class="handwritten-notes">
+              <img src="/handwritten-notes.svg" alt="" class="handwritten-notes__img">
+              <p class="handwritten-notes__text">Order for today<br>- K-series 2001-05 - 4pcs</p>
+            </div>
+          </div>
+
+          <div class="format-float format-float--whatsapp" aria-hidden="true">
+            <img src="/whatsapp.svg" alt="WhatsApp" class="whatsapp__img">
+          </div>
+
+          <div class="format-float format-float--photos" aria-hidden="true">
+            <img src="/photos.svg" alt="Photos" class="photos__img">
+          </div>
+
+          <div class="format-float format-float--scans" aria-hidden="true">
+            <img src="/scans.svg" alt="Scans - Items Required" class="scans__img">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONNECTS TO -->
+    <section class="section section--connects" aria-labelledby="connects-heading">
+      <div class="section__card section__card--white">
+        <p class="connects__text" id="connects-heading" data-reveal="up">
+          <strong class="connects__brand">Orderflow</strong> connects to your
+          <img src="/badges/email.svg" alt="email inbox" class="inline-badge__svg" style="height:38px;vertical-align:middle;display:inline">
+          and
+          <img src="/badges/whatsapp.svg" alt="WhatsApp" class="inline-badge__svg" style="height:38px;vertical-align:middle;display:inline">
+          , reads orders in any format, be it
+          <img src="/badges/freetext.svg" alt="free-text" class="inline-badge__svg" style="height:38px;vertical-align:middle;display:inline">
+          <img src="/badges/pdf.svg" alt="PDF files" class="inline-badge__svg" style="height:38px;vertical-align:middle;display:inline">
+          <img src="/badges/scans.svg" alt="scans" class="inline-badge__svg" style="height:38px;vertical-align:middle;display:inline">
+          <img src="/badges/photos.svg" alt="photos" class="inline-badge__svg" style="height:38px;vertical-align:middle;display:inline">
+          <img src="/badges/notes.svg" alt="handwritten notes" class="inline-badge__svg" style="height:38px;vertical-align:middle;display:inline">
+          , matches products to your catalog and delivers
+          <img src="/badges/erp.svg" alt="ERP-ready data" class="inline-badge__svg" style="height:38px;vertical-align:middle;display:inline">
+          automatically.
+        </p>
+      </div>
+    </section>
+
+    <!-- CURRENT LIMITATIONS -->
+    <section class="section section--limitations" aria-labelledby="limitations-heading">
+      <div class="section__card section__card--purple">
+        <h2 id="limitations-heading" class="section__heading section__heading--center" data-reveal="up">Current limitations and operational friction</h2>
+        <div class="pain-cards" data-reveal-stagger>
+          <article class="pain-card" data-reveal="up">
+            <div class="pain-card__image-wrap">
+              <img src="/images/pain-channels.jpg" alt="Multiple communication channels with diverse order formats" class="pain-card__image">
+            </div>
+            <div class="pain-card__body">
+              <h3 class="pain-card__title">Every channel, every format, every day.</h3>
+              <p class="pain-card__text">Email, WhatsApp, PDF, scan, photo, handwritten note. Your customer's order however is easiest for them. Your team absorbs the complexity every single time.</p>
+            </div>
+          </article>
+          <article class="pain-card" data-reveal="up">
+            <div class="pain-card__image-wrap">
+              <img src="/images/pain-knowledge.jpg" alt="Knowledge trapped in individual employees" class="pain-card__image">
+            </div>
+            <div class="pain-card__body">
+              <h3 class="pain-card__title">The knowledge lives in people, not systems.</h3>
+              <p class="pain-card__text">Matching vague product descriptions to the right catalog entry is a skill built over years. It lives with specific staff members. When they're unavailable, orders wait.</p>
+            </div>
+          </article>
+          <article class="pain-card" data-reveal="up">
+            <div class="pain-card__image-wrap">
+              <img src="/images/pain-unstructured.jpg" alt="Unstructured input blocking automation" class="pain-card__image">
+            </div>
+            <div class="pain-card__body">
+              <h3 class="pain-card__title">You can't automate what isn't structured.</h3>
+              <p class="pain-card__text">Traditional automation requires consistent, templated input. Your customers don't send templates, thus every increase in order volume means more manual work.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section class="section section--how-it-works" aria-labelledby="how-heading">
+      <div class="section__card section__card--white">
+        <div class="how-it-works__layout">
+          <div class="how-it-works__content">
+            <h2 id="how-heading" class="how-it-works__title" data-reveal="up">From inbox or WhatsApp to ERP without a single manual step.</h2>
+            <div class="steps">
+              <div class="step step--expanded">
+                <button class="step__header" aria-expanded="true">
+                  <span class="step__title">1. Every order is captured and read</span>
+                  <svg class="step__icon" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                </button>
+                <p class="step__body">Order Flow monitors your email and WhatsApp continuously, extracting all relevant information from messages, PDFs, scans, and handwritten notes the moment they arrive.</p>
+              </div>
+              <div class="step">
+                <button class="step__header" aria-expanded="false">
+                  <span class="step__title">2. Products matched, exceptions flagged</span>
+                  <svg class="step__icon" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                </button>
+                <p class="step__body step__body--hidden">Every item is mapped to the right SKU automatically with a match score. Low-confidence matches are flagged for fast human review, your team stays in control without touching every order.</p>
+              </div>
+              <div class="step">
+                <button class="step__header" aria-expanded="false">
+                  <span class="step__title">3. Clean data goes straight to your ERP</span>
+                  <svg class="step__icon" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                </button>
+                <p class="step__body step__body--hidden">Every validated order exits as structured, ERP-ready data. Consistent format, every time, from every channel.</p>
+              </div>
+            </div>
+          </div>
+          <div class="how-it-works__image-wrap">
+            <img src="/images/how-it-works.jpg" alt="Orderflow dashboard showing order processing pipeline" class="how-it-works__image">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ONE SYSTEM — FORMAT CARDS -->
+    <section class="section section--formats" aria-labelledby="formats-heading">
+      <div class="section__card section__card--white">
+        <div class="formats__header">
+          <h2 id="formats-heading" class="formats__title" data-reveal="up">One system for every format your customers use.</h2>
+          <p class="formats__subtitle" data-reveal="up" style="--delay:0.1s">Your customers won't change how they send orders. Let <strong>Orderflow</strong> handle whatever arrives in your inbox.</p>
+        </div>
+        <ul class="format-grid" role="list" data-reveal-stagger>
+          <li class="format-item" data-reveal="up">
+            <div class="format-item__icon-wrap"><img src="/images/format-freetext.svg" alt="Free-text emails" width="112" height="112"></div>
+            <div class="format-item__text"><h3 class="format-item__title">Free-text emails</h3><p class="format-item__desc">Unstructured body text with informal descriptions, missing codes and no fixed format.</p></div>
+          </li>
+          <li class="format-item" data-reveal="up">
+            <div class="format-item__icon-wrap"><img src="/images/format-handwritten.svg" alt="Hand-written notes" width="112" height="112"></div>
+            <div class="format-item__text"><h3 class="format-item__title">Hand-written notes</h3><p class="format-item__desc">Scribbled lists, hand-filled order forms and warehouse notes with no standard structure.</p></div>
+          </li>
+          <li class="format-item" data-reveal="up">
+            <div class="format-item__icon-wrap"><img src="/images/format-whatsapp.svg" alt="WhatsApp images" width="112" height="112"></div>
+            <div class="format-item__text"><h3 class="format-item__title">WhatsApp images</h3><p class="format-item__desc">Shorthand requests, forwarded images and informal order threads sent via mobile.</p></div>
+          </li>
+          <li class="format-item" data-reveal="up">
+            <div class="format-item__icon-wrap"><img src="/images/format-scanned.svg" alt="Scanned documents" width="112" height="112"></div>
+            <div class="format-item__text"><h3 class="format-item__title">Scanned documents</h3><p class="format-item__desc">Photographed or scanned paper order forms and PDF attachments.</p></div>
+          </li>
+          <li class="format-item" data-reveal="up">
+            <div class="format-item__icon-wrap"><img src="/images/format-attached.svg" alt="Attached files" width="112" height="112"></div>
+            <div class="format-item__text"><h3 class="format-item__title">Attached files</h3><p class="format-item__desc">Spreadsheets, PDFs and image files sent alongside or instead of email body text.</p></div>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- PERFORMANCE STATS -->
+    <section class="section section--performance" aria-labelledby="performance-heading">
+      <div class="section__card section__card--muted">
+        <div class="performance__inner">
+          <div class="performance__header">
+            <h2 id="performance-heading" class="performance__title" data-reveal="up">How Orderflow performs in production</h2>
+            <p class="performance__desc"><strong>Orderflow</strong> has been running in production at a high-volume distribution business. The results aren't projections or benchmarks. They're drawn from real order data, real catalog complexity, and real operational conditions.</p>
+          </div>
+          <ul class="stats-grid" role="list" data-reveal-stagger>
+            <li class="stat-item" data-reveal="up"><img class="stat-item__icon" src="/images/stat-checklist.svg" alt="" width="48" height="48"><p class="stat-item__text"><strong>~98% of orders</strong> processed without any manual modification.</p></li>
+            <li class="stat-item" data-reveal="up"><img class="stat-item__icon" src="/images/stat-documents.svg" alt="" width="48" height="48"><p class="stat-item__text"><strong>80%+ of orders</strong> fully or partially product-mapped on first pass.</p></li>
+            <li class="stat-item" data-reveal="up"><img class="stat-item__icon" src="/images/stat-target.svg" alt="" width="48" height="48"><p class="stat-item__text"><strong>Accuracy improves over time.</strong> Product mapping precision steadily increases, making the system more reliable the longer it runs.</p></li>
+            <li class="stat-item" data-reveal="up"><img class="stat-item__icon" src="/images/stat-trend.svg" alt="" width="48" height="48"><p class="stat-item__text"><strong>Significant and measurable.</strong> Reduction in manual intervention observed month over month after deployment.</p></li>
+            <li class="stat-item" data-reveal="up"><img class="stat-item__icon" src="/images/stat-pipeline.svg" alt="" width="48" height="48"><p class="stat-item__text"><strong>Orders are pushed straight to the pipeline.</strong> Manual entry of orders from emails, whatsapp or handwritten notes is stripped away.</p></li>
+            <li class="stat-item" data-reveal="up"><img class="stat-item__icon" src="/images/stat-clock.svg" alt="" width="48" height="48"><p class="stat-item__text"><strong>Volume spikes stop creating backlogs.</strong> The system processes at the same pace regardless of how many orders come in.</p></li>
+            <li class="stat-item" data-reveal="up"><img class="stat-item__icon" src="/images/stat-send.svg" alt="" width="48" height="48"><p class="stat-item__text"><strong>Every channel receives the same treatment.</strong> No order falls through because it came in from a different channel or in a different format.</p></li>
+            <li class="stat-item" data-reveal="up"><img class="stat-item__icon" src="/images/stat-person.svg" alt="" width="48" height="48"><p class="stat-item__text"><strong>Key staff dependency is reduced.</strong> The system learns to map vague descriptions to your catalog, ensuring order flow doesn't break.</p></li>
+          </ul>
+          <div class="performance__cta"><a href="/book-a-call" class="btn btn--dark">See it in action</a></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TESTIMONIAL -->
+    <section class="section section--testimonial" aria-labelledby="testimonial-heading">
+      <div class="section__card section__card--yellow">
+        <div class="testimonial__layout">
+          <h2 id="testimonial-heading" class="testimonial__title" data-reveal="up">Trusted in production by distribution teams</h2>
+          <div class="testimonial__cards-wrap">
+            <div class="testimonial__card" data-reveal="scale">
+              <p class="testimonial__card-text">"Along with the Neurony team, we implemented an AI solution for the automated processing of orders received via email, and the results have been very positive. The system can process both orders written directly in the email body as well as orders attached in various formats, including handwritten documents. The solution was implemented at the end of last year, and we are currently able to automatically process approximately 50% of the orders received by email. The impact on the order processing department has been significant: reduced workload, time savings, and a substantial decrease in human error."</p>
+              <div class="testimonial__author">
+                <img src="/images/avatar-banciu.jpg" alt="Banciu Nicolae" class="testimonial__avatar">
+                <div>
+                  <p class="testimonial__author-name">Banciu Nicolae</p>
+                  <p class="testimonial__author-role">General Manager, Meesenburg Romania</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- LATEST INSIGHTS -->
+    <section class="section section--insights" aria-labelledby="insights-heading">
+      <div class="section__card section__card--white">
+        <div class="insights__header">
+          <div class="insights__header-text">
+            <h2 id="insights-heading" class="insights__title" data-reveal="up">Latest insights</h2>
+            <p class="insights__subtitle">Explore our collection of articles and insights.</p>
+          </div>
+          <a href="/insights" class="btn btn--outline">Browse all articles</a>
+        </div>
+        <ul class="insight-cards" role="list" data-reveal-stagger>
+          <li data-reveal="up"><article class="insight-card"><div class="insight-card__image-wrap"><span class="insight-card__category">Category</span><img src="/images/insight-1.jpg" alt="Stacked orange books on a desk" class="insight-card__image"></div><div class="insight-card__body"><p class="insight-card__date">13 jun. 2026</p><h3 class="insight-card__title">From scanned PDFs to ERP-ready data. A look at AI order processing.</h3></div></article></li>
+          <li data-reveal="up"><article class="insight-card"><div class="insight-card__image-wrap"><span class="insight-card__category">Category</span><img src="/images/insight-2.jpg" alt="Person typing on a laptop" class="insight-card__image"></div><div class="insight-card__body"><p class="insight-card__date">13 jun. 2026</p><h3 class="insight-card__title">The hidden ceiling: How manual order entry quietly limits your growth</h3></div></article></li>
+          <li data-reveal="up"><article class="insight-card"><div class="insight-card__image-wrap"><span class="insight-card__category">Category</span><img src="/images/pain-unstructured.jpg" alt="Distribution warehouse with shelves" class="insight-card__image"></div><div class="insight-card__body"><p class="insight-card__date">13 jun. 2026</p><h3 class="insight-card__title">Why templated automation fails in distribution (and what actually works)</h3></div></article></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- CTA BANNER -->
+    <section class="section section--cta" aria-labelledby="cta-heading">
+      <div class="section__card section__card--dark">
+        <div class="cta__ticker">
+          <div class="cta__ticker-inner">
+            <span>Automating order intake for distribution businesses across Romania.</span>
+            <img src="/images/logomark-small.svg" alt="" class="cta__ticker-logo">
+            <span>Booked by 10 companies this week</span>
+            <img src="/images/logomark-small.svg" alt="" class="cta__ticker-logo">
+            <span>Automating order intake for distribution businesses across Romania.</span>
+            <img src="/images/logomark-small.svg" alt="" class="cta__ticker-logo">
+            <span>Booked by 10 companies this week</span>
+            <img src="/images/logomark-small.svg" alt="" class="cta__ticker-logo">
+            <span>Automating order intake for distribution businesses across Romania.</span>
+            <img src="/images/logomark-small.svg" alt="" class="cta__ticker-logo">
+            <span>Booked by 10 companies this week</span>
+            <img src="/images/logomark-small.svg" alt="" class="cta__ticker-logo">
+          </div>
+        </div>
+        <div class="cta__layout">
+          <div class="cta__left">
+            <img src="/images/logomark.svg" alt="" class="cta__logo" width="48" height="48">
+            <h2 id="cta-heading" class="cta__title" data-reveal="up">Ready to stop processing orders by hand?</h2>
+            <p class="cta__subtitle">Book a call and see <strong>Orderflow</strong> running on real order data.</p>
+          </div>
+          <div class="cta__right">
+            <form class="cta__form-card" action="/schedule-demo" method="POST" data-reveal="right">
+              <p class="cta__form-heading">One of our experts will walk you through the product and answer your questions.</p>
+              <div class="cta__input"><label class="cta__input-label" for="cta-email">Business email</label><input type="email" id="cta-email" name="email" class="cta__input-field" placeholder="Type in your business email address" required></div>
+              <div class="cta__input"><label class="cta__input-label" for="cta-company">Company name</label><input type="text" id="cta-company" name="company" class="cta__input-field" placeholder="Type in your company name" required></div>
+              <div class="cta__checkbox"><input type="checkbox" id="cta-terms" name="terms" class="cta__checkbox-input" required><label class="cta__checkbox-text" for="cta-terms">I agree with the <a href="/terms">Terms &amp; Conditions</a> and the <a href="/privacy">Privacy Policy</a>.</label></div>
+              <button type="submit" class="btn btn--primary">Schedule a demo</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
 </BaseLayout>

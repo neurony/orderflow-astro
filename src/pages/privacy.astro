@@ -1,6 +1,73 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 ---
-<BaseLayout title="Privacy Policy | Orderflow" description="Orderflow privacy policy. Learn how we handle your data in compliance with GDPR.">
-  <main><h1>Privacy Policy</h1><p>Privacy policy content coming soon.</p></main>
+
+<BaseLayout
+  title="Privacy Policy | Orderflow"
+  description="Orderflow privacy policy. Learn how we handle your data in compliance with GDPR and applicable data protection regulations."
+  canonical="https://orderflow.com/privacy"
+  noindex={true}
+>
+  <!-- HEADER / NAV -->
+  <header class="site-header">
+    <nav class="site-header__inner" aria-label="Main navigation">
+      <a href="/" class="nav-logo" aria-label="Orderflow home">
+        <svg class="nav-logo__mark" width="138" height="24" viewBox="0 0 138 24" fill="none" aria-hidden="true">
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M4.5194 14.6866H1.07321L1.07297 14.7568C1.07297 16.5531 1.43867 18.1511 2.16959 19.5505C2.92143 20.95 3.96547 22.0469 5.30219 22.8407C6.63891 23.6135 8.21585 24 10.0329 24C11.8499 24 13.4268 23.6134 14.7636 22.8407C16.1003 22.0469 17.1341 20.95 17.8651 19.5505C18.6169 18.1511 18.9933 16.5531 18.9933 14.7568C18.9933 12.9397 18.6169 11.3315 17.8651 9.93207C17.1341 8.53262 16.1003 7.43615 14.7636 6.64242C13.4878 5.88487 11.9932 5.48855 10.2798 5.454V8.52631C11.3229 8.56136 12.2225 8.82093 12.9781 9.30531C13.7925 9.80661 14.4191 10.5273 14.8577 11.4672C15.2963 12.4071 15.5155 13.5037 15.5155 14.7568C15.5155 15.9891 15.2963 17.0755 14.8577 18.0154C14.4191 18.9344 13.7925 19.6551 12.9781 20.1773C12.1635 20.6786 11.1816 20.9293 10.0329 20.9293C8.88427 20.9293 7.89198 20.6786 7.0566 20.1773C6.24214 19.6551 5.61555 18.9344 5.17694 18.0154C4.73834 17.0755 4.51916 15.9891 4.51916 14.7568L4.5194 14.6866Z" fill="#1E2939"/>
+          <path d="M8.81124 13.2179L1.08648 13.2179L1.08648 10.8409L4.75372 10.8409L1.24675e-06 6.08677L1.68069 4.40598L6.43439 9.16003L6.43439 5.49258L8.81124 5.49258L8.81124 13.2179Z" fill="#FFD230"/>
+        </svg>
+      </a>
+
+      <button class="mobile-menu-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Toggle menu">
+        <svg class="mobile-menu-toggle__icon--open" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        <svg class="mobile-menu-toggle__icon--close" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 6l12 12M6 18L18 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+
+      <ul id="nav-menu" class="nav-links" role="list">
+        <li><a href="/" class="nav-link">About us</a></li>
+        <li><a href="/contact" class="nav-link">Contact</a></li>
+        <li><a href="/insights" class="nav-link">Insights</a></li>
+      </ul>
+
+      <a href="/book-a-call" class="btn btn--dark-stroke" aria-label="Book a call">Book a call</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="section section--legal">
+      <div class="section__card section__card--white">
+        <h1>Privacy Policy</h1>
+        <p>Privacy policy content coming soon. This page will detail how Orderflow collects, uses, and protects your personal data in compliance with GDPR and applicable data protection regulations.</p>
+      </div>
+    </section>
+
+    <footer class="site-footer">
+      <div class="site-footer__inner">
+        <div class="site-footer__top">
+          <a href="/" class="nav-logo nav-logo--footer" aria-label="Orderflow home">
+            <svg class="nav-logo__mark" width="184" height="32" viewBox="0 0 138 24" fill="none" aria-hidden="true">
+              <path fill-rule="evenodd" clip-rule="evenodd" d="M4.5194 14.6866H1.07321L1.07297 14.7568C1.07297 16.5531 1.43867 18.1511 2.16959 19.5505C2.92143 20.95 3.96547 22.0469 5.30219 22.8407C6.63891 23.6135 8.21585 24 10.0329 24C11.8499 24 13.4268 23.6134 14.7636 22.8407C16.1003 22.0469 17.1341 20.95 17.8651 19.5505C18.6169 18.1511 18.9933 16.5531 18.9933 14.7568C18.9933 12.9397 18.6169 11.3315 17.8651 9.93207C17.1341 8.53262 16.1003 7.43615 14.7636 6.64242C13.4878 5.88487 11.9932 5.48855 10.2798 5.454V8.52631C11.3229 8.56136 12.2225 8.82093 12.9781 9.30531C13.7925 9.80661 14.4191 10.5273 14.8577 11.4672C15.2963 12.4071 15.5155 13.5037 15.5155 14.7568C15.5155 15.9891 15.2963 17.0755 14.8577 18.0154C14.4191 18.9344 13.7925 19.6551 12.9781 20.1773C12.1635 20.6786 11.1816 20.9293 10.0329 20.9293C8.88427 20.9293 7.89198 20.6786 7.0566 20.1773C6.24214 19.6551 5.61555 18.9344 5.17694 18.0154C4.73834 17.0755 4.51916 15.9891 4.51916 14.7568L4.5194 14.6866Z" fill="#1E2939"/>
+              <path d="M8.81124 13.2179L1.08648 13.2179L1.08648 10.8409L4.75372 10.8409L1.24675e-06 6.08677L1.68069 4.40598L6.43439 9.16003L6.43439 5.49258L8.81124 5.49258L8.81124 13.2179Z" fill="#FFD230"/>
+            </svg>
+          </a>
+          <ul class="footer-links" role="list">
+            <li><a href="/contact" class="nav-link">Contact us</a></li>
+            <li><a href="/" class="nav-link">About us</a></li>
+            <li><a href="/insights" class="nav-link">Insights</a></li>
+            <li><a href="/terms" class="nav-link">Terms &amp; Conditions</a></li>
+            <li><a href="/privacy" class="nav-link">Privacy Policy</a></li>
+          </ul>
+        </div>
+        <p class="site-footer__copy">&copy; 2026 Orderflow | Powered by Neurony</p>
+      </div>
+    </footer>
+  </main>
+
+  <script>
+    document.querySelector('.mobile-menu-toggle').addEventListener('click', function() {
+      const expanded = this.getAttribute('aria-expanded') === 'true';
+      this.setAttribute('aria-expanded', !expanded);
+      document.getElementById('nav-menu').classList.toggle('nav-links--open', !expanded);
+    });
+  </script>
 </BaseLayout>

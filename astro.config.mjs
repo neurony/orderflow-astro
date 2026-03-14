@@ -2,6 +2,7 @@
 import { defineConfig } from 'astro/config';
 import react from '@astrojs/react';
 import sitemap from '@astrojs/sitemap';
+import markdoc from '@astrojs/markdoc';
 import keystatic from '@keystatic/astro';
 import node from '@astrojs/node';
 
@@ -11,6 +12,7 @@ export default defineConfig({
   site: 'https://orderflow.com',
   integrations: [
     react(),
+    markdoc(),
     sitemap({
       i18n: {
         defaultLocale: 'en',
