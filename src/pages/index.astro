@@ -1,5 +1,48 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+// Fetch latest insights from all content collections
+const [articles, pages, caseStudies] = await Promise.all([
+  getCollection('articles'),
+  getCollection('pages'),
+  getCollection('caseStudies'),
+]);
+
+function formatDate(dateStr: string): string {
+  if (!dateStr) return '';
+  const d = new Date(dateStr);
+  const day = String(d.getDate()).padStart(2, '0');
+  const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+  return `${day} ${months[d.getMonth()]} ${d.getFullYear()}`;
+}
+
+const allInsights = [
+  ...articles.map((a) => ({
+    id: a.id,
+    title: a.data.title,
+    date: a.data.date || '',
+    dateFormatted: formatDate(a.data.date || ''),
+    image: a.data.image,
+    category: a.data.category || 'Article',
+  })),
+  ...pages.map((p) => ({
+    id: p.id,
+    title: p.data.title,
+    date: (p.data as any).pubDate || '',
+    dateFormatted: formatDate((p.data as any).pubDate || ''),
+    image: (p.data as any).ogImage,
+    category: 'Product Guide',
+  })),
+  ...caseStudies.map((c) => ({
+    id: c.id,
+    title: c.data.title,
+    date: (c.data as any).pubDate || '',
+    dateFormatted: formatDate((c.data as any).pubDate || ''),
+    image: (c.data as any).ogImage,
+    category: 'Case Study',
+  })),
+].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()).slice(0, 3);
 
 const softwareAppSchema = {
   '@context': 'https://schema.org',
@@ -414,9 +457,20 @@ const faqSchema = {
           <a href="/insights" class="btn btn--outline">Browse all articles</a>
         </div>
         <ul class="insight-cards" role="list" data-reveal-stagger>
-          <li data-reveal="up"><article class="insight-card"><div class="insight-card__image-wrap"><span class="insight-card__category">Category</span><img src="/images/insight-1.jpg" alt="Stacked orange books on a desk" class="insight-card__image"></div><div class="insight-card__body"><p class="insight-card__date">13 jun. 2026</p><h3 class="insight-card__title">From scanned PDFs to ERP-ready data. A look at AI order processing.</h3></div></article></li>
-          <li data-reveal="up"><article class="insight-card"><div class="insight-card__image-wrap"><span class="insight-card__category">Category</span><img src="/images/insight-2.jpg" alt="Person typing on a laptop" class="insight-card__image"></div><div class="insight-card__body"><p class="insight-card__date">13 jun. 2026</p><h3 class="insight-card__title">The hidden ceiling: How manual order entry quietly limits your growth</h3></div></article></li>
-          <li data-reveal="up"><article class="insight-card"><div class="insight-card__image-wrap"><span class="insight-card__category">Category</span><img src="/images/pain-unstructured.jpg" alt="Distribution warehouse with shelves" class="insight-card__image"></div><div class="insight-card__body"><p class="insight-card__date">13 jun. 2026</p><h3 class="insight-card__title">Why templated automation fails in distribution (and what actually works)</h3></div></article></li>
+          {allInsights.map((item) => (
+            <li data-reveal="up">
+              <a href={`/insights/${item.id}`} class="insight-card">
+                <div class="insight-card__image-wrap">
+                  <span class="insight-card__category">{item.category}</span>
+                  {item.image && <img src={item.image} alt={item.title} class="insight-card__image" loading="lazy">}
+                </div>
+                <div class="insight-card__body">
+                  <p class="insight-card__date">{item.dateFormatted}</p>
+                  <h3 class="insight-card__title">{item.title}</h3>
+                </div>
+              </a>
+            </li>
+          ))}
         </ul>
       </div>
     </section>
