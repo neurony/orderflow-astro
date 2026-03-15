@@ -447,16 +447,147 @@ Beyond the original banned phrases, the competitor evidence surfaces additional 
 - ❌ "Get started in minutes" — Canals deploys in days. OrderFlow deploys in weeks. Weeks is fast — own it honestly. "Operational in weeks, not months" is both accurate and a genuine competitive advantage against Conexiom and Esker, which take months.
 
 **Originality failures:**
-- ❌ "In today's fast-paced business environment" — Never.
-- ❌ "In conclusion, it is clear that" — Never.
-- ❌ "Distribution businesses are facing increasing pressure" — Never.
-- ❌ Any sentence that could appear unchanged in a Canals, Endeavor, or Turian article — Never.
+- ❌ "In today's fast-paced business environment" -- Never.
+- ❌ "In conclusion, it is clear that" -- Never.
+- ❌ "Distribution businesses are facing increasing pressure" -- Never.
+- ❌ Any sentence that could appear unchanged in a Canals, Endeavor, or Turian article -- Never.
+
+---
+
+### CRITICAL: Anti-AI-Detection Writing Rules
+
+**This section is BLOCKING. Every sentence you write must pass these rules. AI-detectable content damages OrderFlow's credibility and SEO ranking. Google's Helpful Content Update penalizes content that reads as machine-generated.**
+
+AI detection tools analyze perplexity (how predictable word choices are) and burstiness (how much sentence length and structure vary). AI writing scores low on both. Human writing scores high. You must write like a human.
+
+---
+
+#### Rule 1: BANNED PUNCTUATION
+
+**Em dashes (--) are FORBIDDEN.** Em dashes are the single most recognized AI writing fingerprint. Claude uses them reflexively, especially in the pattern "it's not X -- it's Y." Never use them. Alternatives:
+
+- Use a comma, period, colon, or parentheses instead
+- Rewrite the sentence to avoid needing the aside
+- Use "but" or "and" to connect clauses
+- If you absolutely must set off a parenthetical, use actual parentheses
+
+**Semicolons: use sparingly.** AI overuses semicolons to connect independent clauses. Limit to 1-2 per 1,000 words maximum. Prefer two short sentences over one semicolon-joined sentence.
+
+**Colons before lists: fine, but vary your lead-ins.** Don't start every list with the identical "X includes:" pattern.
+
+---
+
+#### Rule 2: BANNED WORDS AND PHRASES
+
+These words and phrases are statistically overrepresented in AI-generated text and are flagged by detection tools. **Never use any of them:**
+
+**AI-signature adjectives and adverbs (BANNED):**
+delve, tapestry, nuanced, multifaceted, intricate, paramount, pivotal, meticulous, holistic, robust, comprehensive, myriad, plethora, underpinning, underscores, landscape (metaphorical), notably, remarkably, particularly noteworthy, it's worth noting, interestingly
+
+**AI-signature verbs (BANNED):**
+leverage, utilize (use "use"), facilitate, foster, spearhead, bolster, navigate (metaphorical), harness, optimize (use "improve" or "speed up"), revolutionize, transform (use "change" or "fix"), empower, elevate, streamline
+
+**AI-signature transitions (BANNED):**
+Moreover, Furthermore, Additionally, In addition, It is important to note, It should be noted, Notably, Consequently, Subsequently, In essence, Fundamentally, Essentially (at sentence start)
+
+**AI-signature filler phrases (BANNED):**
+"In the realm of," "When it comes to," "At the end of the day," "It goes without saying," "Needless to say," "In today's [anything]," "The fact remains that," "It is worth mentioning that," "Let's dive in," "Let's explore," "Let me explain"
+
+**AI-signature intensifiers (BANNED):**
+"absolutely crucial," "incredibly important," "truly remarkable," "highly effective," "extremely powerful," "significant impact"
+
+**AI-signature hedging (BANNED):**
+"It's important to remember that," "One might argue that," "It could be said that," "There is no doubt that," "It is clear that," "It is evident that," "Certainly," "Surely"
+
+**Use instead:** Plain, direct language. "Use" not "utilize." "Important" not "paramount." "Complex" not "multifaceted." "Shows" not "underscores." "Key" not "pivotal." Say what you mean in the simplest accurate word.
+
+---
+
+#### Rule 3: SENTENCE STRUCTURE VARIATION (Burstiness)
+
+AI writes sentences of uniform length (typically 15-22 words). Humans don't. You must vary aggressively:
+
+- Mix very short sentences (3-8 words) with medium (12-18 words) and occasional long ones (25-35 words)
+- **Never write three consecutive sentences of similar length.** If you just wrote two 18-word sentences, the next one must be noticeably shorter or longer.
+- Start sentences with different parts of speech. Don't begin 3+ consecutive sentences with "The," "This," "It," or "They."
+- Use fragments occasionally. "Not volume. Variability." This is a human pattern that AI avoids.
+- Vary paragraph length. Some paragraphs should be a single sentence. Others can be 3-4 sentences. Never write 5+ paragraphs of identical length in a row.
+
+---
+
+#### Rule 4: FORMATTING FINGERPRINTS
+
+AI has recognizable formatting habits. Avoid them:
+
+- **Don't use perfectly parallel list structures.** If every bullet point is "Verb + noun + qualifier" in the same rhythm, it reads as AI. Vary the grammatical structure between items.
+- **Don't use identical list item lengths.** If you have a 5-item list and every item is 8-12 words, rewrite some to be shorter or longer.
+- **Don't over-structure with headers.** Not every section needs an H3 under every H2. Some H2 sections can just be prose.
+- **Avoid formulaic section transitions.** Don't end every section with a sentence that previews the next one. Sometimes just end and start the next section.
+- **Don't bold the same pattern repeatedly.** If you bold the first word of every paragraph or the first phrase of every list item, it reads as templated.
+
+---
+
+#### Rule 5: TONE AND VOICE HUMANIZATION
+
+- **Use contractions.** "It's," "don't," "won't," "can't," "they're." AI tends toward formal non-contracted forms. Contractions are natural in professional B2B writing.
+- **Use informal connectors.** "But" at the start of a sentence is fine. "And" too. "So" as a sentence starter is human. "Plus" works. These are natural in trade writing.
+- **Allow imperfect rhythm.** Not every paragraph needs a punchy closer. Sometimes a paragraph just... ends on the information, without a bow on top.
+- **Use concrete, sensory language over abstract.** "Your rep squints at a blurry photo of a handwritten list" beats "Your team processes unstructured visual inputs." Humans write in pictures. AI writes in categories.
+- **Avoid the "helpful explainer" tone.** Never sound like you're patiently walking someone through a concept from a position of omniscience. Sound like a peer who has done this work and is sharing what they've learned.
+- **Drop the hedging.** Don't say "can help reduce errors." Say "cuts errors." Confident, direct claims (backed by data) read as human. Cautious, hedged language reads as AI.
+
+---
+
+#### Rule 6: OPENING AND CLOSING PATTERNS
+
+AI has recognizable openers and closers. Avoid them:
+
+**Banned openers:**
+- Starting with a question ("Have you ever wondered...?", "What if...?", "Are you struggling with...?")
+- "In today's [anything]"
+- "When it comes to [topic]"
+- "[Topic] is a [adjective] [noun] that..."
+- "Let's explore/dive into/take a look at"
+- Starting with a dictionary-style definition
+
+**Banned closers:**
+- "In conclusion" or "To sum up" or "In summary"
+- Restating all main points in a final paragraph
+- "Ready to [verb]? [CTA]" as the only closing pattern
+- "The future of [topic] is [adjective]"
+- Any sentence starting with "By [verb]-ing"
+
+**What to do instead:** Open with a specific scene, fact, or tension. Close with a concrete next step or a forward-looking statement that isn't generic.
+
+---
+
+#### Rule 7: STRUCTURAL PREDICTABILITY
+
+AI produces predictable document structures. Break the pattern:
+
+- **Don't follow the same section template for every article.** If your last three articles went Problem > Solution > Benefits > Case Study > CTA, change the order or combine sections differently.
+- **Don't make every H2 section the same length.** Some sections should be 150 words, others 400. Uniform section length is a strong AI signal.
+- **Interrupt the flow occasionally.** A one-sentence paragraph between two longer sections. A callout box. A rhetorical question mid-section (sparingly). These pattern breaks signal human authorship.
+- **Don't enumerate everything.** Not every group of related points needs to be a numbered list. Sometimes prose that covers three related ideas in a flowing paragraph is more natural.
+
+---
+
+#### Rule 8: POST-WRITING AI DETECTION SELF-AUDIT
+
+Before submitting any piece, run this mental audit:
+
+1. **Read the first sentence of every paragraph in sequence.** If they form a predictable pattern (all starting with the same word, all similar length, all following Subject-Verb-Object), rewrite the weak ones.
+2. **Check em dash count.** Must be zero.
+3. **Search for every word on the banned list.** Replace any that slipped through.
+4. **Count sentences per paragraph across the whole piece.** If more than 60% of paragraphs have the same sentence count, vary them.
+5. **Read it aloud.** If it sounds like a narrator reading a corporate brochure, it's too AI. If it sounds like a knowledgeable colleague explaining something at a conference, it's right.
+6. **The "swap test":** Could you swap your article's intro with a ChatGPT response to the same prompt and not notice a difference? If yes, rewrite the intro.
 
 ---
 
 ### The Final Test Before Submission
 
-Before submitting any piece, read it back and ask these three questions:
+Before submitting any piece, read it back and ask these five questions:
 
 1. **Would an Operations Manager at a 200-person distributor recognise their own Monday morning in the first paragraph?** If not, the intro failed.
 
@@ -464,7 +595,11 @@ Before submitting any piece, read it back and ask these three questions:
 
 3. **Does the closing CTA tell the reader exactly what they'll get and why it's worth 20 minutes of their time?** If not, it's still a generic CTA.
 
-All three must pass. Then run the SEO Quality Gate.
+4. **Does this read like AI wrote it?** Run the full Anti-AI Detection Self-Audit (Rule 8 above). Zero em dashes, zero banned words, varied sentence lengths, no formulaic structure. If a colleague would say "this sounds like ChatGPT," rewrite it.
+
+5. **Read three random paragraphs aloud.** Do they sound like a real person talking, or like a corporate text generator? If the latter, inject more contractions, shorter sentences, concrete details, and personality.
+
+All five must pass. Then run the SEO Quality Gate.
 
 ---
 
