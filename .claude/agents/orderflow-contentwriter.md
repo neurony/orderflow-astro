@@ -730,10 +730,13 @@ H1: [Primary Keyword — benefit-oriented]
 - ❌ `/sales-order-automation-for-distribution-companies-in-2026` (too long)
 - ❌ `/Sales_Order_Automation` (capitalization, underscores)
 
-**2.6 Image Optimization**
-- [ ] **Alt text** on every image: descriptive, includes keyword where natural, under 125 characters
+**2.6 Image Optimization — BLOCKING**
+- [ ] **Alt text on EVERY image — NO EXCEPTIONS.** Empty `alt=""` is ONLY allowed on purely decorative images that also have `aria-hidden="true"`. All content images MUST have descriptive alt text that includes the target keyword where natural. Under 125 characters.
   - ✅ `alt="AI processing a handwritten order email for distribution company"`
-  - ❌ `alt="image1"` or `alt=""` (blank)
+  - ✅ `alt="Orderflow dashboard showing automated SKU matching results"`
+  - ❌ `alt="image1"` or `alt=""` on a content image (BLOCKING — will fail review)
+  - ❌ Missing alt attribute entirely (BLOCKING)
+- [ ] **Article card images** in listings must use the article title as alt text (e.g., `alt={article.title}`)
 - [ ] **File names** are descriptive and hyphenated: `order-processing-automation-flow.png` not `screenshot_001.png`
 - [ ] **File size:** WebP format preferred. JPEG/PNG compressed. No image over 200KB for blog images. Hero images under 400KB.
 - [ ] **Dimensions:** Specify width and height attributes in HTML to prevent layout shift (Core Web Vitals)

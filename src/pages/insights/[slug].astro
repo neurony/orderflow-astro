@@ -226,16 +226,14 @@ const stats = contentType === 'caseStudy' ? ((entry.data as any).stats || []) : 
 
     {/* ===== CASE STUDY STATS ===== */}
     {contentType === 'caseStudy' && stats.length > 0 && (
-      <section class="section">
-        <div class="section__card section__card--white">
-          <div class="stats-grid" data-reveal-stagger>
-            {stats.map((stat: any) => (
-              <div class="stats-grid__item" data-reveal="up">
-                <span class="stats-grid__value">{stat.value}</span>
-                <span class="stats-grid__label">{stat.label}</span>
-              </div>
-            ))}
-          </div>
+      <section class="stats-section">
+        <div class="stats-grid">
+          {stats.map((stat: any) => (
+            <div class="stats-grid__item">
+              <span class="stats-grid__value">{stat.value}</span>
+              <span class="stats-grid__label">{stat.label}</span>
+            </div>
+          ))}
         </div>
       </section>
     )}
@@ -278,7 +276,7 @@ const stats = contentType === 'caseStudy' ? ((entry.data as any).stats || []) : 
             {relatedArticles.map((related) => (
               <a href={`/insights/${related.id}`} class="article-card" data-reveal="up">
                 <div class="article-card__image-wrap">
-                  {related.data.image && <img src={related.data.image} alt="" class="article-card__image" loading="lazy">}
+                  {related.data.image && <img src={related.data.image} alt={related.data.title} class="article-card__image" loading="lazy">}
                   {related.data.category && <span class="article-card__tag">{related.data.category}</span>}
                 </div>
                 <span class="article-card__date">{related.data.date}</span>
