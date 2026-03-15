@@ -8,66 +8,200 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   canonical="https://orderflow.com/privacy"
   noindex={true}
 >
-  <!-- HEADER / NAV -->
-  <header class="site-header">
-    <nav class="site-header__inner" aria-label="Main navigation">
-      <a href="/" class="nav-logo" aria-label="Orderflow home">
-        <svg class="nav-logo__mark" width="138" height="24" viewBox="0 0 138 24" fill="none" aria-hidden="true">
-          <path fill-rule="evenodd" clip-rule="evenodd" d="M4.5194 14.6866H1.07321L1.07297 14.7568C1.07297 16.5531 1.43867 18.1511 2.16959 19.5505C2.92143 20.95 3.96547 22.0469 5.30219 22.8407C6.63891 23.6135 8.21585 24 10.0329 24C11.8499 24 13.4268 23.6134 14.7636 22.8407C16.1003 22.0469 17.1341 20.95 17.8651 19.5505C18.6169 18.1511 18.9933 16.5531 18.9933 14.7568C18.9933 12.9397 18.6169 11.3315 17.8651 9.93207C17.1341 8.53262 16.1003 7.43615 14.7636 6.64242C13.4878 5.88487 11.9932 5.48855 10.2798 5.454V8.52631C11.3229 8.56136 12.2225 8.82093 12.9781 9.30531C13.7925 9.80661 14.4191 10.5273 14.8577 11.4672C15.2963 12.4071 15.5155 13.5037 15.5155 14.7568C15.5155 15.9891 15.2963 17.0755 14.8577 18.0154C14.4191 18.9344 13.7925 19.6551 12.9781 20.1773C12.1635 20.6786 11.1816 20.9293 10.0329 20.9293C8.88427 20.9293 7.89198 20.6786 7.0566 20.1773C6.24214 19.6551 5.61555 18.9344 5.17694 18.0154C4.73834 17.0755 4.51916 15.9891 4.51916 14.7568L4.5194 14.6866Z" fill="#1E2939"/>
-          <path d="M8.81124 13.2179L1.08648 13.2179L1.08648 10.8409L4.75372 10.8409L1.24675e-06 6.08677L1.68069 4.40598L6.43439 9.16003L6.43439 5.49258L8.81124 5.49258L8.81124 13.2179Z" fill="#FFD230"/>
-        </svg>
-      </a>
-
-      <button class="mobile-menu-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Toggle menu">
-        <svg class="mobile-menu-toggle__icon--open" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-        <svg class="mobile-menu-toggle__icon--close" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 6l12 12M6 18L18 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-      </button>
-
-      <ul id="nav-menu" class="nav-links" role="list">
-        <li><a href="/" class="nav-link">About us</a></li>
-        <li><a href="/contact" class="nav-link">Contact</a></li>
-        <li><a href="/insights" class="nav-link">Insights</a></li>
-      </ul>
-
-      <a href="/book-a-call" class="btn btn--dark-stroke" aria-label="Book a call">Book a call</a>
-    </nav>
-  </header>
-
   <main>
     <section class="section section--legal">
       <div class="section__card section__card--white">
-        <h1>Privacy Policy</h1>
-        <p>Privacy policy content coming soon. This page will detail how Orderflow collects, uses, and protects your personal data in compliance with GDPR and applicable data protection regulations.</p>
+        <div class="legal-content">
+          <h1>Privacy Policy</h1>
+          <p><strong>Last updated:</strong> March 15, 2026</p>
+
+          <p>
+            This Privacy Policy describes how Neurony Solutions SRL ("we", "us", or "Orderflow") collects,
+            uses, and protects your personal information when you use our website at
+            <a href="https://orderflow.com">orderflow.com</a> and our AI-powered order processing services.
+            We are committed to protecting your privacy in accordance with the General Data Protection
+            Regulation (GDPR) and applicable Romanian data protection laws.
+          </p>
+
+          <h2>1. Information Collection and Use</h2>
+          <p>
+            We collect personal information that you voluntarily provide when you interact with our
+            services. This includes your name, email address, company name, phone number, and any
+            other details you submit through our contact forms, demo requests, or account registration.
+          </p>
+          <p>
+            We use this information to provide and improve our services, respond to your inquiries,
+            send relevant communications, and comply with legal obligations. We process your data
+            based on legitimate interest, contractual necessity, or your explicit consent, depending
+            on the context.
+          </p>
+
+          <h2>2. Order Data Processing</h2>
+          <p>
+            Orderflow processes order data submitted by your business, including emails, WhatsApp
+            messages, PDFs, scanned documents, and handwritten notes. Our AI engine extracts and
+            structures this data to produce ERP-ready output. This order data may contain personal
+            information such as customer names, addresses, and contact details.
+          </p>
+          <p>
+            We act as a data processor on your behalf for order data. This means you remain the data
+            controller, and we process data strictly according to your instructions and our data
+            processing agreement. Order data is processed only for the purpose of delivering our
+            service and is not used for marketing, profiling, or any unrelated purpose.
+          </p>
+          <p>
+            Order data is retained only for as long as necessary to provide the service and fulfill
+            contractual obligations. You may request deletion of your order data at any time by
+            contacting us at <a href="mailto:contact@orderflow.com">contact@orderflow.com</a>.
+          </p>
+
+          <h2>3. Log Data</h2>
+          <p>
+            When you visit our website, we automatically collect certain information that your
+            browser sends. This may include your IP address, browser type and version, the pages
+            you visit, the time and date of your visit, time spent on pages, and other diagnostic data.
+          </p>
+          <p>
+            We use analytics tools to understand how visitors use our website so we can improve the
+            experience. This data is aggregated and does not personally identify individual users.
+          </p>
+
+          <h2>4. Communications</h2>
+          <p>
+            We only send marketing communications, such as newsletters or product updates, with your
+            explicit consent. You can unsubscribe at any time using the link provided in every email.
+          </p>
+          <p>
+            If you contact us directly through our website, email, or other channels, we may retain
+            your message and contact details to respond to your inquiry and maintain a record of our
+            correspondence.
+          </p>
+
+          <h2>5. Your Rights Regarding Personal Data</h2>
+          <p>
+            Under the GDPR, you have the following rights regarding your personal data:
+          </p>
+          <ul>
+            <li><strong>Right of access</strong> -- You can request a copy of the personal data we hold about you.</li>
+            <li><strong>Right to rectification</strong> -- You can ask us to correct inaccurate or incomplete data.</li>
+            <li><strong>Right to erasure</strong> -- You can request that we delete your personal data, subject to legal retention requirements.</li>
+            <li><strong>Right to restrict processing</strong> -- You can ask us to limit how we use your data.</li>
+            <li><strong>Right to data portability</strong> -- You can request your data in a structured, machine-readable format.</li>
+            <li><strong>Right to object</strong> -- You can object to processing based on legitimate interest.</li>
+            <li><strong>Right to withdraw consent</strong> -- Where processing is based on consent, you may withdraw it at any time.</li>
+          </ul>
+          <p>
+            To exercise any of these rights, contact us at
+            <a href="mailto:contact@orderflow.com">contact@orderflow.com</a>.
+            We will respond within 30 days. If you believe your rights have been violated, you have
+            the right to lodge a complaint with Romania's National Supervisory Authority for Personal
+            Data Processing (ANSPDCP) at
+            <a href="https://www.dataprotection.ro" target="_blank" rel="noopener noreferrer">www.dataprotection.ro</a>.
+          </p>
+
+          <h2>6. Cookie Policy</h2>
+          <p>
+            Our website uses cookies to enhance your browsing experience. Cookies are small text
+            files stored on your device by your browser. We use the following types:
+          </p>
+          <ul>
+            <li><strong>Essential cookies</strong> -- Required for basic site functionality such as navigation and security. These cannot be disabled.</li>
+            <li><strong>Analytics cookies</strong> -- Help us understand how visitors interact with our website by collecting anonymous usage data.</li>
+            <li><strong>Preference cookies</strong> -- Remember your settings and preferences for a better experience on return visits.</li>
+          </ul>
+          <p>
+            Session cookies are deleted when you close your browser. Persistent cookies remain on
+            your device for a set period or until you delete them manually. You can manage your
+            cookie preferences through your browser settings. Disabling certain cookies may affect
+            site functionality.
+          </p>
+
+          <h2>7. Data Security</h2>
+          <p>
+            We take the security of your data seriously. We implement appropriate technical and
+            organizational measures to protect your personal information, including encryption of
+            data in transit and at rest, strict access controls, regular security assessments, and
+            secure infrastructure hosting.
+          </p>
+          <p>
+            While no method of transmission over the internet is completely secure, we continuously
+            work to protect your data and promptly address any vulnerabilities.
+          </p>
+
+          <h2>8. Changes and Amendments</h2>
+          <p>
+            We reserve the right to modify this Privacy Policy at any time. When we make changes,
+            we will update the "Last updated" date at the top of this page. We encourage you to
+            review this policy periodically. Continued use of our website and services after changes
+            are posted constitutes acceptance of the revised policy.
+          </p>
+
+          <h2>9. Acceptance of This Policy</h2>
+          <p>
+            By using the Orderflow website and services, you acknowledge that you have read and
+            understood this Privacy Policy and agree to the collection, use, and processing of your
+            information as described herein. If you do not agree with this policy, please discontinue
+            use of our website and services.
+          </p>
+
+          <h2>10. Contacting Us</h2>
+          <p>
+            If you have any questions, concerns, or requests related to this Privacy Policy or our
+            data practices, please contact us at:
+          </p>
+          <p>
+            <a href="mailto:contact@orderflow.com">contact@orderflow.com</a>
+          </p>
+
+          <h2>11. Company Details</h2>
+          <p>
+            <strong>Neurony Solutions SRL</strong><br />
+            Romania<br />
+            Website: <a href="https://orderflow.com">orderflow.com</a><br />
+            Email: <a href="mailto:contact@orderflow.com">contact@orderflow.com</a>
+          </p>
+        </div>
       </div>
     </section>
-
-    <footer class="site-footer">
-      <div class="site-footer__inner">
-        <div class="site-footer__top">
-          <a href="/" class="nav-logo nav-logo--footer" aria-label="Orderflow home">
-            <svg class="nav-logo__mark" width="184" height="32" viewBox="0 0 138 24" fill="none" aria-hidden="true">
-              <path fill-rule="evenodd" clip-rule="evenodd" d="M4.5194 14.6866H1.07321L1.07297 14.7568C1.07297 16.5531 1.43867 18.1511 2.16959 19.5505C2.92143 20.95 3.96547 22.0469 5.30219 22.8407C6.63891 23.6135 8.21585 24 10.0329 24C11.8499 24 13.4268 23.6134 14.7636 22.8407C16.1003 22.0469 17.1341 20.95 17.8651 19.5505C18.6169 18.1511 18.9933 16.5531 18.9933 14.7568C18.9933 12.9397 18.6169 11.3315 17.8651 9.93207C17.1341 8.53262 16.1003 7.43615 14.7636 6.64242C13.4878 5.88487 11.9932 5.48855 10.2798 5.454V8.52631C11.3229 8.56136 12.2225 8.82093 12.9781 9.30531C13.7925 9.80661 14.4191 10.5273 14.8577 11.4672C15.2963 12.4071 15.5155 13.5037 15.5155 14.7568C15.5155 15.9891 15.2963 17.0755 14.8577 18.0154C14.4191 18.9344 13.7925 19.6551 12.9781 20.1773C12.1635 20.6786 11.1816 20.9293 10.0329 20.9293C8.88427 20.9293 7.89198 20.6786 7.0566 20.1773C6.24214 19.6551 5.61555 18.9344 5.17694 18.0154C4.73834 17.0755 4.51916 15.9891 4.51916 14.7568L4.5194 14.6866Z" fill="#1E2939"/>
-              <path d="M8.81124 13.2179L1.08648 13.2179L1.08648 10.8409L4.75372 10.8409L1.24675e-06 6.08677L1.68069 4.40598L6.43439 9.16003L6.43439 5.49258L8.81124 5.49258L8.81124 13.2179Z" fill="#FFD230"/>
-            </svg>
-          </a>
-          <ul class="footer-links" role="list">
-            <li><a href="/contact" class="nav-link">Contact us</a></li>
-            <li><a href="/" class="nav-link">About us</a></li>
-            <li><a href="/insights" class="nav-link">Insights</a></li>
-            <li><a href="/terms" class="nav-link">Terms &amp; Conditions</a></li>
-            <li><a href="/privacy" class="nav-link">Privacy Policy</a></li>
-          </ul>
-        </div>
-        <p class="site-footer__copy">&copy; 2026 Orderflow | Powered by Neurony</p>
-      </div>
-    </footer>
   </main>
-
-  <script>
-    document.querySelector('.mobile-menu-toggle').addEventListener('click', function() {
-      const expanded = this.getAttribute('aria-expanded') === 'true';
-      this.setAttribute('aria-expanded', !expanded);
-      document.getElementById('nav-menu').classList.toggle('nav-links--open', !expanded);
-    });
-  </script>
 </BaseLayout>
+
+<style is:global>
+  .legal-content {
+    max-width: 72ch;
+    margin: 0 auto;
+    line-height: 1.7;
+  }
+
+  .legal-content h1 {
+    margin-bottom: 0.25em;
+  }
+
+  .legal-content h2 {
+    margin-top: 2em;
+    margin-bottom: 0.5em;
+  }
+
+  .legal-content p {
+    margin-bottom: 1em;
+  }
+
+  .legal-content ul {
+    margin-bottom: 1em;
+    padding-left: 1.5em;
+  }
+
+  .legal-content li {
+    margin-bottom: 0.5em;
+  }
+
+  .legal-content a {
+    color: inherit;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  .legal-content a:hover {
+    opacity: 0.7;
+  }
+</style>
