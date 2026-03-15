@@ -70,8 +70,8 @@ const breadcrumbSchema = {
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
   itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://orderflow.com' },
-    { '@type': 'ListItem', position: 2, name: 'Insights', item: 'https://orderflow.com/insights' },
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://orderflow.biz' },
+    { '@type': 'ListItem', position: 2, name: 'Insights', item: 'https://orderflow.biz/insights' },
     { '@type': 'ListItem', position: 3, name: entry.data.title },
   ],
 };
@@ -84,7 +84,7 @@ if (contentType === 'article') {
     '@type': 'BlogPosting',
     headline: entry.data.title,
     description: pageDescription,
-    image: heroImage ? `https://orderflow.com${heroImage}` : undefined,
+    image: heroImage ? `https://orderflow.biz${heroImage}` : undefined,
     datePublished: publishDate,
     dateModified: updatedDate || publishDate,
     author: (entry.data as any).author ? {
@@ -92,10 +92,10 @@ if (contentType === 'article') {
       name: (entry.data as any).author.name,
       jobTitle: (entry.data as any).author.role,
     } : undefined,
-    publisher: { '@id': 'https://orderflow.com/#organization' },
+    publisher: { '@id': 'https://orderflow.biz/#organization' },
     mainEntityOfPage: {
       '@type': 'WebPage',
-      '@id': `https://orderflow.com/insights/${entry.id}`,
+      '@id': `https://orderflow.biz/insights/${entry.id}`,
     },
   };
   jsonLdSchemas.push(articleSchema);
@@ -114,7 +114,7 @@ if (contentType === 'article') {
         priceCurrency: 'EUR',
         availability: 'https://schema.org/OnlineOnly',
       },
-      publisher: { '@id': 'https://orderflow.com/#organization' },
+      publisher: { '@id': 'https://orderflow.biz/#organization' },
     };
     jsonLdSchemas.push(softwareSchema);
   }
@@ -124,17 +124,17 @@ if (contentType === 'article') {
     '@type': 'Article',
     headline: entry.data.title,
     description: pageDescription,
-    image: heroImage ? `https://orderflow.com${heroImage}` : undefined,
+    image: heroImage ? `https://orderflow.biz${heroImage}` : undefined,
     datePublished: publishDate,
     dateModified: updatedDate || publishDate,
     author: {
       '@type': 'Organization',
       name: (entry.data as any).author || 'OrderFlow Team',
     },
-    publisher: { '@id': 'https://orderflow.com/#organization' },
+    publisher: { '@id': 'https://orderflow.biz/#organization' },
     mainEntityOfPage: {
       '@type': 'WebPage',
-      '@id': `https://orderflow.com/insights/${entry.id}`,
+      '@id': `https://orderflow.biz/insights/${entry.id}`,
     },
   };
   jsonLdSchemas.push(caseStudySchema);

@@ -2322,3 +2322,175 @@ main {
     padding: 0 var(--space-16) var(--space-16);
   }
 }
+
+/* =============================================
+   9. ARTICLE BODY & PROSE TYPOGRAPHY
+   ============================================= */
+
+/* ----- Article Body ----- */
+.section--article-body {
+  padding: 0;
+}
+
+.article-body-wrapper {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: var(--space-32) var(--space-24);
+  display: flex;
+  gap: var(--space-32);
+}
+
+/* ----- Article Prose Typography ----- */
+.article-prose {
+  font-size: var(--text-lg);
+  line-height: var(--leading-relaxed);
+  color: var(--color-neutral-700);
+}
+
+.article-prose p {
+  margin-bottom: 1.5em;
+}
+
+.article-prose h2 {
+  font-size: var(--text-3xl);
+  font-weight: var(--weight-medium);
+  color: var(--color-neutral-900);
+  margin-top: 2.5em;
+  margin-bottom: 0.75em;
+  line-height: var(--leading-tight);
+}
+
+.article-prose h3 {
+  font-size: var(--text-xl);
+  font-weight: var(--weight-medium);
+  color: var(--color-neutral-900);
+  margin-top: 2em;
+  margin-bottom: 0.5em;
+  line-height: var(--leading-snug);
+}
+
+.article-prose h4 {
+  font-size: var(--text-lg);
+  font-weight: var(--weight-medium);
+  color: var(--color-neutral-900);
+  margin-top: 1.5em;
+  margin-bottom: 0.5em;
+}
+
+.article-prose ul,
+.article-prose ol {
+  margin-bottom: 1.5em;
+  padding-left: 1.5em;
+}
+
+.article-prose ul {
+  list-style-type: disc;
+}
+
+.article-prose ol {
+  list-style-type: decimal;
+}
+
+.article-prose li {
+  margin-bottom: 0.5em;
+  line-height: var(--leading-relaxed);
+}
+
+.article-prose li > ul,
+.article-prose li > ol {
+  margin-top: 0.5em;
+  margin-bottom: 0;
+}
+
+.article-prose a {
+  color: var(--color-purple-600);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.article-prose a:hover {
+  color: var(--color-neutral-900);
+}
+
+.article-prose strong {
+  font-weight: var(--weight-medium);
+  color: var(--color-neutral-900);
+}
+
+.article-prose blockquote {
+  border-left: 3px solid var(--color-neutral-300);
+  padding-left: 1.25em;
+  margin: 1.5em 0;
+  font-style: italic;
+  color: var(--color-neutral-600);
+}
+
+.article-prose hr {
+  border: none;
+  border-top: 1px solid var(--color-neutral-200);
+  margin: 2em 0;
+}
+
+.article-prose table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5em 0;
+  font-size: var(--text-base);
+}
+
+.article-prose th,
+.article-prose td {
+  padding: 0.75em 1em;
+  border: 1px solid var(--color-neutral-200);
+  text-align: left;
+}
+
+.article-prose th {
+  background-color: var(--color-neutral-50);
+  font-weight: var(--weight-medium);
+  color: var(--color-neutral-900);
+}
+
+.article-prose code {
+  background-color: var(--color-neutral-100);
+  padding: 0.15em 0.4em;
+  border-radius: var(--radius-sm);
+  font-size: 0.9em;
+}
+
+.article-prose img {
+  max-width: 100%;
+  height: auto;
+  border-radius: var(--radius-lg);
+  margin: 1.5em 0;
+}
+
+/* First element in prose should not have top margin */
+.article-prose > :first-child {
+  margin-top: 0;
+}
+
+/* ----- Article Prose Responsive ----- */
+@media (max-width: 1024px) {
+  .article-body-wrapper {
+    padding: var(--space-24) var(--space-32);
+  }
+}
+
+@media (max-width: 640px) {
+  .article-body-wrapper {
+    padding: var(--space-16) var(--space-24);
+  }
+
+  .article-prose {
+    font-size: var(--text-base);
+  }
+
+  .article-prose h2 {
+    font-size: var(--text-2xl);
+  }
+
+  .article-prose h3 {
+    font-size: var(--text-lg);
+  }
+}

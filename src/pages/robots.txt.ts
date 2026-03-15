@@ -20,7 +20,7 @@ User-agent: Applebot
 Allow: /
 
 # Sitemap
-Sitemap: https://orderflow.com/sitemap-index.xml
+Sitemap: https://orderflow.biz/sitemap-index.xml
 `.trim();
 
 export const GET: APIRoute = () => {

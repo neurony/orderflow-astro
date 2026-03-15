@@ -9,7 +9,7 @@ import node from '@astrojs/node';
 export default defineConfig({
   output: 'static',
   adapter: node({ mode: 'standalone' }),
-  site: 'https://orderflow.com',
+  site: 'https://orderflow.biz',
   integrations: [
     react(),
     markdoc(),
