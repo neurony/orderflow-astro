@@ -288,12 +288,15 @@ const aboutPageSchema = {
           calendlyStep.style.display = 'block';
 
           var widgetEl = document.getElementById(prefix + '-calendly-widget');
+          var calendlyUrl = 'https://calendly.com/management-neurony/introductory-meeting-with-orderflow?hide_event_type_details=1&hide_gdpr_banner=1'
+            + '&email=' + encodeURIComponent(email)
+            + '&a1=' + encodeURIComponent(company);
           widgetEl.classList.add('calendly-inline-widget');
-          widgetEl.setAttribute('data-url', 'https://calendly.com/management-neurony/introductory-meeting-with-orderflow?hide_event_type_details=1&hide_gdpr_banner=1');
+          widgetEl.setAttribute('data-url', calendlyUrl);
           widgetEl.style.minWidth = '320px';
           widgetEl.style.height = '400px';
           Calendly.initInlineWidget({
-            url: 'https://calendly.com/management-neurony/introductory-meeting-with-orderflow?hide_event_type_details=1&hide_gdpr_banner=1',
+            url: calendlyUrl,
             parentElement: widgetEl,
             prefill: {
               email: email,
