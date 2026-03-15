@@ -2,7 +2,7 @@
 title: AI Order Processing Built for Distribution
 seoTitle: AI Order Processing for Distribution | OrderFlow
 seoDescription: >-
-  AI that interprets sales orders in any format — free-text emails, PDFs, handwritten notes. 98% accuracy at Meesenburg Romania. Purpose-built for distribution.
+  AI that interprets sales orders in any format: free-text emails, PDFs, handwritten notes. 98% accuracy at Meesenburg Romania. Purpose-built for distribution.
 canonicalUrl: https://orderflow.biz/insights/ai-order-processing
 ogImage: /images/pages/ai-order-processing-list.webp
 heroImage: /images/pages/ai-order-processing-hero.webp
@@ -17,13 +17,13 @@ author: OrderFlow Team
 faq:
   - question: How is AI order processing different from OCR?
     answer: >-
-      OCR converts images of text into digital characters — it reads what is on the page but does not understand what it means. If a customer writes "the same blue 40mm valves we got in January," OCR can digitise those words but cannot connect them to a SKU in your catalog. AI order processing adds a language understanding layer that interprets intent, resolves product references against your catalog, and outputs structured order data. OCR is one input mechanism that AI uses, but interpretation is where the real work happens.
+      OCR converts images of text into digital characters. It reads what is on the page but does not understand what it means. If a customer writes "the same blue 40mm valves we got in January," OCR can digitise those words but cannot connect them to a SKU in your catalog. AI order processing adds a language understanding layer that interprets intent, resolves product references against your catalog, and outputs structured order data. OCR is one input mechanism that AI uses, but interpretation is where the real work happens.
   - question: What happens when the AI is not confident about a line item?
     answer: >-
-      Every line item receives a confidence score between 0 and 1. High-confidence matches (above 0.95) proceed automatically. Medium-confidence items (0.70 to 0.95) are flagged for quick human confirmation — the AI presents its best match alongside alternatives, so the reviewer spends seconds rather than minutes. Low-confidence items (below 0.70) are routed to a human reviewer with full context. Nothing enters your ERP without meeting the confidence threshold or receiving human approval.
+      Every line item receives a confidence score between 0 and 1. High-confidence matches (above 0.95) proceed automatically. Medium-confidence items (0.70 to 0.95) are flagged for quick human confirmation. The AI presents its best match alongside alternatives, so the reviewer spends seconds rather than minutes. Low-confidence items (below 0.70) are routed to a human reviewer with full context. Nothing enters your ERP without meeting the confidence threshold or receiving human approval.
   - question: Does AI order processing require training for each customer's format?
     answer: >-
-      No. Unlike template-based systems that need per-customer configuration, AI order processing interprets meaning rather than matching fixed layouts. When a new customer sends their first order — whether it is a PDF, a free-text email, or a photo — the AI processes it the same way. No templates to build, no rules to write, no IT tickets to file. If the customer changes their format six months later, nothing breaks.
+      No. Unlike template-based systems that need per-customer configuration, AI order processing interprets meaning rather than matching fixed layouts. When a new customer sends their first order (whether it is a PDF, a free-text email, or a photo), the AI processes it the same way. No templates to build, no rules to write, no IT tickets to file. If the customer changes their format six months later, nothing breaks.
   - question: Can AI handle orders in multiple languages?
     answer: >-
       Yes. OrderFlow processes orders in multiple languages within the same workflow. A German-language email, a Romanian PDF, and an English spreadsheet can arrive in the same inbox and be processed without switching modes or configuring language packs. This is particularly relevant for European distributors serving cross-border customers where a single inbox receives orders in three or four languages daily.
@@ -37,7 +37,7 @@ faq:
 
 OCR reads characters. Templates match patterns. Neither one understands what your customer is actually ordering.
 
-That distinction — between recognising text and interpreting meaning — is the reason most order automation projects deliver less than they promise. The technology was built for a different problem. AI order processing is built for yours.
+That distinction, between recognising text and interpreting meaning, is the reason most order automation projects deliver less than they promise. The technology was built for a different problem. AI order processing is built for yours.
 
 This page explains what AI order processing actually does at the technical level, how it differs from OCR, RPA, and template-based systems, and why distribution order interpretation requires a different class of AI than invoice or document processing.
 
@@ -45,15 +45,15 @@ This page explains what AI order processing actually does at the technical level
 
 Invoice processing and order processing look similar from the outside. Both involve extracting data from documents. Both feed into an ERP. Both benefit from automation.
 
-But the inputs are fundamentally different — and that difference determines whether automation works or fails.
+But the inputs are fundamentally different, and that difference determines whether automation works or fails.
 
-An invoice has a predictable structure. It comes from your own organisation or a known vendor. It contains standardised fields: invoice number, line items, amounts, tax, totals. The layout varies, but the data model is consistent. This is why invoice automation matured years ago — the problem is well-structured.
+An invoice has a predictable structure. It comes from your own organisation or a known vendor. It contains standardised fields: invoice number, line items, amounts, tax, totals. The layout varies, but the data model is consistent. This is why invoice automation matured years ago. The problem is well-structured.
 
 A distribution order has none of these guarantees. It arrives from hundreds of different customers, each with their own habits. One sends a PDF with SKU codes. The next sends a two-line email: "20 more of the usual plus that new fitting you showed me last week." A third sends a photo of a handwritten list. A fourth sends a spreadsheet using their internal product codes that bear no resemblance to your catalog.
 
-The data model is not consistent. The format is not predictable. And critically, the product references are often indirect — customers use nicknames, abbreviations, descriptions, or references to previous orders instead of formal product codes.
+The data model is not consistent. The format is not predictable. And critically, the product references are often indirect. Customers use nicknames, abbreviations, descriptions, or references to previous orders instead of formal product codes.
 
-This is why generic document processing AI — the kind built for invoices, receipts, and contracts — underperforms on distribution orders. It was trained on structured documents with consistent fields. Distribution orders are unstructured by nature.
+This is why generic document processing AI (the kind built for invoices, receipts, and contracts) underperforms on distribution orders. It was trained on structured documents with consistent fields. Distribution orders are unstructured by nature.
 
 ## The Technology Comparison: OCR vs RPA vs Templates vs AI Interpretation
 
@@ -63,7 +63,7 @@ If you have evaluated order automation before, you have likely encountered one o
 
 **What it does:** Converts images of text into digital characters. Reads scanned PDFs, photos, and printed documents.
 
-**Where it works:** Digitising structured documents with consistent layouts — typed invoices, standardised purchase orders, printed forms with fixed field positions.
+Digitising structured documents with consistent layouts is where it works: typed invoices, standardised purchase orders, printed forms with fixed field positions.
 
 **Where it fails:** OCR outputs raw text. It does not understand what the text means. When a customer sends a free-text email or a handwritten note, OCR can digitise the characters but cannot extract order line items, match product references to your catalog, or determine quantities. It also struggles with poor image quality, mixed handwriting styles, and documents that combine text with tables.
 
@@ -71,11 +71,11 @@ If you have evaluated order automation before, you have likely encountered one o
 
 ### RPA (Robotic Process Automation)
 
-**What it does:** Mimics human actions — clicks, keystrokes, copy-paste — to move data between systems. Automates repetitive screen-based tasks.
+RPA mimics human actions (clicks, keystrokes, copy-paste) to move data between systems. It automates repetitive screen-based tasks.
 
 **Where it works:** Moving data between systems that lack API integration. Processing orders that arrive in a single, predictable format through a single, predictable workflow.
 
-**Where it fails:** RPA follows rules. When the input format changes — a button moves, a field is renamed, a customer changes their email structure — the bot breaks. RPA cannot interpret meaning, handle exceptions, or adapt to novel inputs. It automates the mechanical steps but not the judgment your team applies.
+**Where it fails:** RPA follows rules. When the input format changes (a button moves, a field is renamed, a customer changes their email structure), the bot breaks. RPA cannot interpret meaning, handle exceptions, or adapt to novel inputs. It automates the mechanical steps but not the judgment your team applies.
 
 **Ongoing cost:** High. Every format change, every workflow update, every new customer type requires rule maintenance. IT teams report spending more time maintaining RPA bots than the bots save in processing time.
 
@@ -85,55 +85,55 @@ If you have evaluated order automation before, you have likely encountered one o
 
 **Where it works:** High-volume customers who send consistently formatted purchase orders. EDI-like processing for the subset of customers willing to conform to a standard format.
 
-**Where it fails:** Template-based systems require a template per customer format. A distributor with 300 active customers might need 200+ templates. When a customer changes their PO layout — new ERP, new procurement manager, even a software update — the template breaks and must be manually reconfigured. Free-text emails, handwritten notes, and photos cannot be templated at all. The system handles the structured minority and ignores the unstructured majority.
+Template-based systems require a template per customer format, so this is where they fail. A distributor with 300 active customers might need 200+ templates. When a customer changes their PO layout (new ERP, new procurement manager, even a software update), the template breaks and must be manually reconfigured. Free-text emails, handwritten notes, and photos cannot be templated at all. The system handles the structured minority and ignores the unstructured majority.
 
 **Ongoing cost:** Scales linearly with customer count. Each new customer requires onboarding. Each format change requires IT intervention. The maintenance burden grows faster than the automation benefit.
 
 ### AI Interpretation (OrderFlow's Approach)
 
-**What it does:** Reads the full content of an order — regardless of format — and interprets what the customer is ordering. Combines OCR (for scanned/photo inputs), NLP (for understanding language and intent), and semantic product matching (for connecting informal descriptions to your catalog SKUs).
+**What it does:** Reads the full content of an order, regardless of format, and interprets what the customer is ordering. Combines OCR (for scanned/photo inputs), NLP (for understanding language and intent), and semantic product matching (for connecting informal descriptions to your catalog SKUs).
 
 **Where it works:** Every format. Free-text emails, PDF purchase orders, scanned documents, handwritten notes, photos, spreadsheets, mixed-language messages. The system interprets meaning rather than matching patterns, so it does not require per-customer configuration.
 
-**Where it fails:** When the order content is genuinely ambiguous — "send me some stuff" with no product reference and no order history. In these cases, the confidence scoring system flags the order for human review rather than guessing.
+**Where it fails:** When the order content is genuinely ambiguous ("send me some stuff" with no product reference and no order history), the confidence scoring system flags the order for human review rather than guessing.
 
-**Ongoing cost:** No per-customer templates to maintain. No rules to update when formats change. The AI improves as it processes more orders from your customer base — learning catalog-specific matching patterns and customer-specific product references over time.
+**Ongoing cost:** No per-customer templates to maintain. No rules to update when formats change. The AI improves as it processes more orders from your customer base, learning catalog-specific matching patterns and customer-specific product references over time.
 
 For a deeper look at why template-based approaches break down in distribution, see [why templated automation fails for order processing](/insights/why-templated-automation-fails).
 
 ## How Confidence Scoring Protects Your ERP Data
 
-The difference between a useful AI system and a dangerous one is how it handles uncertainty. AI order processing that pushes every interpretation to your ERP without verification is not automation — it is automated error creation.
+The difference between a useful AI system and a dangerous one is how it handles uncertainty. AI order processing that pushes every interpretation to your ERP without verification is not automation. It is automated error creation.
 
-OrderFlow assigns a confidence score to every line item it processes. This score reflects how certain the AI is about its interpretation — both the product match and the quantity extraction.
+OrderFlow assigns a confidence score to every line item it processes. This score reflects how certain the AI is about its interpretation: both the product match and the quantity extraction.
 
-**High confidence (0.95 and above):** The AI has a strong match between the customer's product reference and a specific SKU in your catalog. The quantity and unit of measure are unambiguous. These line items proceed automatically. At Meesenburg Romania, approximately 50% of all order line items reached this threshold — fully automated, no human involvement.
+**High confidence (0.95 and above):** The AI has a strong match between the customer's product reference and a specific SKU in your catalog. The quantity and unit of measure are unambiguous. These line items proceed automatically. At Meesenburg Romania, approximately 50% of all order line items reached this threshold, fully automated with no human involvement.
 
 **Medium confidence (0.70 to 0.95):** The AI has identified a likely match but wants confirmation. This typically happens when a product description is informal ("the bigger size of that valve") or when multiple catalog items are close matches. The system presents its top match alongside alternatives. A human reviewer confirms with a single click. This takes seconds, not the minutes required for manual processing from scratch.
 
-**Low confidence (below 0.70):** The order content is genuinely ambiguous. The AI cannot determine the product, the quantity, or both with sufficient certainty. These items are routed to a human reviewer with full context — the original order text, the AI's best guesses, and relevant catalog entries. Nothing enters the ERP unverified.
+**Low confidence (below 0.70):** The order content is genuinely ambiguous. The AI cannot determine the product, the quantity, or both with sufficient certainty. These items are routed to a human reviewer with full context: the original order text, the AI's best guesses, and relevant catalog entries. Nothing enters the ERP unverified.
 
 This three-tier system is why Meesenburg Romania achieved a 98% no-modification rate on AI-processed orders. The AI does not guess. It processes what it is confident about and escalates what it is not. Read the [full Meesenburg case study](/insights/meesenburg-order-automation) for deployment details and results.
 
 ## The Human-in-the-Loop Architecture
 
-"Human-in-the-loop" is not a limitation of the AI. It is a deliberate architectural decision — and it is the reason IT Directors trust the system with their ERP data.
+"Human-in-the-loop" is not a limitation of the AI. It is a deliberate architectural decision, and it is the reason IT Directors trust the system with their ERP data.
 
 Here is how the review workflow operates:
 
-**Step 1 — AI processes the incoming order.** The system reads the full content, interprets each line item, matches products to catalog SKUs, and assigns confidence scores.
+**Step 1: AI processes the incoming order.** The system reads the full content, interprets each line item, matches products to catalog SKUs, and assigns confidence scores.
 
-**Step 2 — High-confidence items are auto-confirmed.** These bypass human review and queue for ERP entry. Your team does not see them unless they choose to audit.
+**Step 2: High-confidence items are auto-confirmed.** These bypass human review and queue for ERP entry. Your team does not see them unless they choose to audit.
 
-**Step 3 — Medium and low-confidence items enter the review queue.** Each flagged item shows: the original text from the customer's order, the AI's interpreted product match (with confidence score), alternative matches ranked by likelihood, and the relevant section of the customer's original document for reference.
+**Step 3: Medium and low-confidence items enter the review queue.** Each flagged item shows: the original text from the customer's order, the AI's interpreted product match (with confidence score), alternative matches ranked by likelihood, and the relevant section of the customer's original document for reference.
 
-**Step 4 — A human reviewer confirms, corrects, or escalates.** For medium-confidence items, this is typically a one-click confirmation. For low-confidence items, the reviewer selects the correct product from the suggestions or performs a manual catalog search.
+**Step 4: A human reviewer confirms, corrects, or escalates.** For medium-confidence items, this is typically a one-click confirmation. For low-confidence items, the reviewer selects the correct product from the suggestions or performs a manual catalog search.
 
-**Step 5 — Confirmed orders enter the ERP.** Only after AI confirmation or human approval does any data reach your ERP system. There is no path from incoming email to ERP that bypasses validation.
+**Step 5: Confirmed orders enter the ERP.** Only after AI confirmation or human approval does any data reach your ERP system. There is no path from incoming email to ERP that bypasses validation.
 
-For a complete overview of OrderFlow's end-to-end process — from inbox monitoring through ERP output — see [how sales order automation works](/insights/sales-order-automation).
+For a complete overview of OrderFlow's end-to-end process (from inbox monitoring through ERP output), see [how sales order automation works](/insights/sales-order-automation).
 
-This architecture means your IT team does not need to trust the AI blindly. They can set confidence thresholds, audit auto-processed orders, and adjust the balance between automation speed and human oversight based on their comfort level. The system provides full audit trails for every order — what the AI interpreted, what confidence score it assigned, whether a human reviewed it, and what (if anything) was changed.
+This architecture means your IT team does not need to trust the AI blindly. They can set confidence thresholds, audit auto-processed orders, and adjust the balance between automation speed and human oversight based on their comfort level. The system provides full audit trails for every order: what the AI interpreted, what confidence score it assigned, whether a human reviewed it, and what (if anything) was changed.
 
 ## What Makes Distribution Product Matching Hard
 
@@ -143,13 +143,13 @@ Consider a catalog with 50,000 SKUs. A customer writes: "24 of the 3/4 inch bras
 
 A generic NLP system can parse this sentence. It can identify "24" as a quantity, "3/4 inch" as a dimension, "brass" as a material, "ball valve" as a product type, "red handle" as an attribute, and "not the lever type" as an exclusion.
 
-But matching this to the correct SKU — out of potentially dozens of brass ball valves in different configurations — requires understanding the catalog's attribute structure, the customer's historical preferences, and the domain-specific terminology of valve distribution.
+But matching this to the correct SKU (out of potentially dozens of brass ball valves in different configurations) requires understanding the catalog's attribute structure, the customer's historical preferences, and the domain-specific terminology of valve distribution.
 
 OrderFlow's product matching works at three levels:
 
 **Direct match:** The customer provides a product code that maps directly to a catalog SKU. Fastest path. Highest confidence.
 
-**Attribute match:** The customer describes the product using attributes — material, size, type, colour, configuration. The AI matches these attributes against the catalog's product data to narrow to the correct SKU or a small set of candidates.
+**Attribute match:** The customer describes the product using attributes: material, size, type, colour, configuration. The AI matches these attributes against the catalog's product data to narrow to the correct SKU or a small set of candidates.
 
 **Contextual match:** The customer references a previous order ("same as last month"), uses a nickname ("the blue ones"), or describes the product by its function rather than its specification. The AI uses the customer's order history and the catalog's relational data to resolve the reference.
 
@@ -157,34 +157,34 @@ When the match is ambiguous even after all three levels, the confidence score dr
 
 ## ERP Integration and Data Quality
 
-AI order processing only delivers value if the output reaches your ERP accurately and reliably. OrderFlow outputs structured data — product codes, quantities, units of measure, delivery dates, customer references — in the format your ERP expects.
+AI order processing only delivers value if the output reaches your ERP accurately and reliably. OrderFlow outputs structured data (product codes, quantities, units of measure, delivery dates, customer references) in the format your ERP expects.
 
-Integration is available for SAP, Microsoft Dynamics 365, Sage, and other major distribution ERP systems. For ERP configurations with custom fields or non-standard data models, OrderFlow's implementation team works with your IT department to map the output format during setup — typically completed within the first two weeks of deployment.
+Integration is available for SAP, Microsoft Dynamics 365, Sage, and other major distribution ERP systems. For ERP configurations with custom fields or non-standard data models, OrderFlow's implementation team works with your IT department to map the output format during setup, typically completed within the first two weeks of deployment.
 
 Data quality safeguards before ERP entry include:
 
 - **Duplicate order detection:** Identifies when the same order has been sent multiple times (a common occurrence with email-based ordering)
 - **Quantity validation:** Flags unusually large or small quantities relative to the customer's order history
 - **Product availability check:** Optional integration to verify stock availability before confirming the order
-- **Audit trail:** Every order carries a complete processing log — original input, AI interpretation, confidence scores, human review actions, and final ERP output
+- **Audit trail:** Every order carries a complete processing log: original input, AI interpretation, confidence scores, human review actions, and final ERP output
 
 For IT Directors evaluating data residency: all processing occurs within European infrastructure, with full GDPR compliance. No order data leaves the EU. No customer data is shared between clients or used for cross-client model training.
 
-## When AI Order Processing Makes Sense — and When It Does Not
+## When AI Order Processing Makes Sense (and When It Does Not)
 
 AI order processing is not the right solution for every business. It delivers the most value when these conditions are present:
 
-**High format variability.** If 80% of your orders arrive as structured EDI transactions from five large customers, your existing setup may be sufficient. If orders arrive in dozens of formats from hundreds of customers — emails, PDFs, photos, free text — AI interpretation addresses the problem that templates and EDI cannot.
+**High format variability.** If 80% of your orders arrive as structured EDI transactions from five large customers, your existing setup may be sufficient. If orders arrive in dozens of formats from hundreds of customers (emails, PDFs, photos, free text), AI interpretation addresses the problem that templates and EDI cannot.
 
-**Meaningful order volume.** The efficiency gains compound with volume. A team processing 50 orders per day will benefit. A team processing 500 orders per day will see the impact immediately — in hours recovered, errors eliminated, and response times reduced.
+The efficiency gains compound with volume. **Meaningful order volume** is the second condition. A team processing 50 orders per day will benefit. A team processing 500 orders per day will see the impact immediately, in hours recovered, errors eliminated, and response times reduced.
 
 **ERP as the system of record.** OrderFlow outputs ERP-ready structured data. If your business runs on spreadsheets rather than an ERP system, the output has no destination. ERP integration is the value delivery mechanism.
 
-**Willingness to trust with verification.** The human-in-the-loop approach means your team stays in control. But you do need to trust the system enough to let it handle the high-confidence orders autonomously. If your process requires a human to manually verify every single line item regardless of confidence, the efficiency gains are limited to pre-processing and formatting rather than full automation.
+The human-in-the-loop approach means your team stays in control, but **willingness to trust with verification** matters. You do need to trust the system enough to let it handle the high-confidence orders autonomously. If your process requires a human to manually verify every single line item regardless of confidence, the efficiency gains are limited to pre-processing and formatting rather than full automation.
 
 ## See AI Order Processing on Your Own Orders
 
-The fastest way to evaluate whether AI order processing works for your operation is to test it on your own data — not a vendor demo dataset.
+The fastest way to evaluate whether AI order processing works for your operation is to test it on your own data, not a vendor demo dataset.
 
 Send us the messiest orders your team received this week. The free-text email with no product codes. The scanned PDF with handwriting in the margins. The spreadsheet with internal codes that do not match your catalog.
 

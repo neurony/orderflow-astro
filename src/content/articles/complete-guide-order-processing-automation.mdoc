@@ -98,7 +98,7 @@ Now you face the harder question: which approach?
 
 Five categories of automation exist. Three vendors are on your shortlist. You are weighing a build-versus-buy decision. Your IT director wants to know about ERP integration. Your CFO wants an ROI number. And someone on the team has already mentioned that they tried OCR three years ago and it failed.
 
-This guide covers all of it. Not as a product pitch — as a decision framework. By the end, you will know which automation approach fits your operation, how to evaluate vendors without getting misled, and how to structure an implementation that delivers results in weeks rather than stalling for months.
+This guide covers all of it. This is not a product pitch. It is a decision framework. By the end, you will know which automation approach fits your operation, how to evaluate vendors without getting misled, and how to structure an implementation that delivers results in weeks rather than stalling for months.
 
 ## Where Is Your Order Desk Today? The Automation Maturity Model
 
@@ -114,7 +114,7 @@ Every order is read by a person, interpreted by a person, entered into the ERP b
 
 ### Level 1: Partial Automation With Rules
 
-Some orders are semi-automated. EDI connections exist with a few large customers. Email rules sort incoming messages into folders. Maybe a basic OCR tool extracts data from PDF purchase orders that follow a consistent format. But the majority of orders — especially free-text emails and non-standard formats — still require full manual processing.
+Some orders are semi-automated. EDI connections exist with a few large customers. Email rules sort incoming messages into folders. Maybe a basic OCR tool extracts data from PDF purchase orders that follow a consistent format. But the majority of orders (especially free-text emails and non-standard formats) still require full manual processing.
 
 **Typical profile:** 50-200 orders per day. Team of 3-8. Approximately 20-30% of orders touch automation in some form.
 
@@ -122,7 +122,7 @@ Some orders are semi-automated. EDI connections exist with a few large customers
 
 ### Level 2: Template-Based Automation
 
-A structured automation system is in place — template-based OCR, RPA bots, or an order management platform that processes formatted inputs. Orders from customers with configured templates flow through with minimal human intervention. But new customers, format changes, and unstructured inputs still default to manual processing.
+A structured automation system is in place: template-based OCR, RPA bots, or an order management platform that processes formatted inputs. Orders from customers with configured templates flow through with minimal human intervention. But new customers, format changes, and unstructured inputs still default to manual processing.
 
 **Typical profile:** 200-500 orders per day. Team of 5-15. Approximately 40-60% of orders automated, but with ongoing template maintenance costs.
 
@@ -130,11 +130,11 @@ A structured automation system is in place — template-based OCR, RPA bots, or 
 
 ### Level 3: AI-Driven Interpretation
 
-AI processes all incoming orders regardless of format. Structured PDFs, free-text emails, handwritten notes, multi-language messages — all flow through a single pipeline. Confidence scoring flags exceptions for human review. The team focuses on quality oversight and customer relationships rather than data entry.
+AI processes all incoming orders regardless of format. Structured PDFs, free-text emails, handwritten notes, multi-language messages: all flow through a single pipeline. Confidence scoring flags exceptions for human review. The team focuses on quality oversight and customer relationships rather than data entry.
 
 **Typical profile:** Any volume. Small team relative to order volume. 90-98% of orders processed correctly without modification.
 
-**The goal is not necessarily Level 3 for every distributor.** A business processing 30 orders per day from 10 consistent customers may be well-served by Level 1. The question is whether your current level matches your current reality — and whether it will match your reality in 18 months as you grow.
+**The goal is not necessarily Level 3 for every distributor.** A business processing 30 orders per day from 10 consistent customers may be well-served by Level 1. The question is whether your current level matches your current reality, and whether it will match your reality in 18 months as you grow.
 
 ## Five Approaches to Order Processing Automation: A Comparison
 
@@ -142,7 +142,7 @@ Each approach has a specific use case where it works well and specific condition
 
 ### Approach 1: Manual Processing With Digital Tools
 
-**What it is:** CSRs process orders manually but use digital aids — dual monitors, ERP shortcuts, product search tools, reference spreadsheets.
+**What it is:** CSRs process orders manually but use digital aids: dual monitors, ERP shortcuts, product search tools, reference spreadsheets.
 
 **Where it works:** Low volume (under 50 orders per day), highly customized orders requiring human judgment on every line, businesses where the customer relationship is the product and personal handling is expected.
 
@@ -160,7 +160,7 @@ Each approach has a specific use case where it works well and specific condition
 
 **Where it fails:** The majority of a distributor's customer base. EDI requires both parties to agree on a data standard, invest in integration, and maintain the connection. Small and mid-size customers will not do this. A typical distributor might have 5-15% of customers on EDI.
 
-**The fundamental limitation:** EDI solves the automation problem for the customers who need it least — the ones who already send structured, predictable orders. The 85% of customers who send free-text emails, PDFs in varying formats, and handwritten notes are not helped by EDI at all.
+**The fundamental limitation:** EDI solves the automation problem for the customers who need it least: the ones who already send structured, predictable orders. The 85% of customers who send free-text emails, PDFs in varying formats, and handwritten notes are not helped by EDI at all.
 
 ### Approach 3: Template-Based OCR
 
@@ -168,27 +168,27 @@ Each approach has a specific use case where it works well and specific condition
 
 **Where it works:** Customers who send structured PDF purchase orders with consistent layouts. If 50 customers each send a predictable PO format, 50 templates can automate those 50 customers' orders effectively.
 
-**Where it fails:** Free-text emails (no layout to template), handwritten notes (OCR reads characters but cannot interpret intent), format changes (customer updates their PO layout and the template breaks), and new customers (no template exists yet, requiring IT involvement to create one).
+Free-text emails have no layout to template. Handwritten notes defeat OCR because it reads characters but cannot interpret intent. Format changes break the system when a customer updates their PO layout. And new customers have no template at all, requiring IT involvement to create one.
 
-**The maintenance trap:** A distributor with 300 active customers might need 200+ templates. Each template requires initial configuration (1-3 hours), periodic updates when formats change, and IT support when edge cases arise. The total maintenance overhead grows proportionally with the customer base. At some point, maintaining templates costs more than the manual processing they replaced.
+A distributor with 300 active customers, however, faces a **maintenance trap:** might need 200+ templates. Each template requires initial configuration (1-3 hours), periodic updates when formats change, and IT support when edge cases arise. The total maintenance overhead grows proportionally with the customer base. At some point, maintaining templates costs more than the manual processing they replaced.
 
 ### Approach 4: RPA (Robotic Process Automation)
 
-**What it is:** Software bots that mimic human actions — opening emails, extracting text, clicking through the ERP interface, entering data into fields. The bot follows a pre-defined script.
+**What it is:** Software bots that mimic human actions: opening emails, extracting text, clicking through the ERP interface, entering data into fields. The bot follows a pre-defined script.
 
-**Where it works:** Highly repetitive, predictable processes where the input format and the ERP workflow are both consistent. If every order email follows the same structure and the ERP data entry screen never changes, an RPA bot can replicate the human process reliably.
+RPA works well for highly repetitive, predictable processes where the input format and the ERP workflow are both consistent. If every order email follows the same structure and the ERP data entry screen never changes, an RPA bot can replicate the human process reliably.
 
-**Where it fails:** Variability in any form. An RPA bot does not interpret — it follows instructions. When a customer sends an email in a slightly different format, the bot either enters wrong data or crashes. When the ERP interface changes after an update, every bot that touches that screen breaks simultaneously.
+**Where it fails:** Variability in any form. An RPA bot does not interpret. It follows instructions. When a customer sends an email in a slightly different format, the bot either enters wrong data or crashes. When the ERP interface changes after an update, every bot that touches that screen breaks simultaneously.
 
-**The brittleness problem:** RPA is often marketed as "easy automation" because it does not require deep integration. But this surface-level ease creates brittleness. The bot does not understand what it is doing — it clicks where it was told to click. Any deviation requires reprogramming.
+**The brittleness problem:** RPA is often marketed as "easy automation" because it does not require deep integration. But this surface-level ease creates brittleness. The bot does not understand what it is doing. It clicks where it was told to click. Any deviation requires reprogramming.
 
 ### Approach 5: AI-Based Interpretation
 
-**What it is:** Natural language processing and machine learning that interprets the meaning of incoming orders regardless of format. The AI reads an email the way an experienced CSR reads it — understanding that "30 of the blue ones" and "qty 30, FIT-BR-40-BLU" refer to the same product.
+**What it is:** Natural language processing and machine learning that interprets the meaning of incoming orders regardless of format. The AI reads an email the way an experienced CSR reads it, understanding that "30 of the blue ones" and "qty 30, FIT-BR-40-BLU" refer to the same product.
 
 **Where it works:** Any format, any language, any level of structure. Free-text emails, PDF purchase orders, handwritten notes, photos, spreadsheets with customer-specific codes, and mixed-format messages that combine orders with questions and delivery instructions.
 
-**Where it fails:** AI is not infallible. Low-quality handwritten inputs, extremely ambiguous product references, and orders for products that are not in the catalog at all will produce low confidence scores and require human review. The difference is that these failures are flagged explicitly rather than processed silently.
+AI is not infallible. Low-quality handwritten inputs, extremely ambiguous product references, and orders for products that are not in the catalog at all will produce low confidence scores and require human review. The difference is that these failures are flagged explicitly rather than processed silently.
 
 **The confidence scoring advantage:** Unlike template or RPA approaches, which either succeed or fail with no middle ground, AI produces a confidence score for every line item. This creates a spectrum: high-confidence items proceed automatically, medium-confidence items are processed with human sign-off, and low-confidence items get full manual attention. The team's effort is directed precisely where it adds value.
 
@@ -209,7 +209,7 @@ Each approach has a specific use case where it works well and specific condition
 
 ## The Vendor Evaluation Checklist: 10 Questions That Separate Real Solutions From Marketing
 
-When evaluating order processing automation vendors — whether for RPA, OCR, or AI — these 10 questions expose the gap between marketing claims and operational reality. Ask every vendor. Compare answers.
+When evaluating order processing automation vendors (whether for RPA, OCR, or AI), these 10 questions expose the gap between marketing claims and operational reality. Ask every vendor. Compare answers.
 
 ### 1. What happens when a customer changes their order format?
 
@@ -251,7 +251,7 @@ The red flag answer: no clear workflow, or a workflow that requires the reviewer
 
 The right answer for EU-based distributors: in Europe, with specific data center locations named. GDPR compliance certified.
 
-The red flag answer: "In the cloud." Without specifics on data residency, you have no guarantee that customer order data — which includes product names, quantities, pricing, and customer details — stays within EU jurisdiction.
+The red flag answer: "In the cloud." Without specifics on data residency, you have no guarantee that customer order data (which includes product names, quantities, pricing, and customer details) stays within EU jurisdiction.
 
 ### 8. What is the total cost of ownership over three years, including implementation?
 
@@ -273,7 +273,7 @@ The red flag answer: "We have customers across many industries." Distribution is
 
 ## Implementation Roadmap: Three Phases to Production
 
-Whether you choose RPA, OCR, or AI, the implementation structure follows the same three-phase pattern. The difference between successful and failed implementations is almost always in Phase 1 — the pilot.
+Whether you choose RPA, OCR, or AI, the implementation structure follows the same three-phase pattern. The difference between successful and failed implementations is almost always in Phase 1: the pilot.
 
 ### Phase 1: Pilot (Weeks 1-3)
 
@@ -283,7 +283,7 @@ Whether you choose RPA, OCR, or AI, the implementation structure follows the sam
 
 - 50-100 real orders from the last 30 days, selected for variety: structured PDFs, free-text emails, handwritten notes, multi-language orders, "same as last time" references
 - Orders from your five most active customers AND five customers with unusual ordering patterns
-- At least three orders that caused errors when processed manually — these are the ones that test the system's value
+- At least three orders that caused errors when processed manually, as these are the ones that test the system's value
 - One week of parallel processing: the AI processes the same orders your team processes, and you compare the results
 
 **Success criteria for the pilot:**
@@ -324,7 +324,7 @@ Whether you choose RPA, OCR, or AI, the implementation structure follows the sam
 
 **Objective:** Increase automation rates, reduce exception volumes, and expand scope.
 
-**Confidence threshold tuning:** After 8 weeks of production data, you have enough evidence to adjust the confidence threshold. If 95% of flagged items are being confirmed without changes, the threshold is too conservative — raise it to reduce unnecessary human review. If 10% of auto-processed items are causing errors downstream, the threshold is too aggressive — lower it.
+**Confidence threshold tuning:** After 8 weeks of production data, you have enough evidence to adjust the confidence threshold. If 95% of flagged items are being confirmed without changes, the threshold is too conservative, so raise it to reduce unnecessary human review. If 10% of auto-processed items are causing errors downstream, the threshold is too aggressive, so lower it.
 
 **Catalog enrichment:** The most common source of low confidence scores is catalog data quality. Products with incomplete descriptions, missing alternate names, or outdated specifications produce weaker matches. Enriching catalog data directly improves automation rates.
 
@@ -355,11 +355,11 @@ Some distributors consider building order processing automation internally. The 
 
 Building an AI order processing system requires:
 
-1. **NLP model development:** Training a model that handles the full variety of distribution order formats. Not a weekend project — 3-6 months of ML engineering time for a production-grade system.
-2. **Catalog matching engine:** Building semantic matching between customer language and your SKU catalog. This requires continuous refinement as your catalog and customer base evolve.
+1. **NLP model development:** Training a model that handles the full variety of distribution order formats. This is not a weekend project. Expect 3-6 months of ML engineering time for a production-grade system.
+2. Building semantic matching between customer language and your SKU catalog requires a **catalog matching engine** with continuous refinement as your catalog and customer base evolve.
 3. **Confidence scoring and review workflow:** Building the dashboard, the scoring logic, the exception handling paths, and the audit trail.
-4. **ERP integration:** Building and maintaining the API connection to your specific ERP version, including handling version updates.
-5. **Ongoing maintenance:** Model retraining, accuracy monitoring, bug fixes, scaling infrastructure. This is not a build-once system — it requires continuous ML operations (MLOps).
+4. Building and maintaining the API connection to your specific ERP version, including handling version updates, is the **ERP integration** challenge.
+5. **Ongoing maintenance:** Model retraining, accuracy monitoring, bug fixes, scaling infrastructure. This is not a build-once system. It requires continuous ML operations (MLOps).
 
 Total estimated internal cost over three years: $300,000-$600,000 in engineering time, infrastructure, and opportunity cost. Compare this to a commercial solution at $20,000-40,000 per year.
 
@@ -369,7 +369,7 @@ Automation implementations in distribution fail for predictable reasons. Each pi
 
 ### Pitfall 1: Starting With Technology Instead of Process
 
-**What happens:** The IT team evaluates tools based on features and architecture. They select a technically strong solution. But nobody mapped the actual order processing workflow — the exceptions, the edge cases, the informal knowledge that experienced CSRs carry. The tool solves a problem that does not match the real process.
+**What happens:** The IT team evaluates tools based on features and architecture. They select a technically strong solution. But nobody mapped the actual order processing workflow: the exceptions, the edge cases, the informal knowledge that experienced CSRs carry. The tool solves a problem that does not match the real process.
 
 **How to avoid it:** Before evaluating any tool, spend one day observing your order desk. Document every format that arrives. Note the exceptions. Ask the senior CSRs: "What makes an order hard?" That document becomes your evaluation criteria.
 
@@ -389,15 +389,15 @@ Automation implementations in distribution fail for predictable reasons. Each pi
 
 **What happens:** Leadership expects that automation means zero human involvement. When the team still needs to review 30-50% of orders (on flagged line items, not entire orders), the project is perceived as a failure.
 
-**How to avoid it:** Set expectations using the right metric. The goal is not 100% touchless automation — it is dramatic reduction in processing time per order. An order that took 5 minutes of manual processing and now takes 15 seconds of human review is 95% automated, even though a human technically touched it.
+**How to avoid it:** Set expectations using the right metric. The goal is not 100% touchless automation. It is dramatic reduction in processing time per order. An order that took 5 minutes of manual processing and now takes 15 seconds of human review is 95% automated, even though a human technically touched it.
 
-At Meesenburg Romania, 50% of orders were fully automated with zero human touch, and 98% of all orders needed no modification after AI processing. Those are real-world numbers from a real deployment — [read the full case study](/insights/meesenburg-order-automation) for context.
+At Meesenburg Romania, 50% of orders were fully automated with zero human touch, and 98% of all orders needed no modification after AI processing. Those are real-world numbers from a real deployment. [Read the full case study](/insights/meesenburg-order-automation) for context.
 
 ### Pitfall 5: Underestimating Change Management
 
 **What happens:** The technology works. But the team does not trust it. CSRs manually re-check every automated order because they do not believe the system is accurate. The time savings evaporate.
 
-**How to avoid it:** Involve the order processing team from the pilot stage. Let them see the AI process their actual orders. Let them compare outputs. When the team sees the system handling the orders they find hardest — the handwritten note, the multi-language email — trust builds naturally. The people closest to the problem are the best judges of the solution.
+**How to avoid it:** Involve the order processing team from the pilot stage. Let them see the AI process their actual orders. Let them compare outputs. When the team sees the system handling the orders they find hardest (the handwritten note, the multi-language email), trust builds naturally. The people closest to the problem are the best judges of the solution.
 
 ### Pitfall 6: Choosing a Solution That Requires Ongoing Template Maintenance
 
@@ -410,20 +410,20 @@ At Meesenburg Romania, 50% of orders were fully automated with zero human touch,
 Use this summary to guide your next step based on your current maturity level and order processing reality.
 
 **If you are at Level 0-1 (manual or minimal automation) and processing under 100 orders per day:**
-- Start with process documentation — map your formats, your exceptions, your team's informal knowledge
+- Start with process documentation: map your formats, your exceptions, your team's informal knowledge
 - Consider whether EDI with your top 5 customers would cover a meaningful percentage of volume
-- If free-text emails are the majority of your orders, skip RPA and OCR entirely — they are not built for that problem
+- If free-text emails are the majority of your orders, skip RPA and OCR entirely, as they are not built for that problem
 
 **If you are at Level 1-2 (partial or template-based automation) and processing 100-500 orders per day:**
 - You have already experienced the limitations of your current approach. Your evaluation should focus on: does the new system handle the orders my current system cannot?
-- Pilot with your exceptions — the orders that still require full manual processing despite existing automation
-- Calculate the true cost of your current template maintenance before comparing to the cost of a new solution — [the order processing automation cost analysis](/insights/order-processing-automation) provides a framework
+- Pilot with your exceptions: the orders that still require full manual processing despite existing automation
+- Calculate the true cost of your current template maintenance before comparing to the cost of a new solution. [The order processing automation cost analysis](/insights/order-processing-automation) provides a framework
 
 **If you are at Level 2-3 and looking to optimize:**
 - Focus on confidence threshold tuning, catalog enrichment, and scope expansion
 - Evaluate whether your current system's accuracy justifies the maintenance overhead, or whether a platform shift to AI interpretation would reduce total cost of ownership
 
-Regardless of where you start, the vendor evaluation checklist above applies. And the implementation roadmap — pilot, rollout, optimize — applies. The sequence matters more than the technology.
+Regardless of where you start, the vendor evaluation checklist above applies. And the implementation roadmap (pilot, rollout, optimize) applies. The sequence matters more than the technology.
 
 ## The Speed Advantage That Most Distributors Overlook
 
@@ -431,7 +431,7 @@ Most conversations about order processing automation focus on cost reduction and
 
 In distribution, the first supplier to confirm an order accurately often wins it. When a procurement manager sends the same inquiry to three approved vendors, the one who responds first with a confirmed order and delivery date captures the business. The other two get a polite "we've already placed the order, thanks."
 
-Manual processing means a response time measured in hours. AI processing means a response time measured in minutes. For a distributor competing on service rather than price — which is most distributors — that difference is a revenue multiplier, not just an efficiency improvement.
+Manual processing means a response time measured in hours. AI processing means a response time measured in minutes. For a distributor competing on service rather than price (which is most distributors), that difference is a revenue multiplier, not just an efficiency improvement.
 
 A [sales order automation](/insights/sales-order-automation) system that processes incoming orders while your competitor's team is still reading them does not just save costs. It wins orders your competitor never sees leave.
 

@@ -34,13 +34,13 @@ faq:
       OrderFlow was operational at Meesenburg Romania within weeks, not months. The deployment did not require a lengthy integration project or significant IT resources. The system began monitoring the order inbox and processing incoming orders shortly after setup, with accuracy improving rapidly as the team established their review workflow for flagged items.
   - question: What does 98% no-modification rate mean in practice?
     answer: >-
-      It means that out of every 100 orders processed by OrderFlow, approximately 98 required zero changes from the Meesenburg team before entering the ERP. The AI correctly identified the customer, matched the requested products to the right SKUs in the catalog, interpreted quantities, and structured the data for ERP entry — all without a human needing to correct anything.
+      It means that out of every 100 orders processed by OrderFlow, approximately 98 required zero changes from the Meesenburg team before entering the ERP. The AI correctly identified the customer, matched the requested products to the right SKUs in the catalog, interpreted quantities, and structured the data for ERP entry, all without a human needing to correct anything.
   - question: How does Meesenburg handle the 2% of orders that need review?
     answer: >-
       OrderFlow assigns a confidence score to every line item it processes. When the AI is uncertain about a product match or quantity interpretation, it flags that specific line item for human review. The Meesenburg team sees exactly which items need attention and why, reviews or corrects them, and confirms the order. This human-in-the-loop approach means nothing enters the ERP unchecked.
   - question: Can other distribution businesses expect similar results?
     answer: >-
-      Results depend on factors like catalog size, order format diversity, and the complexity of product naming conventions. However, the Meesenburg deployment represents a real-world distribution environment with genuinely messy, inconsistent order formats — not a controlled demo. Distributors with similar email-based order intake can request a pilot using their own order data to see how OrderFlow performs on their specific formats.
+      Results depend on factors like catalog size, order format diversity, and the complexity of product naming conventions. However, the Meesenburg deployment represents a real-world distribution environment with genuinely messy, inconsistent order formats, not a controlled demo. Distributors with similar email-based order intake can request a pilot using their own order data to see how OrderFlow performs on their specific formats.
   - question: Does OrderFlow require templates for each customer's order format?
     answer: >-
       No. Unlike traditional OCR or template-based automation, OrderFlow does not use per-customer templates. It interprets the meaning of each order rather than matching characters against a fixed layout. This is what allows it to handle format changes and entirely new customer formats without breaking or requiring IT maintenance.
@@ -48,9 +48,9 @@ faq:
 
 # How Meesenburg Romania achieved 98% order accuracy with AI
 
-The order desk at Meesenburg Romania looked like most distribution operations. A small team, a shared inbox, and a daily flood of emails that each needed to be read, interpreted, matched to the right products, and keyed into the ERP. The work was steady, repetitive, and unforgiving. One misread quantity, one wrong SKU, and the downstream consequences — incorrect deliveries, credit notes, customer frustration — would ripple through the operation for days.
+The order desk at Meesenburg Romania looked like most distribution operations. A small team, a shared inbox, and a daily flood of emails that each needed to be read, interpreted, matched to the right products, and keyed into the ERP. The work was steady, repetitive, and unforgiving. One misread quantity, one wrong SKU, and the downstream consequences (incorrect deliveries, credit notes, customer frustration) would ripple through the operation for days.
 
-What made Meesenburg's situation particularly difficult was not the number of orders. It was the sheer diversity of how those orders arrived.
+What made Meesenburg's situation particularly difficult was not the volume of orders. It was the sheer diversity of how those orders arrived.
 
 ## The inbox that defined the problem
 
@@ -60,11 +60,11 @@ On any given morning, the Meesenburg inbox contained:
 
 - **Structured PDF purchase orders** with item codes, quantities, and delivery instructions laid out in neat tables
 - **Free-text emails** where a customer described what they needed in a few sentences, referencing products by informal names, abbreviations, or physical descriptions
-- **Scanned paper documents** — purchase orders originally printed, filled in by hand or typewriter, then scanned and sent as attachments
-- **Photographs of handwritten lists** — a warehouse manager's notepad, photographed on a phone and sent as a JPEG
+- Purchase orders originally printed, filled in by hand or typewriter, then scanned and sent as attachments (**scanned paper documents**)
+- A warehouse manager's notepad, photographed on a phone and sent as a JPEG (**photographs of handwritten lists**)
 - **Mixed-format emails** that combined an order request with questions about pricing, availability, or delivery dates in the same message
 
-The order team had to interpret every one of these. Not just extract text from a page — actually understand what each customer was asking for, map those requests to specific SKUs in a catalog of thousands of products, and enter the result into the ERP without error.
+The order team had to interpret every one of these. Not just extract text from a page, but actually understand what each customer was asking for, map those requests to specific SKUs in a catalog of thousands of products, and enter the result into the ERP without error.
 
 This is where the team's expertise became both their greatest asset and their biggest constraint. The most experienced staff members carried years of product knowledge in their heads. They knew that when a regular customer asked for "the big silver ones" they meant a specific gasket in a specific size. They knew which customers always ordered in pairs, which ones rounded up, and which ones used their own internal codes that bore no resemblance to Meesenburg's catalog.
 
@@ -72,63 +72,63 @@ That expertise could not be automated with templates. It could not be replicated
 
 ## What previous automation could not solve
 
-Before OrderFlow, the options available to Meesenburg — and to most distributors facing this problem — fell into three categories, each with a fundamental limitation.
+Before OrderFlow, the options available to Meesenburg (and to most distributors facing this problem) fell into three categories, each with a fundamental limitation.
 
 **OCR (Optical Character Recognition)** could extract text from scanned documents and PDFs. But extracting characters is not the same as understanding meaning. OCR could tell you that a document contained the words "20 x blue valve 40mm." It could not tell you which of the 14 valve SKUs in the catalog that phrase referred to.
 
-**EDI (Electronic Data Interchange)** required customers to send orders in a machine-readable format with standardized product codes. For Meesenburg's customer base — a mix of large contractors, small workshops, and individual tradespeople — asking every customer to adopt EDI was neither practical nor realistic.
+**EDI (Electronic Data Interchange)** required customers to send orders in a machine-readable format with standardized product codes. For Meesenburg's customer base (a mix of large contractors, small workshops, and individual tradespeople), asking every customer to adopt EDI was neither practical nor realistic.
 
-**Template-based automation** could process orders that followed a consistent layout. But the moment a customer changed their PO format, or a new customer sent their first email, the template failed. Maintaining hundreds of templates for hundreds of customers — and updating them every time a format changed — created an IT dependency that defeated the purpose of automation.
+**Template-based automation** could process orders that followed a consistent layout. But the moment a customer changed their PO format, or a new customer sent their first email, the template failed. Maintaining hundreds of templates for hundreds of customers (and updating them every time a format changed) created an IT dependency that defeated the purpose of automation.
 
-The core problem remained: format variability. Not the 20% of orders that arrived in structured, predictable formats. The other 80% — the free-text, the handwritten, the ambiguous — that still required a human being to read, think, and decide.
+The core problem remained: format variability. Not the 20% of orders that arrived in structured, predictable formats. The other 80%, the free-text, the handwritten, the ambiguous, that still required a human being to read, think, and decide.
 
 ## Deploying OrderFlow: weeks, not months
 
-Meesenburg Romania deployed OrderFlow to monitor their order inbox directly. The deployment took weeks — not the months-long integration projects that enterprise automation platforms typically require.
+Meesenburg Romania deployed OrderFlow to monitor their order inbox directly. The deployment took weeks, not the months-long integration projects that enterprise automation platforms typically require.
 
 The setup was straightforward. OrderFlow connected to the existing email inbox where customers sent their orders. No changes were required on the customer side. No new portals, no new formats, no EDI onboarding. Customers continued sending orders exactly as they always had.
 
-From the first day of operation, OrderFlow began processing every incoming order — regardless of format. The AI read each email and attachment, interpreted what the customer was requesting, matched those requests against Meesenburg's product catalog, and produced structured, ERP-ready output.
+From the first day of operation, OrderFlow began processing every incoming order, regardless of format. The AI read each email and attachment, interpreted what the customer was requesting, matched those requests against Meesenburg's product catalog, and produced structured, ERP-ready output.
 
-For items where the AI's interpretation was confident, the order flowed through without interruption. For items where the AI was uncertain — an ambiguous product description, a handwritten character that could be read two ways, a product name that matched multiple SKUs — those specific line items were flagged with a confidence score and routed to the team for review.
+For items where the AI's interpretation was confident, the order flowed through without interruption. For items where the AI was uncertain (an ambiguous product description, a handwritten character that could be read two ways, a product name that matched multiple SKUs), those specific line items were flagged with a confidence score and routed to the team for review.
 
-This was not a black box replacing the order team. It was a system that handled the clear cases automatically and brought the genuinely difficult cases to the people best equipped to resolve them — with the AI's interpretation already laid out for review.
+This was not a black box replacing the order team. It was a system that handled the clear cases automatically and brought the genuinely difficult cases to the people best equipped to resolve them, with the AI's interpretation already laid out for review.
 
 ## The results: 98% accuracy on real-world data
 
 Within the deployment, Meesenburg Romania saw two numbers that changed the economics of their order desk.
 
-**Approximately 98% of orders processed by OrderFlow needed no modification.** The AI correctly identified the customer, interpreted their order intent, matched products to the right SKUs, parsed quantities, and structured the data for ERP entry — without a single correction from the team.
+**Approximately 98% of orders processed by OrderFlow needed no modification.** The AI correctly identified the customer, interpreted their order intent, matched products to the right SKUs, parsed quantities, and structured the data for ERP entry. Not a single correction was needed from the team.
 
 This number deserves context. It was not achieved on clean demo data or a curated set of well-formatted purchase orders. It was the result on Meesenburg's actual inbox: the free-text emails, the scanned documents, the handwritten notes, the messages that mixed orders with questions. The messy, real-world data that had always required human judgment.
 
 **Approximately 50% of orders were fully automated end-to-end.** These orders moved from the customer's email to the ERP with no human touch at all. The AI processed them, the confidence scores were high across all line items, and the data entered the system automatically.
 
-The other 50% still benefited from AI processing. Instead of the team reading raw emails and manually searching the catalog, they reviewed the AI's structured interpretation — products already matched, quantities already parsed, confidence scores indicating exactly which items needed a second look. The review step took a fraction of the time that full manual processing required.
+The other 50% still benefited from AI processing. Instead of the team reading raw emails and manually searching the catalog, they reviewed the AI's structured interpretation: products already matched, quantities already parsed, confidence scores indicating exactly which items needed a second look. The review step took a fraction of the time that full manual processing required.
 
 ## What changed for the team
 
 The shift was not abstract. It showed up in the daily work of the people who had been processing those orders by hand.
 
-The Meesenburg order team stopped spending their mornings decoding emails. The routine orders — the ones that were clear, correctly interpreted, and ready for the ERP — no longer consumed anyone's time. The team's attention moved to the orders that genuinely required human judgment: ambiguous product descriptions, unusual requests, customer inquiries embedded in order emails.
+The Meesenburg order team stopped spending their mornings decoding emails. The routine orders (the ones that were clear, correctly interpreted, and ready for the ERP) no longer consumed anyone's time. The team's attention moved to the orders that genuinely required human judgment: ambiguous product descriptions, unusual requests, customer inquiries embedded in order emails.
 
-The error rate dropped. When the AI processes 98% of orders without needing modification, the opportunities for human transcription errors — a wrong quantity, a mismatched SKU, a line item entered twice — shrink dramatically. Fewer errors meant fewer returns, fewer credit notes, fewer phone calls from frustrated customers, and fewer hours spent resolving issues instead of serving the next order.
+The error rate dropped. When the AI processes 98% of orders without needing modification, the opportunities for human transcription errors (a wrong quantity, a mismatched SKU, a line item entered twice) shrink dramatically. Fewer errors meant fewer returns, fewer credit notes, fewer phone calls from frustrated customers, and fewer hours spent resolving issues instead of serving the next order.
 
-General Manager Banciu Nicolae saw the impact across the operation. The order desk was no longer a bottleneck. The team that had been buried in data entry could now focus on customer relationships, on handling the complex requests that actually benefited from their experience and product knowledge. The institutional expertise that senior team members carried — the knowledge of what "the big silver ones" meant for each customer — was now encoded in the AI, reducing the operation's vulnerability to staff turnover.
+General Manager Banciu Nicolae saw the impact across the operation. The order desk was no longer a bottleneck. The team that had been buried in data entry could now focus on customer relationships and on handling the complex requests that actually benefited from their experience and product knowledge. The institutional expertise that senior team members carried (the knowledge of what "the big silver ones" meant for each customer) was now encoded in the AI, reducing the operation's vulnerability to staff turnover.
 
 Processing speed improved as well. Orders that once waited in a queue until a team member could get to them were now being processed within minutes of arriving. In distribution, speed matters. The first supplier to confirm an order accurately is often the one who keeps the customer.
 
 ## The operational shift
 
-What Meesenburg Romania's deployment demonstrates is not just that AI can process orders. It is that AI can handle the cases that every previous automation approach failed on — and do it accurately enough that a distribution team trusts it with their customer relationships.
+What Meesenburg Romania's deployment demonstrates is not just that AI can process orders. It is that AI can handle the cases that every previous automation approach failed on, and do it accurately enough that a distribution team trusts it with their customer relationships.
 
 The 98% accuracy rate was not built on structured, easy inputs. It was built on exactly the kind of messy, inconsistent, format-diverse order data that had always required experienced human operators. The 50% full automation rate was not achieved by restricting which orders the AI could handle. It was achieved by letting the AI attempt every order and proving that half of them needed no help at all.
 
-For Meesenburg's operation, the result was a team that finally had room to do the work that mattered most — building customer relationships, handling complex requests, and growing the business — instead of spending their days re-keying data from one format into another.
+For Meesenburg's operation, the result was a team that finally had room to do the work that mattered most: building customer relationships, handling complex requests, and growing the business. They were no longer spending their days re-keying data from one format into another.
 
 ---
 
-**See what OrderFlow can do for your operation.** The fastest way to know if these results apply to your business is to test it on your own orders. [Send us a few of the messiest emails your team received this week](/contact), and we will show you how OrderFlow processes them — products matched, confidence scores assigned, exceptions flagged. No configuration required on your end.
+**See what OrderFlow can do for your operation.** The fastest way to know if these results apply to your business is to test it on your own orders. [Send us a few of the messiest emails your team received this week](/contact), and we will show you how OrderFlow processes them: products matched, confidence scores assigned, exceptions flagged. No configuration required on your end.
 
 ---
 

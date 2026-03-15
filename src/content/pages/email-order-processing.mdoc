@@ -19,7 +19,7 @@ author: OrderFlow Team
 faq:
   - question: Can OrderFlow process email attachments like PDFs and scanned documents?
     answer: >-
-      Yes. OrderFlow processes the full email — body text, PDF attachments,
+      Yes. OrderFlow processes the full email: body text, PDF attachments,
       image attachments (photos of handwritten notes, scanned documents), and
       spreadsheet files. When an email contains multiple attachments, the system
       processes each one and consolidates the order line items into a single
@@ -36,7 +36,7 @@ faq:
   - question: Does OrderFlow need templates for each customer's email format?
     answer: >-
       No. OrderFlow uses language understanding rather than template matching.
-      Each customer can send orders in whatever format they prefer — free-text
+      Each customer can send orders in whatever format they prefer: free-text
       in the email body, a PDF attachment, a photo, or a spreadsheet. When a
       customer changes how they send orders, nothing breaks on your end. There
       are no templates to build, maintain, or update.
@@ -50,7 +50,7 @@ faq:
       your customer service team to respond to.
   - question: How quickly does OrderFlow pick up new emails?
     answer: >-
-      OrderFlow monitors your order inbox continuously — not on a schedule, not
+      OrderFlow monitors your order inbox continuously. Not on a schedule, not
       in batches. New emails are detected and processing begins within seconds
       of arrival. Weekend orders, overnight orders, and holiday orders are all
       captured the moment they arrive. Your team does not need to forward,
@@ -71,11 +71,11 @@ faq:
       on request.
 ---
 
-One customer types a three-line list in the email body. Another attaches a PDF purchase order. A third forwards a photo taken on a warehouse floor — handwriting, creased paper, partial shadow. A fourth replies to a six-month-old email thread with "same as last time plus 20 more of the blue ones." A fifth sends a spreadsheet using product codes that exist only in their system.
+One customer types a three-line list in the email body. Another attaches a PDF purchase order. A third forwards a photo taken on a warehouse floor (handwriting, creased paper, partial shadow). A fourth replies to a six-month-old email thread with "same as last time plus 20 more of the blue ones." A fifth sends a spreadsheet using product codes that exist only in their system.
 
 All five arrive in the same inbox within 20 minutes. All five need to become structured order data in your ERP by end of day.
 
-This is **email order processing** in distribution — and it is the single hardest channel to automate, because the problem is not the email itself. The problem is that every customer uses email differently, and the formats they send change without notice.
+This is **email order processing** in distribution, and it is the single hardest channel to automate, because the problem is not the email itself. The problem is that every customer uses email differently, and the formats they send change without notice.
 
 ## Why Email Is the Hardest Order Channel to Automate
 
@@ -83,7 +83,7 @@ EDI works because both parties agree on a data standard. Webshop orders work bec
 
 Email follows no standard. The same customer might send a formal PDF attachment in January and a one-sentence body text in March. A new procurement manager at your biggest account changes the entire ordering pattern overnight. A long-standing customer starts forwarding internal emails instead of composing new ones.
 
-The variability is not just between customers — it is within the same customer over time. This is why template-based automation, which maps fixed layouts to extraction rules, breaks down on email orders specifically. You cannot template a channel where the format is defined by whoever happens to be typing.
+The variability is not just between customers. It is within the same customer over time. This is why template-based automation, which maps fixed layouts to extraction rules, breaks down on email orders specifically. You cannot template a channel where the format is defined by whoever happens to be typing.
 
 Distribution businesses have tried to manage this with inbox rules, email routing, and sorting automation. These tools put emails in the right folder. They do not read what is inside them.
 
@@ -93,27 +93,27 @@ Most email automation tools solve a logistics problem: which emails go where, wh
 
 None of this touches the actual content of the order.
 
-The email that says "24 of the 3/4 inch brass ball valves, red handle, not the lever type" still needs a human to read it, find the right SKU in a 50,000-item catalog, enter the quantity, and push it to the ERP. The routing automation got the email to the right desk. The interpretation work — the 3 to 10 minutes per order — remains entirely manual.
+The email that says "24 of the 3/4 inch brass ball valves, red handle, not the lever type" still needs a human to read it, find the right SKU in a 50,000-item catalog, enter the quantity, and push it to the ERP. The routing automation got the email to the right desk. The interpretation work (the 3 to 10 minutes per order) remains entirely manual.
 
-**Email order processing** as OrderFlow defines it is not routing. It is interpretation. The system reads the email content — body text, attachments, images — and extracts structured order data: product matches against your catalog, quantities, and delivery details. The output is ERP-ready. The manual interpretation step is removed.
+**Email order processing** as OrderFlow defines it is not routing. It is interpretation. The system reads the email content (body text, attachments, images) and extracts structured order data: product matches against your catalog, quantities, and delivery details. The output is ERP-ready. The manual interpretation step is removed.
 
 If you have tried email automation before and been disappointed, this distinction matters. Email automation tools route and sort emails. They do not read them. OrderFlow reads them.
 
 ## What Happens Inside Your Inbox: How Continuous Monitoring Works
 
-OrderFlow connects to your order inbox and monitors it continuously. Not on a 15-minute polling schedule. Not as a batch job that runs overnight. Continuously — new emails are detected within seconds of arrival.
+OrderFlow connects to your order inbox and monitors it continuously. Not on a 15-minute polling schedule. Not as a batch job that runs overnight. Continuously. New emails are detected within seconds of arrival.
 
 Here is what that means in practice:
 
 **No manual triaging.** Your team does not need to open, read, and sort incoming order emails before processing begins. OrderFlow picks up every new email automatically.
 
-**No overnight backlog.** Orders that arrive at 11 PM on a Friday are processed before your team arrives Monday morning. The weekend's orders are already structured and waiting for review — not sitting as unread emails.
+**No overnight backlog.** Orders that arrive at 11 PM on a Friday are processed before your team arrives Monday morning. The weekend's orders are already structured and waiting for review, not sitting as unread emails.
 
-**No forwarding required.** Customers send orders to your existing order inbox address. There is no new email address to communicate, no workflow change for your customers, no "please send orders to this special address" request that half your customers will ignore.
+Customers send orders to your existing order inbox address. **No forwarding required.** There is no new email address to communicate, no workflow change for your customers, no "please send orders to this special address" request that half your customers will ignore.
 
 **Shared inbox compatibility.** OrderFlow works alongside your team. Multiple people can still access the inbox for reference, for customer communication, for exceptions. The AI processes orders in parallel without locking anyone out.
 
-For a complete walkthrough of OrderFlow's five-step process — from inbox monitoring through ERP output — see [how sales order automation works](/insights/sales-order-automation).
+For a complete walkthrough of OrderFlow's five-step process (from inbox monitoring through ERP output), see [how sales order automation works](/insights/sales-order-automation).
 
 ---
 
@@ -123,7 +123,7 @@ For a complete walkthrough of OrderFlow's five-step process — from inbox monit
 
 ## The Email Formats That Break Traditional Automation
 
-Every operations team knows which order emails cause the most trouble. Here are the specific formats that template-based and OCR systems consistently fail on — and that OrderFlow handles natively.
+Every operations team knows which order emails cause the most trouble. Here are the specific formats that template-based and OCR systems consistently fail on, and that OrderFlow handles natively.
 
 ### Free-Text Email Body Orders
 
@@ -131,13 +131,13 @@ The customer writes their order directly in the email body with no formal struct
 
 *"Hi, can you send us 30 of the blue 40mm valves, 15 elbows in the same size, and check if you still have the reducer fitting that Michael ordered last quarter? Also need 50 cable ties but the longer ones not the standard pack."*
 
-No product codes. No table format. Product references mixed with questions and requests. This is the majority of email orders at most distributors — and it is the format that no template can handle because there is no layout to map.
+No product codes. No table format. Product references mixed with questions and requests. This is the majority of email orders at most distributors, and it is the format that no template can handle because there is no layout to map.
 
 ### Mixed-Content Emails
 
 A single email contains a PDF purchase order attached, three additional items listed in the body text, and a question about delivery timing. The PDF has one format. The body text has another. Both contain order line items that need to be consolidated into a single order.
 
-Template systems process the PDF or the body — rarely both. OrderFlow reads the full email as a single order context, extracts line items from every source within it, and consolidates them.
+Template systems process the PDF or the body, rarely both. OrderFlow reads the full email as a single order context, extracts line items from every source within it, and consolidates them.
 
 ### Reply-Chain Orders
 
@@ -147,7 +147,7 @@ The current order is embedded in a thread containing previous conversations, old
 
 ### Forwarded Internal Emails
 
-A purchasing manager forwards an internal email from the warehouse floor to your order inbox. The original message was never meant to be a purchase order — it is a stocktake note, an internal request, or a photo with a handwritten annotation. But it contains the information your team needs to build an order.
+A purchasing manager forwards an internal email from the warehouse floor to your order inbox. The original message was never meant to be a purchase order. It is a stocktake note, an internal request, or a photo with a handwritten annotation. But it contains the information your team needs to build an order.
 
 OrderFlow processes forwarded content the same way it processes direct orders: by reading the content for meaning, not for format compliance.
 
@@ -155,17 +155,17 @@ OrderFlow processes forwarded content the same way it processes direct orders: b
 
 A customer photographs a handwritten order list on a clipboard and emails the image. The handwriting varies in quality. The paper is creased. Some items are crossed out and rewritten. The image was taken at an angle, in warehouse lighting.
 
-OrderFlow applies OCR to extract the text from the image, then applies language understanding to interpret the extracted content. The combination matters — OCR alone produces raw characters that still need human interpretation. OCR plus AI interpretation produces structured order data.
+OrderFlow applies OCR to extract the text from the image, then applies language understanding to interpret the extracted content. The combination matters. OCR alone produces raw characters that still need human interpretation. OCR plus AI interpretation produces structured order data.
 
 ### Spreadsheet Attachments With Non-Standard Codes
 
-The customer attaches an Excel file using their internal product codes — codes that do not exist in your catalog. Column headers are in their language. Quantities are in a format you do not use.
+The customer attaches an Excel file using their internal product codes, codes that do not exist in your catalog. Column headers are in their language. Quantities are in a format you do not use.
 
 OrderFlow reads the spreadsheet structure, maps the customer's product references against your catalog using semantic matching rather than exact code lookup, and flags uncertain matches for human review.
 
 ## How OrderFlow Processes an Email Order
 
-OrderFlow monitors your inbox, interprets each email's content, matches product references to your catalog with confidence scoring, flags uncertain items for human review, and outputs ERP-ready structured data. The full five-step process — including how confidence scoring and the human-in-the-loop review workflow operate — is detailed in our [sales order automation overview](/insights/sales-order-automation).
+OrderFlow monitors your inbox, interprets each email's content, matches product references to your catalog with confidence scoring, flags uncertain items for human review, and outputs ERP-ready structured data. The full five-step process (including how confidence scoring and the human-in-the-loop review workflow operate) is detailed in our [sales order automation overview](/insights/sales-order-automation).
 
 The result at Meesenburg Romania, a European distribution business: approximately 98% of AI-processed orders needed no modification, and 50% were fully automated end-to-end. [Read the full case study](/insights/meesenburg-order-automation).
 
@@ -173,37 +173,37 @@ The result at Meesenburg Romania, a European distribution business: approximatel
 
 ### For Operations Managers
 
-Your team currently spends the first two hours of every morning reading emails, interpreting what customers want, finding the right SKUs, and keying data into the ERP. With email order processing, those morning orders are already structured when your team arrives. The first task becomes reviewing a handful of flagged exceptions — not working through a full inbox.
+Your team currently spends the first two hours of every morning reading emails, interpreting what customers want, finding the right SKUs, and keying data into the ERP. With email order processing, those morning orders are already structured when your team arrives. The first task becomes reviewing a handful of flagged exceptions, not working through a full inbox.
 
-The formats that slow your team down the most — the free-text emails with no codes, the handwritten photos, the "same as last time" replies — are exactly the formats OrderFlow is built to interpret. Your experienced reps stop spending 80% of their time on interpretation and data entry. They spend it on customer relationships, exception handling, and the judgment calls that actually require a human.
+The formats that slow your team down the most (the free-text emails with no codes, the handwritten photos, the "same as last time" replies) are exactly the formats OrderFlow is built to interpret. Your experienced reps stop spending 80% of their time on interpretation and data entry. They spend it on customer relationships, exception handling, and the judgment calls that actually require a human.
 
-When your best rep leaves, their knowledge of how each customer orders — the nicknames, the patterns, the unwritten preferences — does not leave with them. OrderFlow encodes that institutional knowledge. New team members review and confirm AI-processed orders from day one instead of spending weeks learning each customer's habits.
+When your best rep leaves, their knowledge of how each customer orders (the nicknames, the patterns, the unwritten preferences) does not leave with them. OrderFlow encodes that institutional knowledge. New team members review and confirm AI-processed orders from day one instead of spending weeks learning each customer's habits.
 
 ### For IT Directors
 
-Email order processing with OrderFlow requires no per-customer templates to build or maintain. When a customer changes their email format — new procurement system, new contact person, new attachment type — nothing breaks. There is no IT ticket to file, no rule to update, no configuration to adjust.
+Email order processing with OrderFlow requires no per-customer templates to build or maintain. When a customer changes their email format (new procurement system, new contact person, new attachment type), nothing breaks. There is no IT ticket to file, no rule to update, no configuration to adjust.
 
-Data quality is protected by confidence scoring. Every line item is validated before it reaches your ERP — either by the AI at high confidence or by a human reviewer when the AI flags uncertainty. Full audit trails track every order from original email to ERP entry.
+Data quality is protected by confidence scoring. Every line item is validated before it reaches your ERP, either by the AI at high confidence or by a human reviewer when the AI flags uncertainty. Full audit trails track every order from original email to ERP entry.
 
 All processing occurs within European infrastructure, GDPR-compliant by design. For details on [how the AI technology works](/insights/ai-order-processing), including the OCR, NLP, and product matching pipeline, see our technical explainer.
 
 ### For the C-Suite
 
-The first distributor to confirm an order wins the repeat business. When your competitor responds in minutes and your team is still decoding a handwritten photo attachment, you lose business you never see leave. Email order processing is a speed advantage — orders processed in seconds rather than minutes, confirmed before the customer has time to send the same request to vendor number two.
+The first distributor to confirm an order wins the repeat business. When your competitor responds in minutes and your team is still decoding a handwritten photo attachment, you lose business you never see leave. Email order processing is a speed advantage: orders processed in seconds rather than minutes, confirmed before the customer has time to send the same request to vendor number two.
 
-Every 20% increase in order volume currently requires a new hire. Email order processing scales with volume without scaling headcount. Your order desk handles growth the same way your warehouse handles it — with capacity, not with overtime.
+Every 20% increase in order volume currently requires a new hire. Email order processing scales with volume without scaling headcount. Your order desk handles growth the same way your warehouse handles it: with capacity, not with overtime.
 
 ## If You Have Tried Email Automation Before
 
-If you deployed inbox rules, email routing tools, or auto-classification systems and found that the interpretation bottleneck remained unchanged — that is the expected outcome. Those tools automate the logistics of email management. They sort, route, flag, and acknowledge. They do not interpret order content.
+If you deployed inbox rules, email routing tools, or auto-classification systems and found that the interpretation bottleneck remained unchanged, that is the expected outcome. Those tools automate the logistics of email management. They sort, route, flag, and acknowledge. They do not interpret order content.
 
-The step that consumes 3 to 10 minutes per order — reading the email, understanding what the customer wants, finding the SKU, entering the data — is untouched by email routing automation. It requires a system that reads meaning, not metadata.
+The step that consumes 3 to 10 minutes per order (reading the email, understanding what the customer wants, finding the SKU, entering the data) is untouched by email routing automation. It requires a system that reads meaning, not metadata.
 
 OrderFlow is that system. No templates. No per-customer rules. When a customer sends an order in a format the system has never seen, the AI interprets the content and flags anything it is uncertain about for human review. The format can change tomorrow and nothing breaks.
 
 ## Test It on Your Actual Email Orders
 
-The fastest way to evaluate email order processing is to test it on your real inbox — not clean demo data.
+The fastest way to evaluate email order processing is to test it on your real inbox, not clean demo data.
 
 Send us the email orders that give your team the most trouble. The free-text emails with no product codes. The forwarded photos of handwritten lists. The reply chains that reference "same as last time." The spreadsheets with non-standard codes.
 

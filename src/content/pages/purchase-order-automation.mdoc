@@ -23,7 +23,7 @@ faq:
       Procurement software like Coupa and SAP Ariba helps buyers create and send
       purchase orders. Purchase order automation for distributors solves the
       opposite problem: receiving and processing the POs your customers send you.
-      OrderFlow focuses on the receiving side — interpreting incoming POs in any
+      OrderFlow focuses on the receiving side: interpreting incoming POs in any
       format and converting them into ERP-ready structured data, regardless of
       how the customer chose to send the order.
   - question: >-
@@ -52,7 +52,7 @@ faq:
       record: the original document, the AI interpretation, confidence scores per
       line item, any human review decisions, and the final ERP output. This
       creates a traceable chain from the customer's original PO to the confirmed
-      order in your system — supporting compliance requirements, dispute
+      order in your system, supporting compliance requirements, dispute
       resolution, and internal quality audits.
   - question: How quickly can OrderFlow start processing our purchase orders?
     answer: >-
@@ -65,7 +65,7 @@ faq:
     answer: >-
       OrderFlow integrates with major ERP systems including SAP, Microsoft
       Dynamics 365, and Sage. The system outputs structured, validated order data
-      that enters your ERP directly — no manual re-keying required. For custom
+      that enters your ERP directly. No manual re-keying required. For custom
       ERP configurations, a technical proof of concept confirms compatibility
       before full deployment.
   - question: Is my purchase order data stored in Europe?
@@ -75,11 +75,11 @@ faq:
       meeting GDPR requirements without workarounds or data transfer agreements.
 ---
 
-You searched for "purchase order automation" and most results led you to procurement software — tools like Coupa, SAP Ariba, or Oracle that help buyers *create and send* purchase orders.
+You searched for "purchase order automation" and most results led you to procurement software (tools like Coupa, SAP Ariba, or Oracle) that help buyers *create and send* purchase orders.
 
 You have the opposite problem.
 
-Your customers already send you purchase orders. Hundreds of them, every week, in every format imaginable. Structured PDFs with line items and SKU codes. Free-text emails that say "need 50 of the usual plus the bigger gasket set." Scanned paper documents. Spreadsheets with your customer's internal product codes that bear no resemblance to your catalog. Your challenge is not creating POs — it is *receiving, interpreting, and processing* the ones that arrive.
+Your customers already send you purchase orders. Hundreds of them, every week, in every format imaginable. Structured PDFs with line items and SKU codes. Free-text emails that say "need 50 of the usual plus the bigger gasket set." Scanned paper documents. Spreadsheets with your customer's internal product codes that bear no resemblance to your catalog. Your challenge is not creating POs. It is *receiving, interpreting, and processing* the ones that arrive.
 
 That distinction matters because the tools built for procurement do nothing for you. And until now, no category of software specifically addressed the receiving side of purchase order automation for distributors.
 
@@ -98,7 +98,7 @@ Consider what arrives in your inbox on a typical day:
 
 Each of these is a valid purchase order. Each requires a different interpretation process. And each ultimately needs to become the same thing: validated line items matched to your catalog and entered into your ERP.
 
-Template-based OCR handles the structured PDF — sometimes. It fails on everything else. EDI handles the customer who will conform to your data standard — but that is rarely more than 10-15% of your customer base. RPA handles the process that repeats identically every time — which no order desk process does.
+Template-based OCR handles the structured PDF, sometimes. It fails on everything else. EDI handles the customer who will conform to your data standard, but that is rarely more than 10-15% of your customer base. RPA handles the process that repeats identically every time, which no order desk process does.
 
 ## The PO Receiving Problem No One Else Solves
 
@@ -106,23 +106,23 @@ Purchase order process automation for distributors requires solving three proble
 
 **1. Format interpretation across every input type**
 
-The system must read PDFs, parse email body text, process image attachments, handle scanned documents, and interpret spreadsheets — without requiring a separate template or configuration for each customer or format.
+The system must read PDFs, parse email body text, process image attachments, handle scanned documents, and interpret spreadsheets, without requiring a separate template or configuration for each customer or format.
 
-**2. Product matching against your catalog — not the customer's**
+**2. Product matching against your catalog, not the customer's**
 
 Your customers use their own product codes, informal names, abbreviations, historical references, and descriptions. "The blue one" might be SKU BV-40-BL in your catalog. "Part #7742-A" is the customer's internal code for your SKU FLG-DN50-PN16. The system must bridge this gap for every line item, across every customer, without manual mapping tables that break when either catalog changes.
 
 **3. Compliance-grade audit trails**
 
-Every purchase order carries contractual weight. The processing system must maintain a traceable record from the original customer document through the AI interpretation to the final ERP entry — including confidence scores, human review decisions, and any modifications made along the way.
+Every purchase order carries contractual weight. The processing system must maintain a traceable record from the original customer document through the AI interpretation to the final ERP entry, including confidence scores, human review decisions, and any modifications made along the way.
 
 ## How OrderFlow Automates Purchase Order Processing
 
 OrderFlow is built specifically for the receiving side of purchase order automation. It monitors your order inbox continuously, interprets incoming POs regardless of format, matches line items to your product catalog, and outputs ERP-ready structured data.
 
-For a detailed walkthrough of the five-step process — from inbox monitoring through AI interpretation, product matching, human-in-the-loop review, and ERP output — see our [complete guide to sales order automation](/insights/sales-order-automation).
+For a detailed walkthrough of the five-step process (from inbox monitoring through AI interpretation, product matching, human-in-the-loop review, and ERP output), see our [complete guide to sales order automation](/insights/sales-order-automation).
 
-The critical difference from procurement tools: OrderFlow has no templates to configure and no per-customer setup required. The [AI interprets the meaning](/insights/ai-order-processing) of each order rather than matching patterns against a fixed layout. When a customer changes their PO format — new ERP system, new procurement manager, updated template — nothing breaks on your end.
+The critical difference from procurement tools: OrderFlow has no templates to configure and no per-customer setup required. The [AI interprets the meaning](/insights/ai-order-processing) of each order rather than matching patterns against a fixed layout. When a customer changes their PO format (new ERP system, new procurement manager, updated template), nothing breaks on your end.
 
 ## What Makes PO Automation Different From General Order Automation
 
@@ -130,11 +130,11 @@ Purchase orders carry specific characteristics that general "order processing" t
 
 ### PO numbers and reference tracking
 
-Every purchase order has a PO number that your customer expects to see on the invoice, the delivery note, and every communication about that order. OrderFlow extracts and preserves PO reference numbers from any format — including handwritten or embedded in free-text — and carries them through to your ERP entry.
+Every purchase order has a PO number that your customer expects to see on the invoice, the delivery note, and every communication about that order. OrderFlow extracts and preserves PO reference numbers from any format (including handwritten or embedded in free-text) and carries them through to your ERP entry.
 
 ### Multi-line complexity
 
-Purchase orders from distribution customers routinely contain 20-80 line items per order. A single mismatched SKU on line 47 triggers a partial shipment, a credit note, and a follow-up call. OrderFlow assigns confidence scores to every individual line item. Your team reviews only the flagged exceptions — not the entire 80-line order.
+Purchase orders from distribution customers routinely contain 20-80 line items per order. A single mismatched SKU on line 47 triggers a partial shipment, a credit note, and a follow-up call. OrderFlow assigns confidence scores to every individual line item. Your team reviews only the flagged exceptions, not the entire 80-line order.
 
 ### Customer-specific pricing and terms
 
@@ -142,29 +142,29 @@ POs often reference negotiated pricing, framework agreements, or specific delive
 
 ### Compliance and dispute resolution
 
-When a customer disputes a delivery six months later, you need to produce the original PO, show how it was interpreted, and demonstrate that the shipped order matched. OrderFlow's audit trail stores the original document, the AI interpretation with confidence scores, any human review decisions, and the final ERP record — creating an unbroken chain of evidence.
+When a customer disputes a delivery six months later, you need to produce the original PO, show how it was interpreted, and demonstrate that the shipped order matched. OrderFlow's audit trail stores the original document, the AI interpretation with confidence scores, any human review decisions, and the final ERP record, creating an unbroken chain of evidence.
 
 ## The "We Evaluated Procurement Tools" Problem
 
-If you have been searching for purchase order automation software, you have likely encountered — and dismissed — several procurement platforms. Coupa, SAP Ariba, Jaggaer, and similar tools solve a real problem. It is just not your problem.
+If you have been searching for purchase order automation software, you have likely encountered, and dismissed, several procurement platforms. Coupa, SAP Ariba, Jaggaer, and similar tools solve a real problem. It is just not your problem.
 
 The evaluation typically goes like this: your team identifies PO processing as a bottleneck, searches for automation, finds procurement software, sits through a demo that shows how to *create* POs efficiently, and realizes that none of it addresses the 200 different formats sitting in your inbox right now.
 
-Some teams then look at document processing platforms — Rossum, ABBYY, Kofax — and find tools built for invoices and receipts that can be configured for POs with enough template work. The initial pilot looks promising on structured PDFs. Then it encounters the free-text email orders and the handwritten notes and the "same as last time" messages, and accuracy drops to levels that create more work than they save.
+Some teams then look at document processing platforms (Rossum, ABBYY, Kofax) and find tools built for invoices and receipts that can be configured for POs with enough template work. The initial pilot looks promising on structured PDFs. Then it encounters the free-text email orders and the handwritten notes and the "same as last time" messages, and accuracy drops to levels that create more work than they save.
 
-OrderFlow exists because this gap exists. The purchase order automation that distributors need is not procurement workflow software. It is not generic document processing configured for POs. It is AI that interprets what your customers mean when they send you an order — in whatever format they choose to send it.
+OrderFlow exists because this gap exists. The purchase order automation that distributors need is not procurement workflow software. It is not generic document processing configured for POs. It is AI that interprets what your customers mean when they send you an order, in whatever format they choose to send it.
 
 ## Proven Accuracy on Real-World Purchase Orders
 
-At Meesenburg Romania, a European distribution business processing real-world orders in varied formats, OrderFlow achieved a 98% no-modification rate — with 50% of orders fully automated end-to-end. Read the [full Meesenburg case study](/insights/meesenburg-order-automation) for deployment details and results.
+At Meesenburg Romania, a European distribution business processing real-world orders in varied formats, OrderFlow achieved a 98% no-modification rate, with 50% of orders fully automated end-to-end. Read the [full Meesenburg case study](/insights/meesenburg-order-automation) for deployment details and results.
 
-These numbers come from production data on actual customer POs — not a controlled demo with clean inputs.
+These numbers come from production data on actual customer POs, not a controlled demo with clean inputs.
 
 ## Getting Started With Purchase Order Automation
 
 The fastest way to evaluate whether OrderFlow handles your specific PO formats is to test it on real orders.
 
-Send us three to five of the most varied purchase orders your team received this week — the structured PDF, the free-text email, the difficult one. We process them through OrderFlow and show you the output: line items matched to your catalog, confidence scores per item, flagged exceptions, and the structured ERP-ready data.
+Send us three to five of the most varied purchase orders your team received this week: the structured PDF, the free-text email, the difficult one. We process them through OrderFlow and show you the output: line items matched to your catalog, confidence scores per item, flagged exceptions, and the structured ERP-ready data.
 
 No templates to configure. No multi-month implementation project. If the output matches what your best CSR would have produced, we move forward. If it does not, you have invested 20 minutes.
 
