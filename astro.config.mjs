@@ -4,11 +4,11 @@ import react from '@astrojs/react';
 import sitemap from '@astrojs/sitemap';
 import markdoc from '@astrojs/markdoc';
 import keystatic from '@keystatic/astro';
-import node from '@astrojs/node';
+import vercel from '@astrojs/vercel';
 
 export default defineConfig({
   output: 'static',
-  adapter: node({ mode: 'standalone' }),
+  adapter: vercel(),
   site: 'https://orderflow.biz',
   integrations: [
     react(),
