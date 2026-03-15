@@ -68,27 +68,65 @@ const contactSchema = {
             </div>
           </div>
 
-          <form class="form-card" action="#" method="post" novalidate>
-            <p class="form-card__heading">One of our experts will walk you through the product and answer your questions.</p>
-            <div class="form-input">
-              <label class="form-input__label" for="email">Business email</label>
-              <input type="email" id="email" name="email" class="form-input__field" placeholder="Type in your business email address" required>
+          <div class="form-card">
+            <div id="contact-form-step" class="calendly-form-step">
+              <p class="form-card__heading">One of our experts will walk you through the product and answer your questions.</p>
+              <form id="contact-lead-form" novalidate>
+                <div class="form-input">
+                  <label class="form-input__label" for="email">Business email</label>
+                  <input type="email" id="email" name="email" class="form-input__field" placeholder="Type in your business email address" required>
+                </div>
+                <div class="form-input">
+                  <label class="form-input__label" for="company">Company name</label>
+                  <input type="text" id="company" name="company" class="form-input__field" placeholder="Type in your company name" required>
+                </div>
+                <label class="form-checkbox">
+                  <input type="checkbox" class="form-checkbox__input" name="agree" required>
+                  <span class="form-checkbox__text">I agree with the <a href="/terms">Terms &amp; Conditions</a> and the <a href="/privacy">Privacy Policy.</a></span>
+                </label>
+                <button type="submit" class="btn btn--dark">Schedule a demo</button>
+              </form>
             </div>
-            <div class="form-input">
-              <label class="form-input__label" for="company">Company name</label>
-              <input type="text" id="company" name="company" class="form-input__field" placeholder="Type in your company name" required>
+            <div id="contact-calendly-step" class="calendly-form-step" style="display:none;">
+              <div id="contact-calendly-widget" style="min-height:500px;"></div>
             </div>
-            <label class="form-checkbox">
-              <input type="checkbox" class="form-checkbox__input" name="agree" required>
-              <span class="form-checkbox__text">I agree with the <a href="/terms">Terms &amp; Conditions</a> and the <a href="/privacy">Privacy Policy.</a></span>
-            </label>
-            <button type="submit" class="btn btn--dark">Schedule a demo</button>
-          </form>
+          </div>
         </div>
       </div>
     </section>
 
   </main>
+
+  <script is:inline src="https://assets.calendly.com/assets/external/widget.js" async></script>
+  <script is:inline>
+    document.addEventListener('DOMContentLoaded', function() {
+      document.querySelectorAll('[id$="-lead-form"]').forEach(function(form) {
+        form.addEventListener('submit', function(e) {
+          e.preventDefault();
+          var prefix = form.id.replace('-lead-form', '');
+          var email = form.querySelector('[name="email"]').value.trim();
+          var company = form.querySelector('[name="company"]').value.trim();
+          var terms = form.querySelector('[name="agree"]') || form.querySelector('[name="terms"]');
+          if (!email || !company || !terms.checked) return;
+
+          document.getElementById(prefix + '-form-step').style.display = 'none';
+          var calendlyStep = document.getElementById(prefix + '-calendly-step');
+          calendlyStep.style.display = 'block';
+
+          Calendly.initInlineWidget({
+            url: 'https://calendly.com/management-neurony/introductory-meeting',
+            parentElement: document.getElementById(prefix + '-calendly-widget'),
+            prefill: {
+              email: email,
+              customAnswers: {
+                a1: company
+              }
+            }
+          });
+        });
+      });
+    });
+  </script>
 
   <script is:inline>
     document.querySelector('.mobile-menu-toggle').addEventListener('click', function() {

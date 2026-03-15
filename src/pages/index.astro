@@ -447,17 +447,55 @@ const faqSchema = {
             <p class="cta__subtitle">Book a call and see <strong>Orderflow</strong> running on real order data.</p>
           </div>
           <div class="cta__right">
-            <form class="cta__form-card" action="/schedule-demo" method="POST" data-reveal="right">
-              <p class="cta__form-heading">One of our experts will walk you through the product and answer your questions.</p>
-              <div class="cta__input"><label class="cta__input-label" for="cta-email">Business email</label><input type="email" id="cta-email" name="email" class="cta__input-field" placeholder="Type in your business email address" required></div>
-              <div class="cta__input"><label class="cta__input-label" for="cta-company">Company name</label><input type="text" id="cta-company" name="company" class="cta__input-field" placeholder="Type in your company name" required></div>
-              <div class="cta__checkbox"><input type="checkbox" id="cta-terms" name="terms" class="cta__checkbox-input" required><label class="cta__checkbox-text" for="cta-terms">I agree with the <a href="/terms">Terms &amp; Conditions</a> and the <a href="/privacy">Privacy Policy</a>.</label></div>
-              <button type="submit" class="btn btn--primary">Schedule a demo</button>
-            </form>
+            <div class="cta__form-card" data-reveal="right">
+              <div id="cta-form-step" class="calendly-form-step">
+                <p class="cta__form-heading">One of our experts will walk you through the product and answer your questions.</p>
+                <form id="cta-lead-form" novalidate>
+                  <div class="cta__input"><label class="cta__input-label" for="cta-email">Business email</label><input type="email" id="cta-email" name="email" class="cta__input-field" placeholder="Type in your business email address" required></div>
+                  <div class="cta__input"><label class="cta__input-label" for="cta-company">Company name</label><input type="text" id="cta-company" name="company" class="cta__input-field" placeholder="Type in your company name" required></div>
+                  <div class="cta__checkbox"><input type="checkbox" id="cta-terms" name="terms" class="cta__checkbox-input" required><label class="cta__checkbox-text" for="cta-terms">I agree with the <a href="/terms">Terms &amp; Conditions</a> and the <a href="/privacy">Privacy Policy</a>.</label></div>
+                  <button type="submit" class="btn btn--primary">Schedule a demo</button>
+                </form>
+              </div>
+              <div id="cta-calendly-step" class="calendly-form-step" style="display:none;">
+                <div id="cta-calendly-widget" style="min-height:500px;"></div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
   </main>
+
+  <script is:inline src="https://assets.calendly.com/assets/external/widget.js" async></script>
+  <script is:inline>
+    document.addEventListener('DOMContentLoaded', function() {
+      document.querySelectorAll('[id$="-lead-form"]').forEach(function(form) {
+        form.addEventListener('submit', function(e) {
+          e.preventDefault();
+          var prefix = form.id.replace('-lead-form', '');
+          var email = form.querySelector('[name="email"]').value.trim();
+          var company = form.querySelector('[name="company"]').value.trim();
+          var terms = form.querySelector('[name="terms"]').checked;
+          if (!email || !company || !terms) return;
+
+          document.getElementById(prefix + '-form-step').style.display = 'none';
+          var calendlyStep = document.getElementById(prefix + '-calendly-step');
+          calendlyStep.style.display = 'block';
+
+          Calendly.initInlineWidget({
+            url: 'https://calendly.com/management-neurony/introductory-meeting',
+            parentElement: document.getElementById(prefix + '-calendly-widget'),
+            prefill: {
+              email: email,
+              customAnswers: {
+                a1: company
+              }
+            }
+          });
+        });
+      });
+    });
+  </script>
 </BaseLayout>
