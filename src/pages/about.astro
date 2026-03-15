@@ -281,9 +281,14 @@ const aboutPageSchema = {
           var calendlyStep = document.getElementById(prefix + '-calendly-step');
           calendlyStep.style.display = 'block';
 
+          var widgetEl = document.getElementById(prefix + '-calendly-widget');
+          widgetEl.classList.add('calendly-inline-widget');
+          widgetEl.setAttribute('data-url', 'https://calendly.com/management-neurony/introductory-meeting');
+          widgetEl.style.minWidth = '320px';
+          widgetEl.style.height = '700px';
           Calendly.initInlineWidget({
             url: 'https://calendly.com/management-neurony/introductory-meeting',
-            parentElement: document.getElementById(prefix + '-calendly-widget'),
+            parentElement: widgetEl,
             prefill: {
               email: email,
               customAnswers: {
