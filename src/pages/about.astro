@@ -283,11 +283,11 @@ const aboutPageSchema = {
 
           var widgetEl = document.getElementById(prefix + '-calendly-widget');
           widgetEl.classList.add('calendly-inline-widget');
-          widgetEl.setAttribute('data-url', 'https://calendly.com/management-neurony/introductory-meeting');
+          widgetEl.setAttribute('data-url', 'https://calendly.com/management-neurony/introductory-meeting-with-orderflow?hide_event_type_details=1&hide_gdpr_banner=1');
           widgetEl.style.minWidth = '320px';
           widgetEl.style.height = '700px';
           Calendly.initInlineWidget({
-            url: 'https://calendly.com/management-neurony/introductory-meeting',
+            url: 'https://calendly.com/management-neurony/introductory-meeting-with-orderflow?hide_event_type_details=1&hide_gdpr_banner=1',
             parentElement: widgetEl,
             prefill: {
               email: email,
