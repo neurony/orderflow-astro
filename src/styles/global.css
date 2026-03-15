@@ -1499,6 +1499,12 @@ main {
   width: 472px;
 }
 
+.cta__form-card form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-24);
+}
+
 .cta__form-heading {
   font-size: var(--text-2xl);
   font-weight: var(--weight-semibold);
