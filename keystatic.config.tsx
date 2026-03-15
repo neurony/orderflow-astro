@@ -27,6 +27,47 @@ export default config({
             publicPath: '/images/authors/',
           }),
         }),
+        seoTitle: fields.text({ label: 'SEO Title (50-60 chars)' }),
+        seoDescription: fields.text({ label: 'SEO Meta Description (140-155 chars)', multiline: true }),
+        canonicalUrl: fields.text({ label: 'Canonical URL' }),
+        updatedDate: fields.date({ label: 'Updated Date' }),
+        funnel: fields.select({
+          label: 'Funnel Stage',
+          options: [
+            { label: 'Top of Funnel', value: 'TOFU' },
+            { label: 'Middle of Funnel', value: 'MOFU' },
+            { label: 'Bottom of Funnel', value: 'BOFU' },
+          ],
+          defaultValue: 'TOFU',
+        }),
+        primaryKeyword: fields.text({ label: 'Primary Keyword' }),
+        schemaType: fields.select({
+          label: 'Schema Type',
+          options: [
+            { label: 'Article', value: 'Article' },
+            { label: 'FAQ Page', value: 'FAQPage' },
+          ],
+          defaultValue: 'Article',
+        }),
+        contentType: fields.select({
+          label: 'Content Type',
+          options: [
+            { label: 'Blog', value: 'blog' },
+            { label: 'Pillar', value: 'pillar' },
+            { label: 'Educational', value: 'educational' },
+          ],
+          defaultValue: 'blog',
+        }),
+        faq: fields.array(
+          fields.object({
+            question: fields.text({ label: 'Question' }),
+            answer: fields.text({ label: 'Answer', multiline: true }),
+          }),
+          {
+            label: 'FAQ Items',
+            itemLabel: (props) => props.fields.question.value || 'FAQ Item',
+          }
+        ),
         content: fields.markdoc({ label: 'Content' }),
       },
     }),
@@ -44,6 +85,120 @@ export default config({
           directory: 'public/images/testimonials',
           publicPath: '/images/testimonials/',
         }),
+      },
+    }),
+    pages: collection({
+      label: 'Pages',
+      slugField: 'title',
+      path: 'src/content/pages/*',
+      format: { contentField: 'content' },
+      schema: {
+        title: fields.slug({ name: { label: 'Title' } }),
+        seoTitle: fields.text({ label: 'SEO Title (50-60 chars)' }),
+        seoDescription: fields.text({ label: 'SEO Meta Description (140-155 chars)', multiline: true }),
+        canonicalUrl: fields.text({ label: 'Canonical URL' }),
+        ogImage: fields.image({
+          label: 'OG Image',
+          directory: 'public/images/pages',
+          publicPath: '/images/pages/',
+        }),
+        ogType: fields.select({
+          label: 'OG Type',
+          options: [
+            { label: 'Website', value: 'website' },
+            { label: 'Article', value: 'article' },
+          ],
+          defaultValue: 'website',
+        }),
+        noindex: fields.checkbox({ label: 'No Index', defaultValue: false }),
+        schemaType: fields.select({
+          label: 'Schema Type',
+          options: [
+            { label: 'Software Application', value: 'SoftwareApplication' },
+            { label: 'Article', value: 'Article' },
+            { label: 'FAQ Page', value: 'FAQPage' },
+          ],
+          defaultValue: 'SoftwareApplication',
+        }),
+        pubDate: fields.date({ label: 'Publish Date' }),
+        updatedDate: fields.date({ label: 'Updated Date' }),
+        funnel: fields.select({
+          label: 'Funnel Stage',
+          options: [
+            { label: 'Top of Funnel', value: 'TOFU' },
+            { label: 'Middle of Funnel', value: 'MOFU' },
+            { label: 'Bottom of Funnel', value: 'BOFU' },
+          ],
+          defaultValue: 'TOFU',
+        }),
+        primaryKeyword: fields.text({ label: 'Primary Keyword' }),
+        author: fields.text({ label: 'Author', defaultValue: 'OrderFlow Team' }),
+        faq: fields.array(
+          fields.object({
+            question: fields.text({ label: 'Question' }),
+            answer: fields.text({ label: 'Answer', multiline: true }),
+          }),
+          {
+            label: 'FAQ Items',
+            itemLabel: (props) => props.fields.question.value || 'FAQ Item',
+          }
+        ),
+        content: fields.markdoc({ label: 'Content' }),
+      },
+    }),
+    caseStudies: collection({
+      label: 'Case Studies',
+      slugField: 'title',
+      path: 'src/content/case-studies/*',
+      format: { contentField: 'content' },
+      schema: {
+        title: fields.slug({ name: { label: 'Title' } }),
+        seoTitle: fields.text({ label: 'SEO Title (50-60 chars)' }),
+        seoDescription: fields.text({ label: 'SEO Meta Description (140-155 chars)', multiline: true }),
+        canonicalUrl: fields.text({ label: 'Canonical URL' }),
+        ogImage: fields.image({
+          label: 'OG Image',
+          directory: 'public/images/case-studies',
+          publicPath: '/images/case-studies/',
+        }),
+        pubDate: fields.date({ label: 'Publish Date' }),
+        updatedDate: fields.date({ label: 'Updated Date' }),
+        clientName: fields.text({ label: 'Client Name' }),
+        clientRole: fields.text({ label: 'Client Role' }),
+        clientCompany: fields.text({ label: 'Client Company' }),
+        industry: fields.text({ label: 'Industry' }),
+        stats: fields.array(
+          fields.object({
+            label: fields.text({ label: 'Stat Label' }),
+            value: fields.text({ label: 'Stat Value' }),
+          }),
+          {
+            label: 'Key Stats',
+            itemLabel: (props) => props.fields.label.value || 'Stat',
+          }
+        ),
+        funnel: fields.select({
+          label: 'Funnel Stage',
+          options: [
+            { label: 'Top of Funnel', value: 'TOFU' },
+            { label: 'Middle of Funnel', value: 'MOFU' },
+            { label: 'Bottom of Funnel', value: 'BOFU' },
+          ],
+          defaultValue: 'BOFU',
+        }),
+        primaryKeyword: fields.text({ label: 'Primary Keyword' }),
+        author: fields.text({ label: 'Author', defaultValue: 'OrderFlow Team' }),
+        faq: fields.array(
+          fields.object({
+            question: fields.text({ label: 'Question' }),
+            answer: fields.text({ label: 'Answer', multiline: true }),
+          }),
+          {
+            label: 'FAQ Items',
+            itemLabel: (props) => props.fields.question.value || 'FAQ Item',
+          }
+        ),
+        content: fields.markdoc({ label: 'Content' }),
       },
     }),
   },

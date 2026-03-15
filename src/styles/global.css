@@ -2200,3 +2200,111 @@ main {
     animation: none;
   }
 }
+
+/* ----- FAQ SECTION ----- */
+.section--faq .section__card {
+  padding: var(--space-64) var(--space-48);
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-16);
+}
+
+.faq-item {
+  border: 1px solid var(--color-neutral-200, #e5e7eb);
+  border-radius: var(--radius-lg, 12px);
+  overflow: hidden;
+}
+
+.faq-item__question {
+  padding: var(--space-20, 20px) var(--space-24);
+  font-size: var(--text-lg);
+  font-weight: var(--weight-medium);
+  color: var(--color-neutral-900);
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-16);
+}
+
+.faq-item__question::-webkit-details-marker {
+  display: none;
+}
+
+.faq-item__question::after {
+  content: '+';
+  font-size: 1.5rem;
+  font-weight: var(--weight-regular);
+  color: var(--color-neutral-500, #6b7280);
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
+}
+
+.faq-item[open] .faq-item__question::after {
+  content: '-';
+}
+
+.faq-item__answer {
+  padding: 0 var(--space-24) var(--space-20, 20px);
+  font-size: var(--text-base);
+  line-height: var(--leading-relaxed);
+  color: var(--color-neutral-700);
+}
+
+.faq-item__answer p {
+  margin: 0;
+}
+
+/* ----- CASE STUDY STATS GRID ----- */
+.stats-grid__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--space-8);
+  padding: var(--space-24);
+}
+
+.stats-grid__value {
+  font-size: var(--text-3xl, 1.875rem);
+  font-weight: var(--weight-semibold);
+  color: var(--color-neutral-900);
+  line-height: 1.2;
+}
+
+.stats-grid__label {
+  font-size: var(--text-sm);
+  color: var(--color-neutral-600, #4b5563);
+  line-height: var(--leading-relaxed);
+}
+
+/* ----- ARTICLE HERO SUBTITLE ----- */
+.article-hero__subtitle {
+  font-size: var(--text-lg);
+  line-height: var(--leading-relaxed);
+  color: var(--color-neutral-700);
+  margin-top: var(--space-16);
+  max-width: 680px;
+}
+
+/* ----- FAQ RESPONSIVE ----- */
+@media (max-width: 768px) {
+  .section--faq .section__card {
+    padding: var(--space-32) var(--space-24);
+  }
+
+  .faq-item__question {
+    font-size: var(--text-base);
+    padding: var(--space-16);
+  }
+
+  .faq-item__answer {
+    padding: 0 var(--space-16) var(--space-16);
+  }
+}

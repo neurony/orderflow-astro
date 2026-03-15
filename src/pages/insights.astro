@@ -2,8 +2,52 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
 
-const articles = await getCollection('articles');
-const sortedArticles = articles.sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime());
+// Fetch all three collections
+const [articles, pages, caseStudies] = await Promise.all([
+  getCollection('articles'),
+  getCollection('pages'),
+  getCollection('caseStudies'),
+]);
+
+// Normalize into a unified list with a date and contentType label
+type InsightItem = {
+  id: string;
+  title: string;
+  date: string;
+  image?: string;
+  category?: string;
+  contentTypeLabel: string;
+};
+
+const allItems: InsightItem[] = [
+  ...articles.map((a) => ({
+    id: a.id,
+    title: a.data.title,
+    date: a.data.date || '',
+    image: a.data.image,
+    category: a.data.category,
+    contentTypeLabel: 'Article',
+  })),
+  ...pages.map((p) => ({
+    id: p.id,
+    title: p.data.title,
+    date: (p.data as any).pubDate || '',
+    image: (p.data as any).ogImage,
+    category: undefined,
+    contentTypeLabel: 'Product Guide',
+  })),
+  ...caseStudies.map((c) => ({
+    id: c.id,
+    title: c.data.title,
+    date: (c.data as any).pubDate || '',
+    image: (c.data as any).ogImage,
+    category: undefined,
+    contentTypeLabel: 'Case Study',
+  })),
+];
+
+// Sort by date descending
+const sortedItems = allItems.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
 const breadcrumbSchema = {
   '@context': 'https://schema.org',
@@ -14,8 +58,10 @@ const breadcrumbSchema = {
   ],
 };
 
-// Extract unique categories from articles
-const categories = [...new Set(sortedArticles.map((a) => a.data.category).filter(Boolean))];
+// Extract unique categories from articles + content type labels
+const articleCategories = [...new Set(articles.map((a) => a.data.category).filter(Boolean))];
+const contentTypeLabels = ['Article', 'Product Guide', 'Case Study'];
+const categories = [...contentTypeLabels, ...articleCategories];
 ---
 
 <BaseLayout
@@ -45,7 +91,7 @@ const categories = [...new Set(sortedArticles.map((a) => a.data.category).filter
       <div class="section__card section__card--white articles">
         <!-- Header row -->
         <div class="articles__header" data-reveal="up">
-          <h2 class="articles__title">{sortedArticles.length} articles for you</h2>
+          <h2 class="articles__title">{sortedItems.length} articles for you</h2>
           <div class="articles__sort">
             <span class="articles__sort-label">Sort by:</span>
             <span class="articles__sort-value">Newest</span>
@@ -57,14 +103,16 @@ const categories = [...new Set(sortedArticles.map((a) => a.data.category).filter
 
         <!-- Article grid -->
         <div class="article-grid" data-reveal-stagger>
-          {sortedArticles.map((article) => (
-            <a href={`/articles/${article.slug}`} class="article-card" data-reveal="up">
+          {sortedItems.map((item) => (
+            <a href={`/insights/${item.id}`} class="article-card" data-reveal="up">
               <div class="article-card__image-wrap">
-                {article.data.image && <img src={article.data.image} alt="" class="article-card__image" loading="lazy">}
-                {article.data.category && <span class="article-card__tag">{article.data.category}</span>}
+                {item.image && <img src={item.image} alt="" class="article-card__image" loading="lazy">}
+                {(item.category || item.contentTypeLabel) && (
+                  <span class="article-card__tag">{item.category || item.contentTypeLabel}</span>
+                )}
               </div>
-              <span class="article-card__date">{article.data.date}</span>
-              <h3 class="article-card__title">{article.data.title}</h3>
+              <span class="article-card__date">{item.date}</span>
+              <h3 class="article-card__title">{item.title}</h3>
             </a>
           ))}
         </div>
