@@ -146,7 +146,27 @@ const contactSchema = {
               }
             }
           });
+
+          if (typeof gtag === 'function') {
+            gtag('event', 'calendly_opened', {
+              event_category: 'conversion',
+              event_label: prefix,
+              email: email,
+              company: company
+            });
+          }
         });
+      });
+
+      window.addEventListener('message', function(e) {
+        if (e.data.event && e.data.event === 'calendly.event_scheduled') {
+          if (typeof gtag === 'function') {
+            gtag('event', 'calendly_meeting_scheduled', {
+              event_category: 'conversion',
+              event_label: 'meeting_booked'
+            });
+          }
+        }
       });
     });
   </script>
