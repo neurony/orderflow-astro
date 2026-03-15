@@ -67,7 +67,18 @@ Before referencing an image path in frontmatter, confirm the image file exists a
 - Articles collection: use `date: 'YYYY-MM-DD'`
 - Both: include `updatedDate: 'YYYY-MM-DD'`
 
-## Rule 6: Frontmatter field names per collection
+## Rule 6: FAQs go ONLY in frontmatter, NEVER in the body
+
+NEVER write an FAQ section (## Frequently Asked Questions, ## FAQ, etc.) in the markdoc body. The template renders FAQs automatically from the frontmatter `faq` array as an accordion with FAQPage JSON-LD schema. Writing FAQs in the body creates duplicates.
+
+Put all FAQ content in the frontmatter faq array:
+```yaml
+faq:
+  - question: "Your question here?"
+    answer: "Your answer here, 40-150 words."
+```
+
+## Rule 7: Frontmatter field names per collection
 
 **Pages** (src/content/pages/): title, seoTitle, seoDescription, canonicalUrl, ogImage, ogType, noindex, schemaType, pubDate, updatedDate, funnel, primaryKeyword, author (string), faq (array)
 
