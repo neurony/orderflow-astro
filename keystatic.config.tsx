@@ -18,6 +18,11 @@ export default config({
           directory: 'public/images/articles',
           publicPath: '/images/articles/',
         }),
+        heroImage: fields.image({
+          label: 'Hero Image (16:9)',
+          directory: 'public/images/articles',
+          publicPath: '/images/articles/',
+        }),
         author: fields.object({
           name: fields.text({ label: 'Author Name' }),
           role: fields.text({ label: 'Author Role' }),
@@ -102,6 +107,11 @@ export default config({
           directory: 'public/images/pages',
           publicPath: '/images/pages/',
         }),
+        heroImage: fields.image({
+          label: 'Hero Image (16:9)',
+          directory: 'public/images/pages',
+          publicPath: '/images/pages/',
+        }),
         ogType: fields.select({
           label: 'OG Type',
           options: [
@@ -158,6 +168,11 @@ export default config({
         canonicalUrl: fields.text({ label: 'Canonical URL' }),
         ogImage: fields.image({
           label: 'OG Image',
+          directory: 'public/images/case-studies',
+          publicPath: '/images/case-studies/',
+        }),
+        heroImage: fields.image({
+          label: 'Hero Image (16:9)',
           directory: 'public/images/case-studies',
           publicPath: '/images/case-studies/',
         }),

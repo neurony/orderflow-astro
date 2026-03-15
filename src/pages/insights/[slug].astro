@@ -33,10 +33,9 @@ const pageTitle = entry.data.seoTitle || `${entry.data.title} | Orderflow`;
 const pageDescription = entry.data.seoDescription || (entry.data as any).description || '';
 const canonicalUrl = entry.data.canonicalUrl || undefined;
 
-// Image: articles use `image`, pages/caseStudies use `ogImage`
-const heroImage = contentType === 'article'
-  ? (entry.data as any).image
-  : (entry.data as any).ogImage;
+// Image: prefer heroImage field, fall back to image (articles) or ogImage (pages/caseStudies)
+const heroImage = (entry.data as any).heroImage
+  || (contentType === 'article' ? (entry.data as any).image : (entry.data as any).ogImage);
 
 // OG type
 const ogType = contentType === 'page'

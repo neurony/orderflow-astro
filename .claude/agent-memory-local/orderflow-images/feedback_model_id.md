@@ -4,11 +4,11 @@ description: The correct model ID for image generation is gemini-2.5-flash-image
 type: feedback
 ---
 
-Use `gemini-2.5-flash-image` as the model ID for all image generation calls.
+Use `gemini-3-pro-image-preview` (Nano Banana Pro) as the model ID for all image generation. NEVER use `gemini-2.5-flash-image` (Flash tier) because the quality is visibly poor and looks AI-generated.
 
-**Why:** The model `gemini-2.0-flash-exp` was deprecated and returns 404 NOT_FOUND. Confirmed via Context7 docs for googleapis/python-genai (2026-03-15).
+**Why:** On 2026-03-15, images generated with `gemini-2.5-flash-image` were low quality and looked skewed/artificial. Switching to `gemini-3-pro-image-preview` with `image_size='2K'` produced sharp, photorealistic results at 2752x1536 native resolution.
 
-**How to apply:** In every `client.models.generate_content()` call, use `model='gemini-2.5-flash-image'`. Also use `response_modalities=['IMAGE']` in the config. The `image_config` parameter with `aspect_ratio` is optional.
+**How to apply:** In every image generation call, use this exact pattern. ALWAYS set aspect_ratio and image_size.
 
 **Python pattern:**
 ```python

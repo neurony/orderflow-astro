@@ -9,6 +9,7 @@ const articles = defineCollection({
     date: z.string(),
     category: z.string().optional(),
     image: z.string().optional(),
+    heroImage: z.string().optional(),
     author: z
       .object({
         name: z.string(),
@@ -54,6 +55,7 @@ const pages = defineCollection({
     seoDescription: z.string().optional(),
     canonicalUrl: z.string().optional(),
     ogImage: z.string().optional(),
+    heroImage: z.string().optional(),
     ogType: z.enum(['website', 'article']).optional(),
     noindex: z.boolean().optional(),
     schemaType: z.enum(['SoftwareApplication', 'Article', 'FAQPage']).optional(),
@@ -81,6 +83,7 @@ const caseStudies = defineCollection({
     seoDescription: z.string().optional(),
     canonicalUrl: z.string().optional(),
     ogImage: z.string().optional(),
+    heroImage: z.string().optional(),
     pubDate: z.string().optional(),
     updatedDate: z.string().optional(),
     clientName: z.string().optional(),
