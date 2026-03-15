@@ -258,28 +258,3 @@ The fastest way to find out is to test it on your actual orders — not a demo d
 
 [Learn how OrderFlow handles email order processing for distribution businesses](/insights/email-order-processing).
 
-## Frequently Asked Questions
-
-### How long does AI take to process an email order?
-
-AI processes most email orders in seconds, not minutes. From the moment an email arrives in the monitored inbox to structured line items ready for review or ERP import, processing typically completes in under 30 seconds. A trained CSR doing the same work manually spends 3-10 minutes per order.
-
-### Can AI process orders written in multiple languages?
-
-Yes. Modern NLP models handle multilingual content natively. An email mixing German product descriptions with English delivery instructions is processed as a single order. The AI matches products to your catalog regardless of the language the customer used.
-
-### What happens when the AI is not confident about a product match?
-
-Every line item receives a confidence score between 0 and 1. Items above the threshold proceed automatically. Items below the threshold are flagged for human review, where a team member can confirm, correct, or reject the match before anything enters the ERP.
-
-### Does AI order processing work with handwritten notes and photos?
-
-Yes. When an email contains an attached photo of a handwritten list, the AI applies OCR to extract text, then runs the same NLP interpretation pipeline. Handwritten orders typically produce lower confidence scores on individual items, which triggers more human review, but the AI handles the reading and interpretation.
-
-### What ERP systems can receive the processed order data?
-
-The AI outputs structured data via API, connecting to SAP, Microsoft Dynamics 365, Sage, and most ERP systems that accept data imports. The output is a structured record with product codes, quantities, pricing, and delivery details mapped to your catalog.
-
-### How does AI handle orders that reference previous orders?
-
-When the AI encounters phrases like "same as last week," "repeat order," or "usual quantities," it retrieves the most recent order for that customer and uses it as the baseline. Any modifications mentioned in the current email are applied on top of that historical order.
