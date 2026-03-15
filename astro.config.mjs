@@ -14,6 +14,7 @@ export default defineConfig({
     react(),
     markdoc(),
     sitemap({
+      lastmod: new Date(),
       i18n: {
         defaultLocale: 'en',
         locales: { en: 'en', ro: 'ro', de: 'de' },
