@@ -9,14 +9,26 @@ const [articles, pages, caseStudies] = await Promise.all([
   getCollection('caseStudies'),
 ]);
 
-// Normalize into a unified list with a date and contentType label
+// Format date as dd-mm-yyyy
+function formatDate(dateStr: string): string {
+  if (!dateStr) return '';
+  const d = new Date(dateStr);
+  const day = String(d.getDate()).padStart(2, '0');
+  const month = String(d.getMonth() + 1).padStart(2, '0');
+  const year = d.getFullYear();
+  return `${day}-${month}-${year}`;
+}
+
+// Normalize into a unified list
 type InsightItem = {
   id: string;
   title: string;
   date: string;
+  dateFormatted: string;
   image?: string;
   category?: string;
   contentTypeLabel: string;
+  filterTag: string;
 };
 
 const allItems: InsightItem[] = [
@@ -24,25 +36,31 @@ const allItems: InsightItem[] = [
     id: a.id,
     title: a.data.title,
     date: a.data.date || '',
+    dateFormatted: formatDate(a.data.date || ''),
     image: a.data.image,
     category: a.data.category,
     contentTypeLabel: 'Article',
+    filterTag: a.data.category || 'Article',
   })),
   ...pages.map((p) => ({
     id: p.id,
     title: p.data.title,
     date: (p.data as any).pubDate || '',
+    dateFormatted: formatDate((p.data as any).pubDate || ''),
     image: (p.data as any).ogImage,
     category: undefined,
     contentTypeLabel: 'Product Guide',
+    filterTag: 'Product Guide',
   })),
   ...caseStudies.map((c) => ({
     id: c.id,
     title: c.data.title,
     date: (c.data as any).pubDate || '',
+    dateFormatted: formatDate((c.data as any).pubDate || ''),
     image: (c.data as any).ogImage,
     category: undefined,
     contentTypeLabel: 'Case Study',
+    filterTag: 'Case Study',
   })),
 ];
 
@@ -53,21 +71,19 @@ const breadcrumbSchema = {
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
   itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://orderflow.biz' },
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://orderflow.com' },
     { '@type': 'ListItem', position: 2, name: 'Insights' },
   ],
 };
 
-// Extract unique categories from articles + content type labels
-const articleCategories = [...new Set(articles.map((a) => a.data.category).filter(Boolean))];
-const contentTypeLabels = ['Article', 'Product Guide', 'Case Study'];
-const categories = [...contentTypeLabels, ...articleCategories];
+// Build unique filter tags (content types + article categories, deduplicated)
+const allTags = [...new Set(allItems.map((item) => item.filterTag))];
 ---
 
 <BaseLayout
   title="Insights — Articles on Order Processing Automation | Orderflow"
   description="Explore articles and insights on AI-powered order processing, distribution automation, and ERP integration for modern businesses."
-  canonical="https://orderflow.biz/insights"
+  canonical="https://orderflow.com/insights"
   jsonLd={breadcrumbSchema}
 >
   <main>
@@ -76,11 +92,12 @@ const categories = [...contentTypeLabels, ...articleCategories];
       <div class="section__card section__card--muted insights-hero">
         <div class="insights-hero__text">
           <h1 class="insights-hero__title" data-reveal="up">Insights</h1>
-          <p class="insights-hero__subtitle" data-reveal="up" style="--delay:0.1s">Delve deeper into our latest insights on order automation, industry updates, and scaling distribution operations.</p>
+          <p class="insights-hero__subtitle" data-reveal="up" style="--delay:0.1s">Explore our latest insights on order automation, industry updates, and scaling distribution operations.</p>
         </div>
         <div class="insights-hero__tags" data-reveal="up" style="--delay:0.2s">
-          {categories.map((cat) => (
-            <button class="tag">{cat}</button>
+          <button class="tag tag--active" data-filter="all">All</button>
+          {allTags.map((tag) => (
+            <button class="tag" data-filter={tag}>{tag}</button>
           ))}
         </div>
       </div>
@@ -91,27 +108,20 @@ const categories = [...contentTypeLabels, ...articleCategories];
       <div class="section__card section__card--white articles">
         <!-- Header row -->
         <div class="articles__header" data-reveal="up">
-          <h2 class="articles__title">{sortedItems.length} articles for you</h2>
-          <div class="articles__sort">
-            <span class="articles__sort-label">Sort by:</span>
-            <span class="articles__sort-value">Newest</span>
-            <svg class="articles__sort-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-              <path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </div>
+          <h2 class="articles__title" id="articles-count">{sortedItems.length} articles for you</h2>
         </div>
 
         <!-- Article grid -->
-        <div class="article-grid" data-reveal-stagger>
+        <div class="article-grid" id="article-grid" data-reveal-stagger>
           {sortedItems.map((item) => (
-            <a href={`/insights/${item.id}`} class="article-card" data-reveal="up">
+            <a href={`/insights/${item.id}`} class="article-card" data-reveal="up" data-tag={item.filterTag}>
               <div class="article-card__image-wrap">
                 {item.image && <img src={item.image} alt="" class="article-card__image" loading="lazy">}
                 {(item.category || item.contentTypeLabel) && (
                   <span class="article-card__tag">{item.category || item.contentTypeLabel}</span>
                 )}
               </div>
-              <span class="article-card__date">{item.date}</span>
+              <span class="article-card__date">{item.dateFormatted}</span>
               <h3 class="article-card__title">{item.title}</h3>
             </a>
           ))}
@@ -122,33 +132,39 @@ const categories = [...contentTypeLabels, ...articleCategories];
   </main>
 
   <script is:inline>
-    document.querySelector('.mobile-menu-toggle').addEventListener('click', function() {
-      const expanded = this.getAttribute('aria-expanded') === 'true';
-      this.setAttribute('aria-expanded', !expanded);
-      document.getElementById('nav-menu').classList.toggle('nav-links--open', !expanded);
-    });
-  </script>
-
-  <script is:inline>
+    // Tag filter functionality
     (function() {
-      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-        document.querySelectorAll('[data-reveal]').forEach(function(el) { el.classList.add('revealed'); });
-        return;
-      }
-      document.querySelectorAll('[data-reveal-stagger]').forEach(function(container) {
-        var children = container.querySelectorAll(':scope > [data-reveal]');
-        children.forEach(function(child, i) {
-          if (!child.style.getPropertyValue('--delay')) { child.style.setProperty('--delay', (i * 0.1) + 's'); }
+      var tags = document.querySelectorAll('[data-filter]');
+      var cards = document.querySelectorAll('[data-tag]');
+      var countEl = document.getElementById('articles-count');
+
+      tags.forEach(function(tag) {
+        tag.addEventListener('click', function() {
+          // Update active state
+          tags.forEach(function(t) { t.classList.remove('tag--active'); });
+          tag.classList.add('tag--active');
+
+          var filter = tag.getAttribute('data-filter');
+          var visible = 0;
+
+          cards.forEach(function(card) {
+            if (filter === 'all' || card.getAttribute('data-tag') === filter) {
+              card.style.display = '';
+              visible++;
+            } else {
+              card.style.display = 'none';
+            }
+          });
+
+          // Update count
+          if (countEl) {
+            countEl.textContent = visible + (visible === 1 ? ' article for you' : ' articles for you');
+          }
         });
       });
-      var observer = new IntersectionObserver(function(entries) {
-        entries.forEach(function(entry) {
-          if (entry.isIntersecting) { entry.target.classList.add('revealed'); observer.unobserve(entry.target); }
-        });
-      }, { threshold: 0.15, rootMargin: '0px 0px -50px 0px' });
-      document.querySelectorAll('[data-reveal]').forEach(function(el) { observer.observe(el); });
     })();
   </script>
+
 <style is:global>
 /* ----- Active nav link ----- */
 .nav-link--active {
@@ -209,7 +225,7 @@ const categories = [...contentTypeLabels, ...articleCategories];
   white-space: nowrap;
   cursor: pointer;
   box-shadow: var(--shadow-sm);
-  transition: background-color 0.15s ease;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
 }
 
 .tag:hover {
@@ -217,11 +233,13 @@ const categories = [...contentTypeLabels, ...articleCategories];
 }
 
 .tag--active {
-  background-color: var(--color-orange-300);
+  background-color: var(--color-neutral-900);
+  border-color: var(--color-neutral-900);
+  color: #fff;
 }
 
 .tag--active:hover {
-  background-color: #ffa94d;
+  background-color: var(--color-neutral-700);
 }
 
 /* ----- Articles Section ----- */
@@ -235,7 +253,6 @@ const categories = [...contentTypeLabels, ...articleCategories];
 .articles__header {
   display: flex;
   align-items: center;
-  justify-content: space-between;
   width: 100%;
 }
 
@@ -244,36 +261,6 @@ const categories = [...contentTypeLabels, ...articleCategories];
   font-weight: var(--weight-regular);
   line-height: var(--leading-snug);
   color: var(--color-neutral-900);
-}
-
-.articles__sort {
-  display: flex;
-  align-items: center;
-  gap: var(--space-4);
-  background-color: var(--color-white);
-  border: 1px solid var(--color-neutral-300);
-  border-radius: var(--radius-md);
-  padding: var(--space-12) var(--space-12) var(--space-12) var(--space-16);
-  font-size: var(--text-base);
-  line-height: 0;
-  cursor: pointer;
-}
-
-.articles__sort-label {
-  color: var(--color-neutral-500);
-  line-height: var(--leading-normal);
-}
-
-.articles__sort-value {
-  color: var(--color-neutral-900);
-  line-height: var(--leading-normal);
-}
-
-.articles__sort-icon {
-  width: 20px;
-  height: 20px;
-  color: var(--color-neutral-900);
-  transform: rotate(90deg);
 }
 
 /* ----- Article Grid ----- */
