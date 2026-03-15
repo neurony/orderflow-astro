@@ -1573,6 +1573,14 @@ main {
   text-decoration: underline;
 }
 
+.cta__checkbox--error .cta__checkbox-text {
+  color: #dc2626;
+}
+
+.cta__checkbox--error .cta__checkbox-input {
+  border-color: #dc2626;
+}
+
 /* ----- FOOTER ----- */
 .site-footer {
   padding: 0 var(--space-24) var(--space-24);

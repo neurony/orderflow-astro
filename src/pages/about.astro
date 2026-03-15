@@ -274,8 +274,14 @@ const aboutPageSchema = {
           var prefix = form.id.replace('-lead-form', '');
           var email = form.querySelector('[name="email"]').value.trim();
           var company = form.querySelector('[name="company"]').value.trim();
-          var terms = form.querySelector('[name="terms"]').checked;
-          if (!email || !company || !terms) return;
+          var termsInput = form.querySelector('[name="terms"]');
+          var termsLabel = termsInput.closest('.cta__checkbox');
+          termsLabel.classList.remove('cta__checkbox--error');
+          if (!termsInput.checked) {
+            termsLabel.classList.add('cta__checkbox--error');
+            return;
+          }
+          if (!email || !company) return;
 
           document.getElementById(prefix + '-form-step').style.display = 'none';
           var calendlyStep = document.getElementById(prefix + '-calendly-step');

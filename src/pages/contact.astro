@@ -106,8 +106,14 @@ const contactSchema = {
           var prefix = form.id.replace('-lead-form', '');
           var email = form.querySelector('[name="email"]').value.trim();
           var company = form.querySelector('[name="company"]').value.trim();
-          var terms = form.querySelector('[name="agree"]') || form.querySelector('[name="terms"]');
-          if (!email || !company || !terms.checked) return;
+          var termsInput = form.querySelector('[name="agree"]') || form.querySelector('[name="terms"]');
+          var termsLabel = termsInput.closest('.form-checkbox') || termsInput.closest('.cta__checkbox');
+          termsLabel.classList.remove('form-checkbox--error', 'cta__checkbox--error');
+          if (!termsInput.checked) {
+            termsLabel.classList.add(termsLabel.classList.contains('form-checkbox') ? 'form-checkbox--error' : 'cta__checkbox--error');
+            return;
+          }
+          if (!email || !company) return;
 
           document.getElementById(prefix + '-form-step').style.display = 'none';
           var calendlyStep = document.getElementById(prefix + '-calendly-step');
@@ -471,6 +477,14 @@ const contactSchema = {
 
 .form-checkbox__text a:hover {
   color: var(--color-neutral-700);
+}
+
+.form-checkbox--error .form-checkbox__text {
+  color: #dc2626;
+}
+
+.form-checkbox--error .form-checkbox__input {
+  border-color: #dc2626;
 }
 
 /* ----- Responsive ----- */
