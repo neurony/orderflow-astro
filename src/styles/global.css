@@ -2324,7 +2324,131 @@ main {
 }
 
 /* =============================================
-   9. ARTICLE BODY & PROSE TYPOGRAPHY
+   9. INSIGHT HERO (Full-bleed with overlay)
+   ============================================= */
+
+.insight-hero {
+  position: relative;
+  min-height: 420px;
+  display: flex;
+  align-items: flex-end;
+  background-size: cover;
+  background-position: center;
+  background-color: var(--color-neutral-900);
+  margin: var(--space-16);
+  border-radius: var(--radius-2xl);
+  overflow: hidden;
+}
+
+.insight-hero__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(15, 23, 43, 0.92) 0%,
+    rgba(15, 23, 43, 0.6) 50%,
+    rgba(15, 23, 43, 0.3) 100%
+  );
+  z-index: 1;
+}
+
+.insight-hero__inner {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 860px;
+  padding: var(--space-48) var(--space-64);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-16);
+}
+
+.insight-hero__back {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-4);
+  color: rgba(255, 255, 255, 0.7);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-regular);
+  text-decoration: none;
+  transition: color 0.15s ease;
+  margin-bottom: var(--space-8);
+}
+
+.insight-hero__back:hover {
+  color: #fff;
+}
+
+.insight-hero__meta {
+  display: flex;
+  align-items: center;
+  gap: var(--space-12);
+}
+
+.insight-hero__badge {
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: var(--radius-md);
+  padding: var(--space-4) var(--space-12);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-regular);
+  color: #fff;
+}
+
+.insight-hero__date {
+  font-size: var(--text-sm);
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.insight-hero__title {
+  font-size: var(--text-4xl);
+  font-weight: var(--weight-medium);
+  line-height: var(--leading-tight);
+  color: #fff;
+  max-width: 780px;
+}
+
+.insight-hero__subtitle {
+  font-size: var(--text-lg);
+  line-height: var(--leading-relaxed);
+  color: rgba(255, 255, 255, 0.75);
+  max-width: 640px;
+}
+
+@media (max-width: 1024px) {
+  .insight-hero {
+    min-height: 360px;
+    margin: var(--space-8);
+  }
+  .insight-hero__inner {
+    padding: var(--space-32) var(--space-32);
+  }
+  .insight-hero__title {
+    font-size: var(--text-3xl);
+  }
+}
+
+@media (max-width: 640px) {
+  .insight-hero {
+    min-height: 300px;
+    margin: var(--space-8);
+    border-radius: var(--radius-xl);
+  }
+  .insight-hero__inner {
+    padding: var(--space-24) var(--space-24);
+  }
+  .insight-hero__title {
+    font-size: var(--text-2xl);
+  }
+  .insight-hero__subtitle {
+    font-size: var(--text-base);
+  }
+}
+
+/* =============================================
+   10. ARTICLE BODY & PROSE TYPOGRAPHY
    ============================================= */
 
 /* ----- Article Body ----- */
@@ -2345,6 +2469,12 @@ main {
   font-size: var(--text-lg);
   line-height: var(--leading-relaxed);
   color: var(--color-neutral-700);
+}
+
+/* Hide the first H1 in prose — the hero already shows the title */
+.article-prose > h1:first-child,
+.article-prose > article > h1:first-child {
+  display: none;
 }
 
 .article-prose p {

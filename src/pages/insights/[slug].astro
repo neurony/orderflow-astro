@@ -179,74 +179,48 @@ const stats = contentType === 'caseStudy' ? ((entry.data as any).stats || []) : 
   jsonLd={jsonLdSchemas}
 >
   <main>
-    {/* ===== ARTICLE HERO ===== */}
-    <section class="section section--article-hero">
-      <div class="section__card section__card--muted article-hero">
-        <div class="article-hero__content">
-          <a href="/insights" class="article-hero__back" aria-label="Back to Insights">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-              <path d="M15 6L9 12L15 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </a>
-          <h1 class="article-hero__title" data-reveal="up">{entry.data.title}</h1>
+    {/* ===== FULL-BLEED HERO WITH OVERLAY ===== */}
+    <section class="insight-hero" style={heroImage ? `background-image: url(${heroImage})` : undefined}>
+      <div class="insight-hero__overlay"></div>
+      <div class="insight-hero__inner">
+        <a href="/insights" class="insight-hero__back" aria-label="Back to Insights">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M15 6L9 12L15 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          All insights
+        </a>
 
-          {/* Article meta: category tag, date, read time */}
-          {contentType === 'article' && (
-            <div class="article-hero__meta" data-reveal="up" style="--delay:0.1s">
-              {(entry.data as any).category && <span class="article-hero__tag">{(entry.data as any).category}</span>}
-              <div class="article-hero__meta-row">
-                <span class="article-hero__meta-item">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                    <path d="M19 4H5C3.89543 4 3 4.89543 3 6V20C3 21.1046 3.89543 22 5 22H19C20.1046 22 21 21.1046 21 20V6C21 4.89543 20.1046 4 19 4Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                    <path d="M16 2V6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                    <path d="M8 2V6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                    <path d="M3 10H21" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                  </svg>
-                  {(entry.data as any).date}
-                </span>
-                {(entry.data as any).readTime && (
-                  <span class="article-hero__meta-item">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                      <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                      <path d="M12 7V12L15 15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                    {(entry.data as any).readTime}
-                  </span>
-                )}
-              </div>
-            </div>
+        <div class="insight-hero__meta">
+          {/* Category / content type badge */}
+          {contentType === 'article' && (entry.data as any).category && (
+            <span class="insight-hero__badge">{(entry.data as any).category}</span>
+          )}
+          {contentType === 'page' && (
+            <span class="insight-hero__badge">Product Guide</span>
+          )}
+          {contentType === 'caseStudy' && (
+            <span class="insight-hero__badge">Case Study</span>
           )}
 
-          {/* Page (product) meta: subtitle */}
-          {contentType === 'page' && (entry.data as any).seoDescription && (
-            <p class="article-hero__subtitle" data-reveal="up" style="--delay:0.1s">
-              {(entry.data as any).seoDescription}
-            </p>
-          )}
-
-          {/* Case study meta: industry tag, company, client */}
-          {contentType === 'caseStudy' && ((entry.data as any).clientName || (entry.data as any).clientCompany) && (
-            <div class="article-hero__meta" data-reveal="up" style="--delay:0.1s">
-              {(entry.data as any).industry && <span class="article-hero__tag">{(entry.data as any).industry}</span>}
-              <div class="article-hero__meta-row">
-                {(entry.data as any).clientCompany && (
-                  <span class="article-hero__meta-item">
-                    <strong>{(entry.data as any).clientCompany}</strong>
-                  </span>
-                )}
-                {(entry.data as any).clientName && (
-                  <span class="article-hero__meta-item">
-                    {(entry.data as any).clientName}{(entry.data as any).clientRole ? `, ${(entry.data as any).clientRole}` : ''}
-                  </span>
-                )}
-              </div>
-            </div>
-          )}
+          {/* Date */}
+          <span class="insight-hero__date">
+            {contentType === 'article' ? (entry.data as any).date : (entry.data as any).pubDate}
+          </span>
         </div>
-        {heroImage && (
-          <div class="article-hero__image-wrap">
-            <img src={heroImage} alt={entry.data.title} class="article-hero__image">
-          </div>
+
+        <h1 class="insight-hero__title">{entry.data.title}</h1>
+
+        {/* Subtitle for product pages */}
+        {contentType === 'page' && (entry.data as any).seoDescription && (
+          <p class="insight-hero__subtitle">{(entry.data as any).seoDescription}</p>
+        )}
+
+        {/* Case study client info */}
+        {contentType === 'caseStudy' && (entry.data as any).clientCompany && (
+          <p class="insight-hero__subtitle">
+            {(entry.data as any).clientCompany}
+            {(entry.data as any).clientName && ` · ${(entry.data as any).clientName}, ${(entry.data as any).clientRole || ''}`}
+          </p>
         )}
       </div>
     </section>
