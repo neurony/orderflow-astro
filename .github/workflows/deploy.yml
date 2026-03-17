@@ -1,0 +1,119 @@
+name: Deploy
+on:
+  push:
+    branches:
+      - main
+      - dev
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: "Environment to deploy to"
+        required: true
+        default: "development"
+        type: choice
+        options:
+          - development
+          - staging
+
+jobs:
+  deploy-dev-staging:
+    if: github.ref_name == 'dev' || github.event_name == 'workflow_dispatch'
+    name: Deploy to ${{ github.event_name == 'workflow_dispatch' && inputs.environment || 'staging' }}
+    runs-on: ubuntu-latest
+    environment: ${{ github.event_name == 'workflow_dispatch' && inputs.environment || 'staging' }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup SSH (Staging)
+        if: github.event_name == 'push'
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+          ssh-keyscan -H ${{ vars.SSH_HOST }} >> ~/.ssh/known_hosts
+
+      - name: Setup SSH (Development)
+        if: github.event_name == 'workflow_dispatch'
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+
+          # Scan the gateway on its SSH port
+          ssh-keyscan -p ${{ vars.GATEWAY_PORT }} -H ${{ vars.GATEWAY_HOST }} >> ~/.ssh/known_hosts
+
+          # Create SSH config with ProxyJump
+          cat >> ~/.ssh/config << EOF
+          Host gateway
+            HostName ${{ vars.GATEWAY_HOST }}
+            Port ${{ vars.GATEWAY_PORT }}
+            User ${{ vars.SSH_USER }}
+            IdentityFile ~/.ssh/deploy_key
+            StrictHostKeyChecking no
+
+          Host target
+            HostName ${{ vars.SSH_HOST }}
+            User ${{ vars.SSH_USER }}
+            IdentityFile ~/.ssh/deploy_key
+            ProxyJump gateway
+            StrictHostKeyChecking no
+          EOF
+
+          chmod 600 ~/.ssh/config
+
+      - name: Deploy to Server (Staging)
+        if: github.event_name == 'push'
+        env:
+          SSH_USER: ${{ vars.SSH_USER }}
+          SSH_HOST: ${{ vars.SSH_HOST }}
+          DEPLOY_PATH: ${{ vars.SSH_DEPLOY_PATH }}
+          ENVIRONMENT: staging
+        run: |
+          ssh -i ~/.ssh/deploy_key -o StrictHostKeyChecking=no "$SSH_USER@$SSH_HOST" "DEPLOY_PATH='$DEPLOY_PATH' ENVIRONMENT='$ENVIRONMENT' bash -s" < ./.deploy/deploy.sh
+
+      - name: Deploy to Server (Development)
+        if: github.event_name == 'workflow_dispatch'
+        env:
+          DEPLOY_PATH: ${{ vars.SSH_DEPLOY_PATH }}
+          ENVIRONMENT: ${{ inputs.environment }}
+        run: |
+          # Strip any carriage returns from variables
+          DEPLOY_PATH=$(echo "$DEPLOY_PATH" | tr -d '\r')
+          ENVIRONMENT=$(echo "$ENVIRONMENT" | tr -d '\r')
+          ssh target "DEPLOY_PATH='$DEPLOY_PATH' ENVIRONMENT='$ENVIRONMENT' bash -s" < ./.deploy/deploy.sh
+
+      - name: Cleanup SSH
+        if: always()
+        run: |
+          rm -f ~/.ssh/deploy_key
+          rm -f ~/.ssh/config
+
+  deploy-production:
+    if: github.ref_name == 'main' && github.event_name == 'push'
+    name: Deploy to Production
+    runs-on: ubuntu-latest
+    environment: production
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup SSH
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+          ssh-keyscan -H ${{ vars.SSH_HOST }} >> ~/.ssh/known_hosts
+
+      - name: Deploy to Server
+        env:
+          SSH_USER: ${{ vars.SSH_USER }}
+          SSH_HOST: ${{ vars.SSH_HOST }}
+          DEPLOY_PATH: ${{ vars.SSH_DEPLOY_PATH }}
+          ENVIRONMENT: production
+        run: |
+          ssh -i ~/.ssh/deploy_key -o StrictHostKeyChecking=no "$SSH_USER@$SSH_HOST" "DEPLOY_PATH='$DEPLOY_PATH' ENVIRONMENT='$ENVIRONMENT' bash -s" < ./.deploy/deploy.sh
+
+      - name: Cleanup SSH
+        if: always()
+        run: rm -f ~/.ssh/deploy_key
