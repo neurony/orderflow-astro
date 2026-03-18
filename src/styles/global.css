@@ -2226,6 +2226,7 @@ main {
   display: flex;
   flex-direction: column;
   gap: var(--space-16);
+  margin-top: var(--space-32);
 }
 
 .faq-item {
