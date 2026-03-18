@@ -33,6 +33,7 @@ const articles = defineCollection({
         })
       )
       .optional(),
+    relatedArticles: z.array(z.string()).optional(),
   }),
 });
 
