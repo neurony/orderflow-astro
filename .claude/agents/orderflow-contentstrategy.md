@@ -314,7 +314,7 @@ WORD COUNT BENCHMARK: Top 3 avg [X] words → target [+10%] words
 
 ── SECTION 3: PAGE SPECIFICATIONS ──
 
-URL (FINAL): https://orderflow.ai/[slug]
+URL (FINAL): https://orderflow.biz/[slug]
 SLUG: /[slug]
 WORD COUNT: [target range]
 TITLE TAG: [50–60 char draft]     Character count: [X/60]

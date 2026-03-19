@@ -855,7 +855,7 @@ updatedDate: YYYY-MM-DD             # update every time content changes substant
 # ── SEO ───────────────────────────────────────────────────────
 seoTitle: "[Title Tag — 50–60 chars, keyword near start, | OrderFlow at end]"
 seoDescription: "[Meta description — 140–155 chars, keyword + data point + CTA word]"
-canonicalUrl: "https://orderflow.ai/[full-slug]"
+canonicalUrl: "https://orderflow.biz/[full-slug]"
 noindex: false                      # NEVER set to true unless explicitly instructed
 
 # ── OPEN GRAPH ─────────────────────────────────────────────────
@@ -867,13 +867,13 @@ ogType: "article"                   # article | website
 # ── HREFLANG (only when localized versions exist) ──────────────
 hreflang:
   - lang: "en"
-    url: "https://orderflow.ai/[slug]"
+    url: "https://orderflow.biz/[slug]"
   - lang: "de"
-    url: "https://orderflow.ai/de/[de-slug]"
+    url: "https://orderflow.biz/de/[de-slug]"
   - lang: "nl"
-    url: "https://orderflow.ai/nl/[nl-slug]"
+    url: "https://orderflow.biz/nl/[nl-slug]"
   - lang: "x-default"
-    url: "https://orderflow.ai/[slug]"
+    url: "https://orderflow.biz/[slug]"
 
 # ── SCHEMA ────────────────────────────────────────────────────
 schema:
@@ -1174,14 +1174,14 @@ After every deployment that adds or significantly changes pages, complete this s
 Astro's sitemap integration generates a `sitemap-index.xml` that references individual sitemap files. Submit this, not `sitemap.xml` directly:
 
 - GSC → [OrderFlow property] → Sitemaps (left sidebar)
-- Submit URL: `https://orderflow.ai/sitemap-index.xml`
+- Submit URL: `https://orderflow.biz/sitemap-index.xml`
 - If already listed: click it → **Resubmit**
 - Expected status: "Success" — any error means the build didn't generate a valid sitemap; investigate before proceeding
 
 **Step 2 — Request Indexing for Each New URL**
 
 - GSC → URL Inspection (search bar at top)
-- Enter the full URL: e.g., `https://orderflow.ai/blog/how-ai-processes-email-orders`
+- Enter the full URL: e.g., `https://orderflow.biz/blog/how-ai-processes-email-orders`
 - Click **Request Indexing**
 - Repeat for every new URL in this deployment
 - Quota: approximately 10–12 Request Indexing calls per day — prioritize product pages and pillar content first
@@ -1349,7 +1349,7 @@ updatedDate: YYYY-MM-DD
 # ── SEO ───────────────────────────────────────────────────────
 seoTitle: "[Title Tag — 50–60 chars — keyword near start | OrderFlow]"
 seoDescription: "[Meta description — 140–155 chars — keyword + data point + CTA word]"
-canonicalUrl: "https://orderflow.ai/[full-slug]"
+canonicalUrl: "https://orderflow.biz/[full-slug]"
 noindex: false
 
 # ── OPEN GRAPH ─────────────────────────────────────────────────
@@ -1361,11 +1361,11 @@ ogType: "article"
 # ── HREFLANG (only if localized versions exist and are live) ───
 hreflang:
   - lang: "en"
-    url: "https://orderflow.ai/[slug]"
+    url: "https://orderflow.biz/[slug]"
   - lang: "de"
-    url: "https://orderflow.ai/de/[de-slug]"
+    url: "https://orderflow.biz/de/[de-slug]"
   - lang: "x-default"
-    url: "https://orderflow.ai/[slug]"
+    url: "https://orderflow.biz/[slug]"
 
 # ── SCHEMA ────────────────────────────────────────────────────
 schema:
