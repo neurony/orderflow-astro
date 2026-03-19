@@ -5,3 +5,7 @@ dist/
 .env
 .env.local
 .env.production
+*.json
+!package.json
+!package-lock.json
+!tsconfig.json
