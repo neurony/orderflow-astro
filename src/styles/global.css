@@ -2215,6 +2215,13 @@ main {
   }
 }
 
+/* ----- RELATED ARTICLES SECTION ----- */
+.section--related-articles .section__card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-48);
+}
+
 /* ----- FAQ SECTION ----- */
 .section--faq .section__card {
   padding: var(--space-64) var(--space-48);
