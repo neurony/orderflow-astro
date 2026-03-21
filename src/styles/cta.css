@@ -1,0 +1,255 @@
+/* =============================================
+   CTA SECTION STYLES
+   Imported by src/pages/index.astro and src/pages/about.astro
+   ============================================= */
+
+/* ----- CTA BANNER ----- */
+.section--cta .section__card {
+  padding: 112px 184px 64px;
+  border: 1.5px solid var(--color-neutral-200);
+  position: relative;
+  overflow: visible;
+}
+
+.cta__ticker {
+  position: absolute;
+  top: -1.5px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 1464px;
+  background: var(--color-white);
+  border: 1px solid var(--color-neutral-200);
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-8);
+  padding: var(--space-12) var(--space-24);
+  font-size: var(--text-xl);
+  color: var(--color-neutral-900);
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.cta__ticker-logo {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+}
+
+.cta__layout {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-64);
+}
+
+.cta__left {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-16);
+  max-width: 534px;
+}
+
+.cta__logo {
+  width: 48px;
+  height: 48px;
+}
+
+.cta__title {
+  font-size: var(--text-4xl);
+  font-weight: var(--weight-regular);
+  line-height: var(--leading-snug);
+  color: var(--color-white);
+}
+
+.cta__subtitle {
+  font-size: var(--text-lg);
+  line-height: var(--leading-relaxed);
+  color: var(--color-white);
+}
+
+.cta__subtitle strong {
+  font-weight: var(--weight-semibold);
+}
+
+.cta__right {
+  flex-shrink: 0;
+}
+
+.cta__form-card {
+  background: var(--color-white);
+  border: 1.5px solid var(--color-neutral-200);
+  border-radius: var(--radius-xl);
+  padding: var(--space-32);
+  box-shadow: var(--shadow-md);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-24);
+  width: 472px;
+}
+
+.cta__form-card form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-24);
+}
+
+.cta__form-heading {
+  font-size: var(--text-2xl);
+  font-weight: var(--weight-semibold);
+  line-height: var(--leading-relaxed);
+  color: var(--color-neutral-900);
+}
+
+.cta__input {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  background: var(--color-white);
+  border: 1.5px solid var(--color-neutral-200);
+  border-radius: var(--radius-lg);
+  padding: var(--space-8) var(--space-12);
+}
+
+.cta__input:focus-within {
+  border-color: var(--color-neutral-400);
+}
+
+.cta__input-label {
+  font-size: var(--text-sm);
+  font-weight: var(--weight-medium);
+  color: var(--color-neutral-900);
+}
+
+.cta__input-field {
+  font-family: var(--font-sans);
+  font-size: var(--text-sm);
+  color: var(--color-neutral-900);
+  border: none;
+  outline: none;
+  padding: 0;
+  background: transparent;
+}
+
+.cta__input-field::placeholder {
+  color: var(--color-neutral-500);
+}
+
+.cta__checkbox {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-12);
+  padding: var(--space-12) 0;
+}
+
+.cta__checkbox-input {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  margin-top: 2px;
+  accent-color: var(--color-neutral-900);
+  cursor: pointer;
+}
+
+.cta__checkbox-text {
+  font-size: var(--text-sm);
+  color: var(--color-neutral-900);
+  line-height: var(--leading-normal);
+  cursor: pointer;
+}
+
+.cta__checkbox-text a {
+  text-decoration: underline;
+}
+
+.cta__checkbox--error .cta__checkbox-text {
+  color: #dc2626;
+}
+
+.cta__checkbox--error .cta__checkbox-input {
+  border-color: #dc2626;
+}
+
+/* =============================================
+   RESPONSIVE — CTA SECTION
+   ============================================= */
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .cta__layout {
+    flex-direction: column;
+  }
+}
+
+/* Mobile */
+@media (max-width: 640px) {
+  /* --- CTA section --- */
+  .section--cta .section__card {
+    padding: 80px var(--space-16) var(--space-48);
+  }
+
+  .cta__layout {
+    flex-direction: column;
+    gap: var(--space-32);
+  }
+
+  .cta__left {
+    max-width: 100%;
+  }
+
+  .cta__title {
+    font-size: var(--text-3xl);
+  }
+
+  .cta__subtitle {
+    font-size: var(--text-base);
+  }
+
+  .cta__right {
+    width: 100%;
+  }
+
+  .cta__form-card {
+    width: 100%;
+  }
+
+  .cta__form-heading {
+    font-size: var(--text-xl);
+  }
+
+  .cta__ticker {
+    font-size: var(--text-base);
+    padding: var(--space-8) var(--space-16);
+  }
+}
+
+/* =============================================
+   ANIMATIONS — CTA TICKER
+   ============================================= */
+
+/* --- CTA ticker marquee --- */
+@keyframes tickerScroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.cta__ticker {
+  justify-content: flex-start;
+}
+
+.cta__ticker-inner {
+  display: flex;
+  align-items: center;
+  gap: var(--space-8);
+  white-space: nowrap;
+  animation: tickerScroll 30s linear infinite;
+}
+
+/* --- Reduced motion: CTA ticker --- */
+@media (prefers-reduced-motion: reduce) {
+  .cta__ticker-inner {
+    animation: none;
+  }
+}

@@ -1,0 +1,302 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import '../../styles/content.css';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const articles = await getCollection('articles');
+  return articles.map((article) => ({
+    params: { slug: article.id },
+    props: { article },
+  }));
+}
+
+const { article } = Astro.props;
+const { Content } = await render(article);
+
+const pageTitle = article.data.seoTitle || `${article.data.title} | Orderflow`;
+const pageDescription = article.data.seoDescription || article.data.description || '';
+const canonicalUrl = article.data.canonicalUrl || undefined;
+
+// Build JSON-LD schemas
+const jsonLdSchemas: Record<string, any>[] = [];
+
+const articleSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BlogPosting',
+  headline: article.data.title,
+  description: pageDescription,
+  image: article.data.image ? `https://orderflow.com${article.data.image}` : undefined,
+  datePublished: article.data.date,
+  dateModified: article.data.updatedDate || article.data.date,
+  author: article.data.author ? {
+    '@type': 'Person',
+    name: article.data.author.name,
+    jobTitle: article.data.author.role,
+  } : undefined,
+  publisher: { '@id': 'https://orderflow.com/#organization' },
+  mainEntityOfPage: {
+    '@type': 'WebPage',
+    '@id': `https://orderflow.com/articles/${article.id}`,
+  },
+};
+jsonLdSchemas.push(articleSchema);
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://orderflow.com' },
+    { '@type': 'ListItem', position: 2, name: 'Insights', item: 'https://orderflow.com/insights' },
+    { '@type': 'ListItem', position: 3, name: article.data.title },
+  ],
+};
+jsonLdSchemas.push(breadcrumbSchema);
+
+// FAQPage schema (if faq items exist)
+const faqItems = article.data.faq || [];
+if (faqItems.length > 0) {
+  const faqSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqItems.map((item) => ({
+      '@type': 'Question',
+      name: item.question,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: item.answer,
+      },
+    })),
+  };
+  jsonLdSchemas.push(faqSchema);
+}
+
+// Get related articles (same category, excluding current)
+const allArticles = await getCollection('articles');
+const relatedArticles = allArticles
+  .filter((a) => a.id !== article.id && a.data.category === article.data.category)
+  .slice(0, 3);
+---
+
+<BaseLayout
+  title={pageTitle}
+  description={pageDescription}
+  canonical={canonicalUrl}
+  ogType="article"
+  ogImage={article.data.image}
+  article={{
+    publishedTime: article.data.date,
+    modifiedTime: article.data.updatedDate,
+    author: article.data.author?.name,
+    section: article.data.category,
+  }}
+  jsonLd={jsonLdSchemas}
+>
+  <!-- HEADER / NAV -->
+  <header class="site-header">
+    <nav class="site-header__inner" aria-label="Main navigation">
+      <a href="/" class="nav-logo" aria-label="Orderflow home">
+        <svg class="nav-logo__mark" width="138" height="24" viewBox="0 0 138 24" fill="none" aria-hidden="true">
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M4.5194 14.6866H1.07321L1.07297 14.7568C1.07297 16.5531 1.43867 18.1511 2.16959 19.5505C2.92143 20.95 3.96547 22.0469 5.30219 22.8407C6.63891 23.6135 8.21585 24 10.0329 24C11.8499 24 13.4268 23.6134 14.7636 22.8407C16.1003 22.0469 17.1341 20.95 17.8651 19.5505C18.6169 18.1511 18.9933 16.5531 18.9933 14.7568C18.9933 12.9397 18.6169 11.3315 17.8651 9.93207C17.1341 8.53262 16.1003 7.43615 14.7636 6.64242C13.4878 5.88487 11.9932 5.48855 10.2798 5.454V8.52631C11.3229 8.56136 12.2225 8.82093 12.9781 9.30531C13.7925 9.80661 14.4191 10.5273 14.8577 11.4672C15.2963 12.4071 15.5155 13.5037 15.5155 14.7568C15.5155 15.9891 15.2963 17.0755 14.8577 18.0154C14.4191 18.9344 13.7925 19.6551 12.9781 20.1773C12.1635 20.6786 11.1816 20.9293 10.0329 20.9293C8.88427 20.9293 7.89198 20.6786 7.0566 20.1773C6.24214 19.6551 5.61555 18.9344 5.17694 18.0154C4.73834 17.0755 4.51916 15.9891 4.51916 14.7568L4.5194 14.6866Z" fill="#1E2939"/>
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M47.4988 23.4985H44.1468V20.8351C43.6247 21.7959 42.904 22.569 41.9851 23.1538C41.0661 23.7178 39.9067 24 38.5074 24C36.8993 24 35.5001 23.6134 34.3097 22.8407C33.1401 22.0469 32.2314 20.95 31.5839 19.5505C30.9365 18.1511 30.6125 16.5531 30.6125 14.7568C30.6125 12.9397 30.9365 11.3315 31.5839 9.93207C32.2314 8.53261 33.1401 7.43615 34.3097 6.64242C35.5001 5.84875 36.8992 5.45155 38.5074 5.45152C39.8441 5.45152 40.9826 5.73376 41.9225 6.29772C42.8623 6.86168 43.6038 7.64493 44.1468 8.64748V0H47.4988V23.4985ZM38.9462 8.52222C37.9437 8.52222 37.0767 8.78312 36.3457 9.30531C35.6147 9.80661 35.0507 10.5273 34.6539 11.4672C34.2571 12.4071 34.0587 13.5037 34.0587 14.7568C34.0587 15.9891 34.2571 17.0755 34.6539 18.0154C35.0507 18.9344 35.6147 19.6551 36.3457 20.1773C37.0767 20.6786 37.9437 20.9293 38.9462 20.9293C40.1157 20.9293 41.0764 20.6683 41.8283 20.1462C42.6011 19.6032 43.1757 18.8616 43.5516 17.9217C43.9485 16.9818 44.1468 15.9265 44.1468 14.7568C44.1468 13.5664 43.9484 12.5012 43.5516 11.5614C43.1757 10.6214 42.6011 9.87994 41.8283 9.33687C41.0764 8.7938 40.1158 8.52223 38.9462 8.52222Z" fill="#1E2939"/>
+          <path d="M8.81124 13.2179L1.08648 13.2179L1.08648 10.8409L4.75372 10.8409L1.24675e-06 6.08677L1.68069 4.40598L6.43439 9.16003L6.43439 5.49258L8.81124 5.49258L8.81124 13.2179Z" fill="#FFD230"/>
+        </svg>
+      </a>
+
+      <button class="mobile-menu-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Toggle menu">
+        <svg class="mobile-menu-toggle__icon--open" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        <svg class="mobile-menu-toggle__icon--close" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 6l12 12M6 18L18 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+
+      <ul id="nav-menu" class="nav-links" role="list">
+        <li><a href="/" class="nav-link">About us</a></li>
+        <li><a href="/contact" class="nav-link">Contact</a></li>
+        <li><a href="/insights" class="nav-link nav-link--active">Insights</a></li>
+      </ul>
+
+      <a href="/book-a-call" class="btn btn--dark-stroke" aria-label="Book a call">Book a call</a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Article Hero -->
+    <section class="section section--article-hero">
+      <div class="section__card section__card--muted article-hero">
+        <div class="article-hero__content">
+          <a href="/insights" class="article-hero__back" aria-label="Back to Insights">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M15 6L9 12L15 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+          <h1 class="article-hero__title" data-reveal="up">{article.data.title}</h1>
+          <div class="article-hero__meta" data-reveal="up" style="--delay:0.1s">
+            {article.data.category && <span class="article-hero__tag">{article.data.category}</span>}
+            <div class="article-hero__meta-row">
+              <span class="article-hero__meta-item">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M19 4H5C3.89543 4 3 4.89543 3 6V20C3 21.1046 3.89543 22 5 22H19C20.1046 22 21 21.1046 21 20V6C21 4.89543 20.1046 4 19 4Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M16 2V6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M8 2V6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M3 10H21" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                {article.data.date}
+              </span>
+              {article.data.readTime && (
+                <span class="article-hero__meta-item">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M12 7V12L15 15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                  {article.data.readTime}
+                </span>
+              )}
+            </div>
+          </div>
+        </div>
+        {article.data.image && (
+          <div class="article-hero__image-wrap">
+            <img src={article.data.image} alt={article.data.title} class="article-hero__image">
+          </div>
+        )}
+      </div>
+    </section>
+
+    <!-- Article Body -->
+    <section class="section section--article-body">
+      <div class="article-body-wrapper">
+        <article class="article-prose" data-reveal="up" style="--delay:0.2s">
+          <Content />
+
+          <!-- Bottom share bar -->
+          <div class="article-share-bar">
+            <span class="article-share-bar__label">Share:</span>
+            <div class="article-share-bar__icons">
+              <a href="#" class="article-share-bar__link" aria-label="Copy link">
+                <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+                  <path d="M11.667 15.167a4.667 4.667 0 0 0 6.916.467l2.334-2.334a4.667 4.667 0 0 0-6.6-6.6l-1.34 1.327" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M16.333 12.833a4.667 4.667 0 0 0-6.916-.467l-2.334 2.334a4.667 4.667 0 0 0 6.6 6.6l1.327-1.327" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </a>
+              <a href="#" class="article-share-bar__link" aria-label="Share on LinkedIn"><img src="/insights/icon-linkedin.svg" alt="" width="24" height="24"></a>
+              <a href="#" class="article-share-bar__link" aria-label="Share on Facebook"><img src="/insights/icon-facebook.svg" alt="" width="24" height="24"></a>
+              <a href="#" class="article-share-bar__link" aria-label="Share on Twitter"><img src="/insights/icon-twitter.svg" alt="" width="24" height="24"></a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Sticky share sidebar -->
+        <aside class="article-share-sidebar" aria-label="Share this article" data-reveal="up" style="--delay:0.3s">
+          <span class="article-share-sidebar__label">Share:</span>
+          <a href="#" class="article-share-sidebar__link" aria-label="Copy link">
+            <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+              <path d="M11.667 15.167a4.667 4.667 0 0 0 6.916.467l2.334-2.334a4.667 4.667 0 0 0-6.6-6.6l-1.34 1.327" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M16.333 12.833a4.667 4.667 0 0 0-6.916-.467l-2.334 2.334a4.667 4.667 0 0 0 6.6 6.6l1.327-1.327" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+          <a href="#" class="article-share-sidebar__link" aria-label="Share on LinkedIn"><img src="/insights/icon-linkedin.svg" alt="" width="24" height="24"></a>
+          <a href="#" class="article-share-sidebar__link" aria-label="Share on Facebook"><img src="/insights/icon-facebook.svg" alt="" width="24" height="24"></a>
+          <a href="#" class="article-share-sidebar__link" aria-label="Share on Twitter"><img src="/insights/icon-twitter.svg" alt="" width="24" height="24"></a>
+        </aside>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    {faqItems.length > 0 && (
+      <section class="section section--faq">
+        <div class="section__card section__card--white">
+          <h2 class="section__title" data-reveal="up">Frequently Asked Questions</h2>
+          <div class="faq-list" data-reveal-stagger>
+            {faqItems.map((item) => (
+              <details class="faq-item" data-reveal="up">
+                <summary class="faq-item__question">{item.question}</summary>
+                <div class="faq-item__answer">
+                  <p>{item.answer}</p>
+                </div>
+              </details>
+            ))}
+          </div>
+        </div>
+      </section>
+    )}
+
+    <!-- Related Articles -->
+    {relatedArticles.length > 0 && (
+      <section class="section section--related-articles">
+        <div class="section__card section__card--white related-articles">
+          <h2 class="related-articles__title" data-reveal="up">Other relevant articles for you</h2>
+          <div class="related-articles__grid" data-reveal-stagger>
+            {relatedArticles.map((related) => (
+              <a href={`/insights/${related.id}`} class="article-card" data-reveal="up">
+                <div class="article-card__image-wrap">
+                  {related.data.image && <img src={related.data.image} alt="" class="article-card__image" loading="lazy">}
+                  {related.data.category && <span class="article-card__tag">{related.data.category}</span>}
+                </div>
+                <span class="article-card__date">{related.data.date}</span>
+                <h3 class="article-card__title">{related.data.title}</h3>
+                <span class="article-card__read-link">Read article</span>
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+    )}
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+      <div class="site-footer__inner">
+        <div class="site-footer__top">
+          <a href="/" class="nav-logo nav-logo--footer" aria-label="Orderflow home">
+            <svg class="nav-logo__mark" width="184" height="32" viewBox="0 0 138 24" fill="none" aria-hidden="true">
+              <path fill-rule="evenodd" clip-rule="evenodd" d="M4.5194 14.6866H1.07321L1.07297 14.7568C1.07297 16.5531 1.43867 18.1511 2.16959 19.5505C2.92143 20.95 3.96547 22.0469 5.30219 22.8407C6.63891 23.6135 8.21585 24 10.0329 24C11.8499 24 13.4268 23.6134 14.7636 22.8407C16.1003 22.0469 17.1341 20.95 17.8651 19.5505C18.6169 18.1511 18.9933 16.5531 18.9933 14.7568C18.9933 12.9397 18.6169 11.3315 17.8651 9.93207C17.1341 8.53262 16.1003 7.43615 14.7636 6.64242C13.4878 5.88487 11.9932 5.48855 10.2798 5.454V8.52631C11.3229 8.56136 12.2225 8.82093 12.9781 9.30531C13.7925 9.80661 14.4191 10.5273 14.8577 11.4672C15.2963 12.4071 15.5155 13.5037 15.5155 14.7568C15.5155 15.9891 15.2963 17.0755 14.8577 18.0154C14.4191 18.9344 13.7925 19.6551 12.9781 20.1773C12.1635 20.6786 11.1816 20.9293 10.0329 20.9293C8.88427 20.9293 7.89198 20.6786 7.0566 20.1773C6.24214 19.6551 5.61555 18.9344 5.17694 18.0154C4.73834 17.0755 4.51916 15.9891 4.51916 14.7568L4.5194 14.6866Z" fill="#1E2939"/>
+              <path fill-rule="evenodd" clip-rule="evenodd" d="M47.4988 23.4985H44.1468V20.8351C43.6247 21.7959 42.904 22.569 41.9851 23.1538C41.0661 23.7178 39.9067 24 38.5074 24C36.8993 24 35.5001 23.6134 34.3097 22.8407C33.1401 22.0469 32.2314 20.95 31.5839 19.5505C30.9365 18.1511 30.6125 16.5531 30.6125 14.7568C30.6125 12.9397 30.9365 11.3315 31.5839 9.93207C32.2314 8.53261 33.1401 7.43615 34.3097 6.64242C35.5001 5.84875 36.8992 5.45155 38.5074 5.45152C39.8441 5.45152 40.9826 5.73376 41.9225 6.29772C42.8623 6.86168 43.6038 7.64493 44.1468 8.64748V0H47.4988V23.4985ZM38.9462 8.52222C37.9437 8.52222 37.0767 8.78312 36.3457 9.30531C35.6147 9.80661 35.0507 10.5273 34.6539 11.4672C34.2571 12.4071 34.0587 13.5037 34.0587 14.7568C34.0587 15.9891 34.2571 17.0755 34.6539 18.0154C35.0507 18.9344 35.6147 19.6551 36.3457 20.1773C37.0767 20.6786 37.9437 20.9293 38.9462 20.9293C40.1157 20.9293 41.0764 20.6683 41.8283 20.1462C42.6011 19.6032 43.1757 18.8616 43.5516 17.9217C43.9485 16.9818 44.1468 15.9265 44.1468 14.7568C44.1468 13.5664 43.9484 12.5012 43.5516 11.5614C43.1757 10.6214 42.6011 9.87994 41.8283 9.33687C41.0764 8.7938 40.1158 8.52223 38.9462 8.52222Z" fill="#1E2939"/>
+              <path d="M8.81124 13.2179L1.08648 13.2179L1.08648 10.8409L4.75372 10.8409L1.24675e-06 6.08677L1.68069 4.40598L6.43439 9.16003L6.43439 5.49258L8.81124 5.49258L8.81124 13.2179Z" fill="#FFD230"/>
+            </svg>
+          </a>
+          <div class="footer-social">
+            <a href="#" class="footer-social__link" aria-label="LinkedIn"><img src="/insights/icon-linkedin.svg" alt="" class="footer-social__icon"></a>
+            <a href="#" class="footer-social__link" aria-label="Instagram"><img src="/insights/icon-instagram.svg" alt="" class="footer-social__icon"></a>
+            <a href="#" class="footer-social__link" aria-label="Facebook"><img src="/insights/icon-facebook.svg" alt="" class="footer-social__icon"></a>
+            <a href="#" class="footer-social__link" aria-label="Twitter"><img src="/insights/icon-twitter.svg" alt="" class="footer-social__icon"></a>
+          </div>
+          <ul class="footer-links" role="list">
+            <li><a href="/contact" class="nav-link">Contact us</a></li>
+            <li><a href="/" class="nav-link">About us</a></li>
+            <li><a href="/insights" class="nav-link">Insights</a></li>
+            <li><a href="/terms" class="nav-link">Terms &amp; Conditions</a></li>
+            <li><a href="/privacy" class="nav-link">Privacy Policy</a></li>
+          </ul>
+        </div>
+        <p class="site-footer__copy">&copy; 2026 Orderflow | Powered by Neurony</p>
+      </div>
+    </footer>
+  </main>
+
+  <script is:inline>
+    document.querySelector('.mobile-menu-toggle').addEventListener('click', function() {
+      const expanded = this.getAttribute('aria-expanded') === 'true';
+      this.setAttribute('aria-expanded', !expanded);
+      document.getElementById('nav-menu').classList.toggle('nav-links--open', !expanded);
+    });
+  </script>
+
+  <script is:inline>
+    (function() {
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        document.querySelectorAll('[data-reveal]').forEach(function(el) { el.classList.add('revealed'); });
+        return;
+      }
+      document.querySelectorAll('[data-reveal-stagger]').forEach(function(container) {
+        var children = container.querySelectorAll(':scope > [data-reveal]');
+        children.forEach(function(child, i) {
+          if (!child.style.getPropertyValue('--delay')) { child.style.setProperty('--delay', (i * 0.1) + 's'); }
+        });
+      });
+      var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) { entry.target.classList.add('revealed'); observer.unobserve(entry.target); }
+        });
+      }, { threshold: 0.15, rootMargin: '0px 0px -50px 0px' });
+      document.querySelectorAll('[data-reveal]').forEach(function(el) { observer.observe(el); });
+    })();
+  </script>
+</BaseLayout>
