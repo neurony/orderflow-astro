@@ -1,6 +1,6 @@
 ---
 name: Content Differentiation Rules
-description: Anti-repetition rules for 9 content pages. Each page owns a specific angle. Meesenburg story only in EN-CS1. Problem statement only in EN-P1. ROI math only in EN-P4. AI comparison only in EN-P3. Enforced on every piece.
+description: Anti-repetition rules for 10 content pages. Each page owns a specific angle. Meesenburg story only in EN-CS1. Problem statement only in EN-P1. ROI math only in EN-P4. AI comparison only in EN-P3. Enforced on every piece.
 type: feedback
 ---
 
@@ -25,6 +25,7 @@ Every page must have a distinct lens. A reader visiting two pages must NOT feel 
 | EN-B1 (what is sales order automation) | Educational deep-dive, definitions | The concept (educational frame) | Product pitch, AI comparison, email specifics |
 | EN-B2 (how AI processes email orders) | Technical step-by-step walkthrough | A concrete example email | What-is education, product pitch, ROI |
 | EN-B3 (complete guide OPA) | Comparison and decision framework | The decision the reader faces | What-is education, AI walkthrough, product pitch |
+| EN-B4 (how to automate PO processing) | How-to guide, receiving-side PO focus | Search intent mismatch (procurement vs receiving) | Full AI tech walkthrough, full comparison matrix, full Meesenburg narrative, ROI framework |
 
 ## Meesenburg Rule (CRITICAL)
 
@@ -48,11 +49,12 @@ Each page handles it through its OWN lens:
 - EN-B1: Educational framing (maturity model, not blame)
 - EN-B2: Demonstrated through the walkthrough (show, don't tell)
 - EN-B3: Built into the comparison framework
+- EN-B4: Template trap framing ("starting with templates instead of AI is the most expensive mistake")
 
 ## Reader Flow
 
 ```
 TOFU: EN-B1 (what is this?) > EN-B3 (which approach?)
-MOFU: EN-B2 (how does AI work?) > EN-P3 (why AI?)
+MOFU: EN-B2 (how does AI work?) > EN-B4 (how to automate POs?) > EN-P3 (why AI?)
 BOFU: EN-P1/P2/P4/P5 (product pages) > EN-CS1 (proof) > /contact (convert)
 ```

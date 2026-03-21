@@ -160,9 +160,12 @@ if (faqItems.length > 0) {
 
 // Related articles (for article content type)
 const allArticles = contentType === 'article' ? await getCollection('articles') : [];
-const relatedArticles = allArticles
-  .filter((a) => a.id !== entry.id && a.data.category === (entry.data as any).category)
-  .slice(0, 3);
+const manualRelatedSlugs: string[] = (entry.data as any).relatedArticles || [];
+const relatedArticles = allArticles.filter((a) => a.id !== entry.id && (
+  manualRelatedSlugs.length > 0
+    ? manualRelatedSlugs.includes(a.id)
+    : a.data.category === (entry.data as any).category
+)).slice(0, 3);
 
 // Case study specific data
 const stats = contentType === 'caseStudy' ? ((entry.data as any).stats || []) : [];
@@ -249,6 +252,31 @@ const stats = contentType === 'caseStudy' ? ((entry.data as any).stats || []) : 
       </div>
     </section>
 
+    {/* ===== RELATED ARTICLES (articles only) ===== */}
+    {contentType === 'article' && relatedArticles.length > 0 && (
+      <section class="section section--related-articles">
+        <div class="section__card section__card--white">
+          <h2 class="section__title" data-reveal="up">Continue reading</h2>
+          <ul class="insight-cards" role="list" data-reveal-stagger>
+            {relatedArticles.map((related) => (
+              <li>
+                <a href={`/insights/${related.id}`} class="insight-card" data-reveal="up">
+                  <div class="insight-card__image-wrap">
+                    {related.data.category && <span class="insight-card__category">{related.data.category}</span>}
+                    {related.data.image && <img src={related.data.image} alt={related.data.title} class="insight-card__image" loading="lazy">}
+                  </div>
+                  <div class="insight-card__body">
+                    <p class="insight-card__date">{related.data.date}</p>
+                    <h3 class="insight-card__title">{related.data.title}</h3>
+                  </div>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+    )}
+
     {/* ===== FAQ SECTION (all content types) ===== */}
     {faqItems.length > 0 && (
       <section class="section section--faq">
@@ -262,28 +290,6 @@ const stats = contentType === 'caseStudy' ? ((entry.data as any).stats || []) : 
                   <p>{item.answer}</p>
                 </div>
               </details>
-            ))}
-          </div>
-        </div>
-      </section>
-    )}
-
-    {/* ===== RELATED ARTICLES (articles only) ===== */}
-    {contentType === 'article' && relatedArticles.length > 0 && (
-      <section class="section section--related-articles">
-        <div class="section__card section__card--white related-articles">
-          <h2 class="related-articles__title" data-reveal="up">Other relevant articles for you</h2>
-          <div class="related-articles__grid" data-reveal-stagger>
-            {relatedArticles.map((related) => (
-              <a href={`/insights/${related.id}`} class="article-card" data-reveal="up">
-                <div class="article-card__image-wrap">
-                  {related.data.image && <img src={related.data.image} alt={related.data.title} class="article-card__image" loading="lazy">}
-                  {related.data.category && <span class="article-card__tag">{related.data.category}</span>}
-                </div>
-                <span class="article-card__date">{related.data.date}</span>
-                <h3 class="article-card__title">{related.data.title}</h3>
-                <span class="article-card__read-link">Read article</span>
-              </a>
             ))}
           </div>
         </div>

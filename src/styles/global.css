@@ -643,4 +643,489 @@ main {
     transform: none;
     transition: none;
   }
+
+  .format-float {
+    animation: none;
+  }
+
+  .hero__badges-mobile .hero-badge {
+    animation: none;
+  }
+
+  .cta__ticker-inner {
+    animation: none;
+  }
+}
+
+/* ----- RELATED ARTICLES SECTION ----- */
+.section--related-articles .section__card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-48);
+}
+
+/* ----- FAQ SECTION ----- */
+.section--faq .section__card {
+  padding: var(--space-64) var(--space-48);
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-16);
+  margin-top: var(--space-32);
+}
+
+.faq-item {
+  border: 1px solid var(--color-neutral-200, #e5e7eb);
+  border-radius: var(--radius-lg, 12px);
+  overflow: hidden;
+}
+
+.faq-item__question {
+  padding: var(--space-20, 20px) var(--space-24);
+  font-size: var(--text-lg);
+  font-weight: var(--weight-medium);
+  color: var(--color-neutral-900);
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-16);
+}
+
+.faq-item__question::-webkit-details-marker {
+  display: none;
+}
+
+.faq-item__question::after {
+  content: '+';
+  font-size: 1.5rem;
+  font-weight: var(--weight-regular);
+  color: var(--color-neutral-500, #6b7280);
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
+}
+
+.faq-item[open] .faq-item__question::after {
+  content: '-';
+}
+
+.faq-item__answer {
+  padding: 0 var(--space-24) var(--space-20, 20px);
+  font-size: var(--text-base);
+  line-height: var(--leading-relaxed);
+  color: var(--color-neutral-700);
+}
+
+.faq-item__answer p {
+  margin: 0;
+}
+
+/* ----- CASE STUDY STATS ----- */
+.stats-section {
+  max-width: 960px;
+  margin: -3rem auto 0;
+  padding: 0 var(--space-24);
+  position: relative;
+  z-index: 2;
+}
+
+.stats-section .stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  background: var(--color-neutral-900, #1a1a2e);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+}
+
+.stats-section .stats-grid__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--space-4, 0.25rem);
+  padding: var(--space-32) var(--space-16);
+  position: relative;
+}
+
+.stats-section .stats-grid__item:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 25%;
+  height: 50%;
+  width: 1px;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.stats-grid__value {
+  font-size: var(--text-3xl, 1.875rem);
+  font-weight: var(--weight-semibold, 600);
+  color: #fff;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+}
+
+.stats-grid__label {
+  font-size: var(--text-sm, 0.875rem);
+  color: rgba(255, 255, 255, 0.55);
+  line-height: var(--leading-relaxed);
+  font-weight: var(--weight-regular);
+}
+
+@media (max-width: 640px) {
+  .stats-section .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .stats-section .stats-grid__item:not(:last-child)::after {
+    display: none;
+  }
+
+  .stats-section .stats-grid__item {
+    padding: var(--space-24) var(--space-16);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    border-right: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .stats-section .stats-grid__item:nth-child(2n)  {
+    border-right: none;
+  }
+
+  .stats-section .stats-grid__item:nth-last-child(-n+2) {
+    border-bottom: none;
+  }
+}
+
+/* ----- ARTICLE HERO SUBTITLE ----- */
+.article-hero__subtitle {
+  font-size: var(--text-lg);
+  line-height: var(--leading-relaxed);
+  color: var(--color-neutral-700);
+  margin-top: var(--space-16);
+  max-width: 680px;
+}
+
+/* ----- FAQ RESPONSIVE ----- */
+@media (max-width: 768px) {
+  .section--faq .section__card {
+    padding: var(--space-32) var(--space-24);
+  }
+
+  .faq-item__question {
+    font-size: var(--text-base);
+    padding: var(--space-16);
+  }
+
+  .faq-item__answer {
+    padding: 0 var(--space-16) var(--space-16);
+  }
+}
+
+/* =============================================
+   9. INSIGHT HERO (Full-bleed with overlay)
+   ============================================= */
+
+.insight-hero {
+  position: relative;
+  min-height: 420px;
+  display: flex;
+  align-items: flex-end;
+  background-size: cover;
+  background-position: center;
+  background-color: var(--color-neutral-900);
+  margin: var(--space-16);
+  border-radius: var(--radius-2xl);
+  overflow: hidden;
+}
+
+.insight-hero__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(15, 23, 43, 0.92) 0%,
+    rgba(15, 23, 43, 0.6) 50%,
+    rgba(15, 23, 43, 0.3) 100%
+  );
+  z-index: 1;
+}
+
+.insight-hero__inner {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 860px;
+  padding: var(--space-48) var(--space-64);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-16);
+}
+
+.insight-hero__back {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-4);
+  color: rgba(255, 255, 255, 0.7);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-regular);
+  text-decoration: none;
+  transition: color 0.15s ease;
+  margin-bottom: var(--space-8);
+}
+
+.insight-hero__back:hover {
+  color: #fff;
+}
+
+.insight-hero__meta {
+  display: flex;
+  align-items: center;
+  gap: var(--space-12);
+}
+
+.insight-hero__badge {
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: var(--radius-md);
+  padding: var(--space-4) var(--space-12);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-regular);
+  color: #fff;
+}
+
+.insight-hero__date {
+  font-size: var(--text-sm);
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.insight-hero__title {
+  font-size: var(--text-4xl);
+  font-weight: var(--weight-medium);
+  line-height: var(--leading-tight);
+  color: #fff;
+  max-width: 780px;
+}
+
+.insight-hero__subtitle {
+  font-size: var(--text-lg);
+  line-height: var(--leading-relaxed);
+  color: rgba(255, 255, 255, 0.75);
+  max-width: 640px;
+}
+
+@media (max-width: 1024px) {
+  .insight-hero {
+    min-height: 360px;
+    margin: var(--space-8);
+  }
+  .insight-hero__inner {
+    padding: var(--space-32) var(--space-32);
+  }
+  .insight-hero__title {
+    font-size: var(--text-3xl);
+  }
+}
+
+@media (max-width: 640px) {
+  .insight-hero {
+    min-height: 300px;
+    margin: var(--space-8);
+    border-radius: var(--radius-xl);
+  }
+  .insight-hero__inner {
+    padding: var(--space-24) var(--space-24);
+  }
+  .insight-hero__title {
+    font-size: var(--text-2xl);
+  }
+  .insight-hero__subtitle {
+    font-size: var(--text-base);
+  }
+}
+
+/* =============================================
+   10. ARTICLE BODY & PROSE TYPOGRAPHY
+   ============================================= */
+
+/* ----- Article Body ----- */
+.section--article-body {
+  padding: 0;
+}
+
+.article-body-wrapper {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: var(--space-32) var(--space-24);
+  display: flex;
+  gap: var(--space-32);
+}
+
+/* ----- Article Prose Typography ----- */
+.article-prose {
+  font-size: var(--text-lg);
+  line-height: var(--leading-relaxed);
+  color: var(--color-neutral-700);
+}
+
+/* Hide the first H1 in prose — the hero already shows the title */
+.article-prose > h1:first-child,
+.article-prose > article > h1:first-child {
+  display: none;
+}
+
+.article-prose p {
+  margin-bottom: 1.5em;
+}
+
+.article-prose h2 {
+  font-size: var(--text-3xl);
+  font-weight: var(--weight-medium);
+  color: var(--color-neutral-900);
+  margin-top: 2.5em;
+  margin-bottom: 0.75em;
+  line-height: var(--leading-tight);
+}
+
+.article-prose h3 {
+  font-size: var(--text-xl);
+  font-weight: var(--weight-medium);
+  color: var(--color-neutral-900);
+  margin-top: 2em;
+  margin-bottom: 0.5em;
+  line-height: var(--leading-snug);
+}
+
+.article-prose h4 {
+  font-size: var(--text-lg);
+  font-weight: var(--weight-medium);
+  color: var(--color-neutral-900);
+  margin-top: 1.5em;
+  margin-bottom: 0.5em;
+}
+
+.article-prose ul,
+.article-prose ol {
+  margin-bottom: 1.5em;
+  padding-left: 1.5em;
+}
+
+.article-prose ul {
+  list-style-type: disc;
+}
+
+.article-prose ol {
+  list-style-type: decimal;
+}
+
+.article-prose li {
+  margin-bottom: 0.5em;
+  line-height: var(--leading-relaxed);
+}
+
+.article-prose li > ul,
+.article-prose li > ol {
+  margin-top: 0.5em;
+  margin-bottom: 0;
+}
+
+.article-prose a {
+  color: var(--color-purple-600);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.article-prose a:hover {
+  color: var(--color-neutral-900);
+}
+
+.article-prose strong {
+  font-weight: var(--weight-medium);
+  color: var(--color-neutral-900);
+}
+
+.article-prose blockquote {
+  border-left: 3px solid var(--color-neutral-300);
+  padding-left: 1.25em;
+  margin: 1.5em 0;
+  font-style: italic;
+  color: var(--color-neutral-600);
+}
+
+.article-prose hr {
+  border: none;
+  border-top: 1px solid var(--color-neutral-200);
+  margin: 2em 0;
+}
+
+.article-prose table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5em 0;
+  font-size: var(--text-base);
+}
+
+.article-prose th,
+.article-prose td {
+  padding: 0.75em 1em;
+  border: 1px solid var(--color-neutral-200);
+  text-align: left;
+}
+
+.article-prose th {
+  background-color: var(--color-neutral-50);
+  font-weight: var(--weight-medium);
+  color: var(--color-neutral-900);
+}
+
+.article-prose code {
+  background-color: var(--color-neutral-100);
+  padding: 0.15em 0.4em;
+  border-radius: var(--radius-sm);
+  font-size: 0.9em;
+}
+
+.article-prose img {
+  max-width: 100%;
+  height: auto;
+  border-radius: var(--radius-lg);
+  margin: 1.5em 0;
+}
+
+/* First element in prose should not have top margin */
+.article-prose > :first-child {
+  margin-top: 0;
+}
+
+/* ----- Article Prose Responsive ----- */
+@media (max-width: 1024px) {
+  .article-body-wrapper {
+    padding: var(--space-24) var(--space-32);
+  }
+}
+
+@media (max-width: 640px) {
+  .article-body-wrapper {
+    padding: var(--space-16) var(--space-24);
+  }
+
+  .article-prose {
+    font-size: var(--text-base);
+  }
+
+  .article-prose h2 {
+    font-size: var(--text-2xl);
+  }
+
+  .article-prose h3 {
+    font-size: var(--text-lg);
+  }
 }
