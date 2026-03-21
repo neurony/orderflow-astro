@@ -82,7 +82,7 @@ const allJsonLd = [
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="#0f172b" />
 
-  <!-- Google Analytics (GA4) — Consent Mode v2, cookieless by default -->
+  <!-- Google Analytics (GA4) — Consent Mode v2, cookieless by default. gtag.js deferred until idle/interaction to eliminate unused-JS Lighthouse warning (~62 KiB). -->
   <script is:inline>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
@@ -93,11 +93,35 @@ const allJsonLd = [
       'ad_user_data': 'denied',
       'ad_personalization': 'denied'
     });
-  </script>
-  <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-Q9RW388339"></script>
-  <script is:inline>
-    gtag('js', new Date());
-    gtag('config', 'G-Q9RW388339');
+
+    // Defer gtag.js until first user interaction or idle (max 3 s)
+    (function() {
+      var GA_ID = 'G-Q9RW388339';
+      var loaded = false;
+      function loadGA() {
+        if (loaded) return;
+        loaded = true;
+        var s = document.createElement('script');
+        s.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID;
+        s.async = true;
+        s.onload = function() {
+          gtag('js', new Date());
+          gtag('config', GA_ID);
+        };
+        document.head.appendChild(s);
+      }
+      var events = ['scroll', 'keydown', 'click', 'mousemove', 'touchstart'];
+      function onInteraction() {
+        events.forEach(function(e) { document.removeEventListener(e, onInteraction, {passive: true, once: true}); });
+        loadGA();
+      }
+      events.forEach(function(e) { document.addEventListener(e, onInteraction, {passive: true, once: true}); });
+      if ('requestIdleCallback' in window) {
+        requestIdleCallback(loadGA, {timeout: 3000});
+      } else {
+        setTimeout(loadGA, 3000);
+      }
+    })();
   </script>
 
   <!-- Preconnect to critical origins -->
@@ -105,8 +129,8 @@ const allJsonLd = [
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
   <!-- Fonts -->
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Stack+Sans+Headline:wght@400;500;600&family=Caveat:wght@400&display=swap" />
-  <link href="https://fonts.googleapis.com/css2?family=Stack+Sans+Headline:wght@400;500;600&family=Caveat:wght@400&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Stack+Sans+Headline:wght@400;500;600&family=Caveat:wght@400&display=optional" />
+  <link href="https://fonts.googleapis.com/css2?family=Stack+Sans+Headline:wght@400;500;600&family=Caveat:wght@400&display=optional" rel="stylesheet" media="print" onload="this.media='all'" />
 
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />

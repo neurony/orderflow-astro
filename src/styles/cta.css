@@ -3,6 +3,44 @@
    Imported by src/pages/index.astro and src/pages/about.astro
    ============================================= */
 
+/* ----- Section card color variants (homepage/about only) ----- */
+.section__card--purple {
+  background-color: var(--color-purple-200);
+}
+
+.section__card--yellow {
+  background-color: #FFD230;
+}
+
+.section__card--dark {
+  background-color: var(--color-neutral-900);
+  color: var(--color-white);
+}
+
+.section__heading {
+  font-size: var(--text-4xl);
+  line-height: var(--leading-snug);
+  color: var(--color-neutral-900);
+  max-width: 646px;
+}
+
+.section__heading--center {
+  text-align: center;
+  max-width: 646px;
+  margin: 0 auto;
+}
+
+/* Primary button (homepage/about only) */
+.btn--primary {
+  background-color: var(--color-orange-300);
+  color: var(--color-neutral-900);
+  box-shadow: var(--shadow-btn);
+}
+
+.btn--primary:hover {
+  background-color: #ffa94d;
+}
+
 /* ----- CTA BANNER ----- */
 .section--cta .section__card {
   padding: 112px 184px 64px;

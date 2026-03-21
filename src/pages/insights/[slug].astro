@@ -183,7 +183,8 @@ const stats = contentType === 'caseStudy' ? ((entry.data as any).stats || []) : 
 >
   <main>
     {/* ===== FULL-BLEED HERO WITH OVERLAY ===== */}
-    <section class="insight-hero" style={heroImage ? `background-image: url(${heroImage})` : undefined}>
+    <section class="insight-hero">
+      {heroImage && <img src={heroImage} alt="" class="insight-hero__bg" fetchpriority="high" loading="eager" decoding="sync">}
       <div class="insight-hero__overlay"></div>
       <div class="insight-hero__inner">
         <a href="/insights" class="insight-hero__back" aria-label="Back to Insights">
