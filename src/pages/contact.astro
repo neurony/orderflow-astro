@@ -106,8 +106,15 @@ const contactSchema = {
 
   </main>
 
-  <script is:inline src="https://assets.calendly.com/assets/external/widget.js" async></script>
   <script is:inline>
+    function loadCalendly(callback) {
+      if (window.Calendly) { callback(); return; }
+      var s = document.createElement('script');
+      s.src = 'https://assets.calendly.com/assets/external/widget.js';
+      s.onload = callback;
+      document.head.appendChild(s);
+    }
+
     document.addEventListener('DOMContentLoaded', function() {
       document.querySelectorAll('[id$="-lead-form"]').forEach(function(form) {
         form.addEventListener('submit', function(e) {
@@ -136,15 +143,17 @@ const contactSchema = {
           widgetEl.setAttribute('data-url', calendlyUrl);
           widgetEl.style.minWidth = '320px';
           widgetEl.style.height = '600px';
-          Calendly.initInlineWidget({
-            url: calendlyUrl,
-            parentElement: widgetEl,
-            prefill: {
-              email: email,
-              customAnswers: {
-                a1: company
+          loadCalendly(function() {
+            Calendly.initInlineWidget({
+              url: calendlyUrl,
+              parentElement: widgetEl,
+              prefill: {
+                email: email,
+                customAnswers: {
+                  a1: company
+                }
               }
-            }
+            });
           });
 
           if (typeof gtag === 'function') {
