@@ -113,10 +113,10 @@ const allTags = [...new Set(allItems.map((item) => item.filterTag))];
 
         <!-- Article grid -->
         <div class="article-grid" id="article-grid" data-reveal-stagger>
-          {sortedItems.map((item) => (
+          {sortedItems.map((item, index) => (
             <a href={`/insights/${item.id}`} class="article-card" data-reveal="up" data-tag={item.filterTag}>
               <div class="article-card__image-wrap">
-                {item.image && <img src={item.image} alt={item.title} class="article-card__image" loading="lazy">}
+                {item.image && <img src={item.image} alt={item.title} class="article-card__image" loading={index === 0 ? 'eager' : 'lazy'} fetchpriority={index === 0 ? 'high' : undefined}>}
                 {(item.category || item.contentTypeLabel) && (
                   <span class="article-card__tag">{item.category || item.contentTypeLabel}</span>
                 )}

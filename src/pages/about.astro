@@ -96,7 +96,10 @@ const aboutPageSchema = {
             <p class="about-story__text">We knew AI could do better. Not to replace the people who understand the business, but to handle the repetitive work that was holding them back. So we built Orderflow: a system that reads orders in any format, maps products to your catalog, and delivers clean, ERP-ready data without manual intervention.</p>
           </div>
           <div class="about-story__image-wrap" data-reveal="up" style="--delay:0.2s">
-            <img src="/images/how-it-works.jpg" alt="Orderflow dashboard showing order processing pipeline" class="about-story__image">
+            <picture>
+              <source srcset="/images/how-it-works.webp" type="image/webp">
+              <img src="/images/how-it-works.jpg" alt="Orderflow dashboard showing order processing pipeline" class="about-story__image" width="1066" height="1280" fetchpriority="high" loading="eager">
+            </picture>
           </div>
         </div>
       </div>
