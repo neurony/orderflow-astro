@@ -155,7 +155,7 @@ const relatedArticles = allArticles
         </div>
         {article.data.image && (
           <div class="article-hero__image-wrap">
-            <img src={article.data.image} alt={article.data.title} class="article-hero__image">
+            <img src={article.data.image} alt={article.data.title} class="article-hero__image" width="1600" height="900">
           </div>
         )}
       </div>
@@ -228,7 +228,7 @@ const relatedArticles = allArticles
             {relatedArticles.map((related) => (
               <a href={`/insights/${related.id}`} class="article-card" data-reveal="up">
                 <div class="article-card__image-wrap">
-                  {related.data.image && <img src={related.data.image} alt="" class="article-card__image" loading="lazy">}
+                  {related.data.image && <img src={related.data.image} alt="" class="article-card__image" width="816" height="640" loading="lazy">}
                   {related.data.category && <span class="article-card__tag">{related.data.category}</span>}
                 </div>
                 <span class="article-card__date">{related.data.date}</span>
