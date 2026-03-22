@@ -5,6 +5,7 @@ import sitemap from '@astrojs/sitemap';
 import markdoc from '@astrojs/markdoc';
 import keystatic from '@keystatic/astro';
 import node from '@astrojs/node';
+import { deferCss } from './src/integrations/defer-css.mjs';
 
 const isVercel = !!process.env.VERCEL;
 const adapter = isVercel
@@ -18,6 +19,7 @@ export default defineConfig({
   integrations: [
     react(),
     markdoc(),
+    deferCss(),
     sitemap({
       lastmod: new Date(),
       i18n: {

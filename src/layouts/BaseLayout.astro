@@ -124,6 +124,20 @@ const allJsonLd = [
     })();
   </script>
 
+  <!-- Critical CSS — inlined to prevent FOUC while async stylesheets load (NEU-95).
+       Contains only above-the-fold structural styles: tokens, reset, body, header layout. -->
+  <style is:inline>
+    :root{--color-neutral-900:#0f172b;--color-neutral-700:#314158;--color-neutral-600:#4a5568;--color-neutral-500:#62748e;--color-neutral-400:#94a3b8;--color-neutral-300:#cad5e2;--color-neutral-200:#e2e8f0;--color-neutral-100:#f1f5f9;--color-neutral-50:#f8fafc;--color-orange-300:#ffb86a;--color-orange-200:#ffd6a7;--color-purple-600:#4f39f6;--color-purple-200:#DDD6FF;--color-purple-100:rgba(97,95,255,0.1);--color-blue-400:#51a2ff;--color-blue-100:#dbeafe;--color-green-700:#008236;--color-white:#ffffff;--color-white-90:rgba(255,255,255,0.9);--color-white-40:rgba(255,255,255,0.4);--color-black-20:rgba(0,0,0,0.2);--color-black-10:rgba(0,0,0,0.1);--color-black-5:rgba(0,0,0,0.05);--font-sans:'Stack Sans Headline',sans-serif;--font-handwritten:'Caveat',cursive;--text-xs:12px;--text-sm:14px;--text-base:16px;--text-lg:18px;--text-xl:20px;--text-2xl:24px;--text-3xl:32px;--text-4xl:44px;--text-5xl:56px;--leading-tight:1.1;--leading-snug:1.2;--leading-normal:1.5;--leading-relaxed:1.6;--weight-regular:400;--weight-medium:500;--weight-semibold:600;--space-4:4px;--space-8:8px;--space-12:12px;--space-16:16px;--space-24:24px;--space-32:32px;--space-48:48px;--space-64:64px;--space-72:72px;--space-96:96px;--radius-sm:6px;--radius-md:8px;--radius-lg:12px;--radius-xl:16px;--radius-full:9999px;--shadow-sm:0px 8px 40px 0px var(--color-black-5);--shadow-md:0px 8px 24px 0px var(--color-black-10);--shadow-btn:8px 8px 0px 0px var(--color-black-10);--max-width:1512px;--content-width:1368px}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{font-family:var(--font-sans);font-size:var(--text-base);font-weight:var(--weight-regular);line-height:var(--leading-normal);color:var(--color-neutral-900);background-color:var(--color-white);-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+    img{display:block;max-width:100%}
+    #app{display:flex;flex-direction:column;min-height:100vh;background-color:var(--color-white);overflow:clip}
+    .site-header{position:absolute;top:0;left:0;right:0;z-index:50;background-color:var(--color-white);overflow:hidden}
+    :root{--header-height:88px}
+    main{padding-top:var(--header-height)}
+  </style>
+
   <!-- Preconnect to critical origins -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
