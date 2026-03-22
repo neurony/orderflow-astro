@@ -69,7 +69,10 @@ const contactSchema = {
 
         <div class="contact-hero__right" data-reveal="up" style="--delay:0.3s">
           <div class="expert-badge">
-            <img src="/contact/maria-avatar.png" alt="Maria, product expert" class="expert-badge__avatar">
+            <picture>
+              <source srcset="/contact/maria-avatar.webp 2x" type="image/webp">
+              <img src="/contact/maria-avatar.png" alt="Maria, product expert" class="expert-badge__avatar" width="80" height="80" fetchpriority="high">
+            </picture>
             <img src="/contact/cursor-arrow.svg" alt="" class="expert-badge__cursor" aria-hidden="true">
             <div class="expert-badge__tag">
               <span class="expert-badge__name">Maria</span>
