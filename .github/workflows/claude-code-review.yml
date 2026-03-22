@@ -1,0 +1,60 @@
+name: Claude Code Review
+
+on:
+  pull_request:
+    types: [opened, synchronize, ready_for_review, reopened]
+
+jobs:
+  claude-review:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+      issues: write
+      id-token: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 1
+
+      - name: Run Claude Code Review
+        id: claude-review
+        uses: anthropics/claude-code-action@v1
+        with:
+          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          track_progress: true
+          allowed_bots: 'dependabot[bot]'
+          prompt: |
+            REPO: ${{ github.repository }}
+            PR NUMBER: ${{ github.event.pull_request.number }}
+
+            Perform a comprehensive code review with the following focus areas:
+
+            1. **Code Quality**
+                - Clean code principles and best practices
+                - Proper error handling and edge cases
+                - Code readability and maintainability
+                - Potential bugs or issues
+                - Identify possible N+1 queries
+
+            2. **Security**
+                - Check for potential security vulnerabilities
+                - Validate input sanitization
+                - Review authentication/authorization logic
+                - Security concerns
+
+            3. **Performance**
+                - Identify potential performance bottlenecks
+                - Review database queries for efficiency
+                - Check for memory leaks or resource issues
+                - Performance considerations
+
+            Use the repository's CLAUDE.md for guidance on style and conventions. Be constructive and helpful in your feedback.
+
+            Provide detailed feedback using inline comments for specific issues.
+            Use top-level comments for general observations or praise.
+
+            Use `gh pr comment` with your Bash tool to leave your review as a comment on the PR.
