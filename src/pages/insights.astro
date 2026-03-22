@@ -116,7 +116,7 @@ const allTags = [...new Set(allItems.map((item) => item.filterTag))];
           {sortedItems.map((item, index) => (
             <a href={`/insights/${item.id}`} class="article-card" data-reveal="up" data-tag={item.filterTag}>
               <div class="article-card__image-wrap">
-                {item.image && <img src={item.image} alt={item.title} class="article-card__image" loading={index === 0 ? 'eager' : 'lazy'} fetchpriority={index === 0 ? 'high' : undefined}>}
+                {item.image && <img src={item.image} alt={item.title} class="article-card__image" width="816" height="640" loading={index === 0 ? 'eager' : 'lazy'} fetchpriority={index === 0 ? 'high' : undefined}>}
                 {(item.category || item.contentTypeLabel) && (
                   <span class="article-card__tag">{item.category || item.contentTypeLabel}</span>
                 )}
