@@ -184,7 +184,7 @@ const stats = contentType === 'caseStudy' ? ((entry.data as any).stats || []) : 
   <main>
     {/* ===== FULL-BLEED HERO WITH OVERLAY ===== */}
     <section class="insight-hero">
-      {heroImage && <img src={heroImage} alt="" class="insight-hero__bg" fetchpriority="high" loading="eager" decoding="sync">}
+      {heroImage && <img src={heroImage} alt="" class="insight-hero__bg" width="1920" height="1080" fetchpriority="high" loading="eager" decoding="sync">}
       <div class="insight-hero__overlay"></div>
       <div class="insight-hero__inner">
         <a href="/insights" class="insight-hero__back" aria-label="Back to Insights">
@@ -264,7 +264,7 @@ const stats = contentType === 'caseStudy' ? ((entry.data as any).stats || []) : 
                 <a href={`/insights/${related.id}`} class="insight-card" data-reveal="up">
                   <div class="insight-card__image-wrap">
                     {related.data.category && <span class="insight-card__category">{related.data.category}</span>}
-                    {related.data.image && <img src={related.data.image} alt={related.data.title} class="insight-card__image" loading="lazy">}
+                    {related.data.image && <img src={related.data.image} alt={related.data.title} class="insight-card__image" width="816" height="640" loading="lazy">}
                   </div>
                   <div class="insight-card__body">
                     <p class="insight-card__date">{related.data.date}</p>
