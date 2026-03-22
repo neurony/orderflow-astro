@@ -47,9 +47,16 @@ function deferLocalStylesheets(html) {
         return match;
       }
 
+      // Preserve extra attributes (crossorigin, integrity, etc.), excluding rel and href
+      const extra = attrs
+        .replace(/\bhref="[^"]*"/, '')
+        .replace(/\brel="stylesheet"/, '')
+        .trim();
+      const extraStr = extra ? ` ${extra}` : '';
+
       return (
-        `<link rel="preload" href="${href}" as="style" onload="this.onload=null;this.rel='stylesheet'">` +
-        `<noscript><link rel="stylesheet" href="${href}"></noscript>`
+        `<link rel="preload" href="${href}" as="style"${extraStr} onload="this.onload=null;this.rel='stylesheet'">` +
+        `<noscript><link rel="stylesheet" href="${href}"${extraStr}></noscript>`
       );
     }
   );
@@ -65,11 +72,15 @@ export function deferCss() {
         let transformed = 0;
 
         for (const file of htmlFiles) {
-          const original = readFileSync(file, 'utf8');
-          const modified = deferLocalStylesheets(original);
-          if (modified !== original) {
-            writeFileSync(file, modified, 'utf8');
-            transformed++;
+          try {
+            const original = readFileSync(file, 'utf8');
+            const modified = deferLocalStylesheets(original);
+            if (modified !== original) {
+              writeFileSync(file, modified, 'utf8');
+              transformed++;
+            }
+          } catch (err) {
+            logger.error(`[defer-css] Failed to process ${file}: ${err.message}`);
           }
         }
 
