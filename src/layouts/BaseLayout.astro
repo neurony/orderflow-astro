@@ -134,7 +134,8 @@ const allJsonLd = [
     img{display:block;max-width:100%}
     #app{display:flex;flex-direction:column;min-height:100vh;background-color:var(--color-white);overflow:clip}
     .site-header{position:absolute;top:0;left:0;right:0;z-index:50;background-color:var(--color-white);overflow:hidden}
-    main{padding-top:88px}
+    :root{--header-height:88px}
+    main{padding-top:var(--header-height)}
   </style>
 
   <!-- Preconnect to critical origins -->
