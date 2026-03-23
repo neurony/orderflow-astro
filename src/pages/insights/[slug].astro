@@ -169,13 +169,6 @@ const relatedArticles = allArticles.filter((a) => a.id !== entry.id && (
 // Case study specific data
 const stats = contentType === 'caseStudy' ? ((entry.data as any).stats || []) : [];
 
-// Share URLs
-const pageUrl = `https://orderflow.biz/insights/${entry.id}`;
-const encodedUrl = encodeURIComponent(pageUrl);
-const encodedTitle = encodeURIComponent(entry.data.title);
-const linkedinShareUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodedUrl}`;
-const facebookShareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`;
-const twitterShareUrl = `https://twitter.com/intent/tweet?url=${encodedUrl}&text=${encodedTitle}`;
 ---
 
 <BaseLayout
@@ -256,36 +249,7 @@ const twitterShareUrl = `https://twitter.com/intent/tweet?url=${encodedUrl}&text
         <article class="article-prose">
           <Content />
 
-          <!-- Bottom share bar -->
-          <div class="article-share-bar">
-            <span class="article-share-bar__label">Share:</span>
-            <div class="article-share-bar__icons">
-              <a href={pageUrl} class="article-share-bar__link js-copy-link" aria-label="Copy link" data-url={pageUrl}>
-                <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
-                  <path d="M11.667 15.167a4.667 4.667 0 0 0 6.916.467l2.334-2.334a4.667 4.667 0 0 0-6.6-6.6l-1.34 1.327" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
-                  <path d="M16.333 12.833a4.667 4.667 0 0 0-6.916-.467l-2.334 2.334a4.667 4.667 0 0 0 6.6 6.6l1.327-1.327" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-              </a>
-              <a href={linkedinShareUrl} class="article-share-bar__link" aria-label="Share on LinkedIn" target="_blank" rel="noopener noreferrer"><img src="/insights/icon-linkedin.svg" alt="" width="24" height="24"></a>
-              <a href={facebookShareUrl} class="article-share-bar__link" aria-label="Share on Facebook" target="_blank" rel="noopener noreferrer"><img src="/insights/icon-facebook.svg" alt="" width="24" height="24"></a>
-              <a href={twitterShareUrl} class="article-share-bar__link" aria-label="Share on Twitter" target="_blank" rel="noopener noreferrer"><img src="/insights/icon-twitter.svg" alt="" width="24" height="24"></a>
-            </div>
-          </div>
         </article>
-
-        <!-- Sticky share sidebar -->
-        <aside class="article-share-sidebar" aria-label="Share this article">
-          <span class="article-share-sidebar__label">Share:</span>
-          <a href={pageUrl} class="article-share-sidebar__link js-copy-link" aria-label="Copy link" data-url={pageUrl}>
-            <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
-              <path d="M11.667 15.167a4.667 4.667 0 0 0 6.916.467l2.334-2.334a4.667 4.667 0 0 0-6.6-6.6l-1.34 1.327" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
-              <path d="M16.333 12.833a4.667 4.667 0 0 0-6.916-.467l-2.334 2.334a4.667 4.667 0 0 0 6.6 6.6l1.327-1.327" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </a>
-          <a href={linkedinShareUrl} class="article-share-sidebar__link" aria-label="Share on LinkedIn" target="_blank" rel="noopener noreferrer"><img src="/insights/icon-linkedin.svg" alt="" width="24" height="24"></a>
-          <a href={facebookShareUrl} class="article-share-sidebar__link" aria-label="Share on Facebook" target="_blank" rel="noopener noreferrer"><img src="/insights/icon-facebook.svg" alt="" width="24" height="24"></a>
-          <a href={twitterShareUrl} class="article-share-sidebar__link" aria-label="Share on Twitter" target="_blank" rel="noopener noreferrer"><img src="/insights/icon-twitter.svg" alt="" width="24" height="24"></a>
-        </aside>
       </div>
     </section>
 
@@ -335,16 +299,4 @@ const twitterShareUrl = `https://twitter.com/intent/tweet?url=${encodedUrl}&text
 
   </main>
 
-  <script is:inline>
-    document.querySelectorAll('.js-copy-link').forEach(function(btn) {
-      btn.addEventListener('click', function(e) {
-        e.preventDefault();
-        var url = this.getAttribute('data-url');
-        navigator.clipboard.writeText(url).then(function() {
-          btn.setAttribute('aria-label', 'Link copied!');
-          setTimeout(function() { btn.setAttribute('aria-label', 'Copy link'); }, 2000);
-        });
-      });
-    });
-  </script>
 </BaseLayout>
