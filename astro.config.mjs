@@ -16,6 +16,9 @@ export default defineConfig({
   output: 'static',
   adapter,
   site: 'https://orderflow.biz',
+  redirects: {
+    '/demo': '/contact',
+  },
   integrations: [
     react(),
     markdoc(),
