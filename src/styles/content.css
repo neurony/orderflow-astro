@@ -37,6 +37,56 @@
   object-fit: contain;
 }
 
+/* ----- RELATED ARTICLES SECTION ----- */
+.section--related-articles .insight-cards {
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.section--related-articles .insight-card {
+  text-decoration: none;
+  color: inherit;
+}
+
+.section--related-articles .insight-card__image-wrap {
+  height: auto;
+  aspect-ratio: 408 / 320;
+  background-color: var(--color-neutral-100, #f3f4f6);
+}
+
+.section--related-articles .insight-card__image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.section--related-articles .insight-card:hover .insight-card__image {
+  transform: scale(1.03);
+}
+
+@media (max-width: 1024px) {
+  .section--related-articles .insight-cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .section--related-articles .insight-cards {
+    display: grid;
+    grid-template-columns: 1fr;
+    overflow-x: visible;
+    scroll-snap-type: none;
+    padding-bottom: 0;
+  }
+
+  .section--related-articles .insight-cards > li {
+    flex: initial;
+  }
+}
+
 /* ----- FAQ SECTION ----- */
 .section--faq .section__card {
   padding: var(--space-64) var(--space-48);
