@@ -13,7 +13,7 @@ export async function getStaticPaths() {
   return [
     ...articles.map((entry) => ({
       params: { slug: entry.id },
-      props: { entry, contentType: 'article' as const },
+      props: { entry, contentType: 'article' as const, allArticles: articles },
     })),
     ...pages.map((entry) => ({
       params: { slug: entry.id },
@@ -26,7 +26,7 @@ export async function getStaticPaths() {
   ];
 }
 
-const { entry, contentType } = Astro.props;
+const { entry, contentType, allArticles = [] } = Astro.props;
 const { Content } = await render(entry);
 
 // --- SEO fields (unified across content types) ---
@@ -158,8 +158,7 @@ if (faqItems.length > 0) {
   jsonLdSchemas.push(faqSchema);
 }
 
-// Related articles (for article content type)
-const allArticles = contentType === 'article' ? await getCollection('articles') : [];
+// Related articles (for article content type) — allArticles passed via props from getStaticPaths()
 const manualRelatedSlugs: string[] = (entry.data as any).relatedArticles || [];
 const relatedArticles = allArticles.filter((a) => a.id !== entry.id && (
   manualRelatedSlugs.length > 0
