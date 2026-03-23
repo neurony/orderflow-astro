@@ -54,6 +54,8 @@
 }
 
 .section--related-articles .insight-card__image-wrap {
+  position: relative;
+  overflow: hidden;
   height: auto;
   aspect-ratio: 408 / 320;
   background-color: var(--color-neutral-100, #f3f4f6);
