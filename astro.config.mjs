@@ -16,12 +16,17 @@ export default defineConfig({
   output: 'static',
   adapter,
   site: 'https://orderflow.biz',
+  redirects: {
+    '/demo': '/contact',
+    '/articles': '/insights',
+  },
   integrations: [
     react(),
     markdoc(),
     deferCss(),
     sitemap({
       lastmod: new Date(),
+      filter: (page) => !page.includes('/articles/') && !page.includes('/demo'),
       i18n: {
         defaultLocale: 'en',
         locales: { en: 'en', ro: 'ro', de: 'de' },
