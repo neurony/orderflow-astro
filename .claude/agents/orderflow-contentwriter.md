@@ -1285,9 +1285,9 @@ Keystatic stores content as MDX. MDX is Markdown with the ability to import and 
   For images below the fold always include `loading="lazy"`. For the hero/featured image use `loading="eager"`.
 - [ ] **CTAs are Astro components** — Do not write raw HTML buttons. Use the component tag and note it for the developer:
   ```mdx
-  <CTAButton href="/demo" variant="primary">Request a Demo</CTAButton>
+  <CTAButton href="/contact" variant="primary">Book a Call</CTAButton>
   ```
-  If the component name is unknown, write `[CTA COMPONENT: label="Request a Demo", href="/demo", variant="primary"]` as a placeholder comment.
+  If the component name is unknown, write `[CTA COMPONENT: label="Book a Call", href="/contact", variant="primary"]` as a placeholder comment.
 - [ ] **No `<script>` tags in MDX body** — schema JSON-LD is handled by the layout via frontmatter fields, not inline scripts
 
 ---
@@ -1391,12 +1391,12 @@ import { Image } from 'astro:assets';
 [ARTICLE BODY IN MDX — use ## for H2, ### for H3, standard Markdown]
 
 [In-body CTA — use component placeholder if component name unknown:]
-[CTA COMPONENT: label="See How It Works", href="/demo", variant="secondary"]
+[CTA COMPONENT: label="See It in Action", href="/contact", variant="secondary"]
 
 [FULL BODY CONTINUES...]
 
 [Closing CTA]
-[CTA COMPONENT: label="Request a Personalized Demo", href="/demo", variant="primary"]
+[CTA COMPONENT: label="Book a Call", href="/contact", variant="primary"]
 ````
 
 ---
