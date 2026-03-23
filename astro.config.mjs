@@ -18,6 +18,7 @@ export default defineConfig({
   site: 'https://orderflow.biz',
   redirects: {
     '/demo': '/contact',
+    '/articles': '/insights',
   },
   integrations: [
     react(),
@@ -25,6 +26,7 @@ export default defineConfig({
     deferCss(),
     sitemap({
       lastmod: new Date(),
+      filter: (page) => !page.includes('/articles/') && !page.includes('/demo'),
       i18n: {
         defaultLocale: 'en',
         locales: { en: 'en', ro: 'ro', de: 'de' },
