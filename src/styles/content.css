@@ -37,60 +37,92 @@
   object-fit: contain;
 }
 
-/* ----- RELATED ARTICLES SECTION ----- */
+/* ----- RELATED ARTICLES SECTION -----
+   Matches homepage .insight-card styles exactly (homepage.css 913-970, 1047-1049, 1266-1282)
+   so related articles on detail pages look identical to homepage latest insights. */
+
 .section--related-articles .insight-cards {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: var(--space-32);
   list-style: none;
   padding: 0;
-  max-width: 960px;
-  margin: 0 auto;
 }
 
 .section--related-articles .insight-card {
-  text-decoration: none;
-  color: inherit;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-16);
 }
 
 .section--related-articles .insight-card__image-wrap {
   position: relative;
+  height: 240px;
   overflow: hidden;
-  height: auto;
-  aspect-ratio: 408 / 320;
-  background-color: var(--color-neutral-100, #f3f4f6);
+  border-radius: var(--radius-xl);
+}
+
+.section--related-articles .insight-card__category {
+  position: absolute;
+  top: var(--space-12);
+  left: var(--space-12);
+  z-index: 1;
+  background: var(--color-white);
+  color: var(--color-neutral-900);
+  font-size: var(--text-xs);
+  font-weight: var(--weight-medium);
+  padding: 4px 12px;
+  border-radius: var(--radius-full);
 }
 
 .section--related-articles .insight-card__image {
-  position: absolute;
-  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.3s ease;
 }
 
-.section--related-articles .insight-card:hover .insight-card__image {
-  transform: scale(1.03);
+.section--related-articles .insight-card__body {
+  padding: var(--space-16) var(--space-24) var(--space-24);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+}
+
+.section--related-articles .insight-card__date {
+  font-size: var(--text-sm);
+  color: var(--color-neutral-500);
+}
+
+.section--related-articles .insight-card__title {
+  font-size: var(--text-xl);
+  font-weight: var(--weight-regular);
+  line-height: var(--leading-snug);
+  color: var(--color-neutral-900);
 }
 
 @media (max-width: 1024px) {
   .section--related-articles .insight-cards {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr 1fr;
   }
 }
 
 @media (max-width: 640px) {
   .section--related-articles .insight-cards {
-    display: grid;
-    grid-template-columns: 1fr;
-    overflow-x: visible;
-    scroll-snap-type: none;
-    padding-bottom: 0;
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    gap: var(--space-16);
+    padding-bottom: var(--space-8);
   }
 
   .section--related-articles .insight-cards > li {
-    flex: initial;
+    flex: 0 0 320px;
+    scroll-snap-align: start;
+  }
+
+  .section--related-articles .insight-card__image-wrap {
+    height: 200px;
   }
 }
 
