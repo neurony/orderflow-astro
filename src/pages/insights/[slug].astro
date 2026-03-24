@@ -169,6 +169,14 @@ const relatedArticles = allArticles.filter((a) => a.id !== entry.id && (
 // Case study specific data
 const stats = contentType === 'caseStudy' ? ((entry.data as any).stats || []) : [];
 
+function formatDate(dateStr: string): string {
+  if (!dateStr) return '';
+  const d = new Date(dateStr);
+  const day = String(d.getDate()).padStart(2, '0');
+  const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+  return `${day} ${months[d.getMonth()]} ${d.getFullYear()}`;
+}
+
 ---
 
 <BaseLayout
@@ -267,7 +275,7 @@ const stats = contentType === 'caseStudy' ? ((entry.data as any).stats || []) : 
                     {related.data.image && <img src={related.data.image} alt={related.data.title} class="insight-card__image" width="816" height="640" loading="lazy">}
                   </div>
                   <div class="insight-card__body">
-                    <p class="insight-card__date">{related.data.date}</p>
+                    <p class="insight-card__date">{formatDate(related.data.date)}</p>
                     <h3 class="insight-card__title">{related.data.title}</h3>
                   </div>
                 </a>
