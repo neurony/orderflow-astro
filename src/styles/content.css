@@ -376,6 +376,11 @@
   color: rgba(255, 255, 255, 0.6);
 }
 
+.insight-hero__reading-time {
+  font-size: var(--text-sm);
+  color: rgba(255, 255, 255, 0.6);
+}
+
 .insight-hero__title {
   font-size: var(--text-4xl);
   font-weight: var(--weight-medium);
@@ -424,6 +429,16 @@
 /* =============================================
    10. ARTICLE BODY & PROSE TYPOGRAPHY
    ============================================= */
+
+/* ----- Reading Time ----- */
+.article-reading-time {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: var(--space-16) var(--space-24) 0;
+  font-size: var(--text-sm);
+  color: var(--color-neutral-500);
+  font-variant-emoji: text;
+}
 
 /* ----- Article Body ----- */
 .section--article-body {
