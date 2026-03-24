@@ -158,6 +158,10 @@ if (faqItems.length > 0) {
   jsonLdSchemas.push(faqSchema);
 }
 
+// Reading time (articles only)
+const wordCount = entry.body ? entry.body.trim().split(/\s+/).length : 0;
+const readingTime = Math.max(1, Math.round(wordCount / 200));
+
 // Related articles (for article content type) — allArticles passed via props from getStaticPaths()
 const manualRelatedSlugs: string[] = (entry.data as any).relatedArticles || [];
 const relatedArticles = allArticles.filter((a) => a.id !== entry.id && (
@@ -209,9 +213,24 @@ const stats = contentType === 'caseStudy' ? ((entry.data as any).stats || []) : 
           <span class="insight-hero__date">
             {contentType === 'article' ? (entry.data as any).date : (entry.data as any).pubDate}
           </span>
+
+          {/* Reading time (articles only) */}
+          {contentType === 'article' && (
+            <span class="insight-hero__reading-time">{readingTime} min read</span>
+          )}
         </div>
 
         <h1 class="insight-hero__title">{entry.data.title}</h1>
+
+        {/* Author (articles only) */}
+        {contentType === 'article' && (entry.data as any).author && (
+          <div class="insight-hero__author">
+            <span class="insight-hero__author-name">{(entry.data as any).author.name}</span>
+            {(entry.data as any).author.role && (
+              <span class="insight-hero__author-role">{(entry.data as any).author.role}</span>
+            )}
+          </div>
+        )}
 
         {/* Subtitle for product pages */}
         {contentType === 'page' && (entry.data as any).seoDescription && (

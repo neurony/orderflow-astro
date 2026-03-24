@@ -26,6 +26,7 @@ Every page must have a distinct lens. A reader visiting two pages must NOT feel 
 | EN-B2 (how AI processes email orders) | Technical step-by-step walkthrough | A concrete example email | What-is education, product pitch, ROI |
 | EN-B3 (complete guide OPA) | Comparison and decision framework | The decision the reader faces | What-is education, AI walkthrough, product pitch |
 | EN-B4 (how to automate PO processing) | How-to guide, receiving-side PO focus | Search intent mismatch (procurement vs receiving) | Full AI tech walkthrough, full comparison matrix, full Meesenburg narrative, ROI framework |
+| EN-B5 (order entry automation distributors) | Format-variability multiplier, format-specific error rates and ROI | CSR interpretation problem (not speed) | Full Meesenburg narrative, full AI comparison matrix, full "how it works" (links to EN-P1/B2) |
 
 ## Meesenburg Rule (CRITICAL)
 
