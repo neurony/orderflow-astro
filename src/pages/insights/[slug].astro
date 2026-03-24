@@ -256,6 +256,13 @@ function formatDate(dateStr: string): string {
       </div>
     </section>
 
+    {/* ===== READING TIME (articles only) ===== */}
+    {contentType === 'article' && (
+      <div class="article-reading-time">
+        <span>🕐 {readingTime} min read</span>
+      </div>
+    )}
+
     {/* ===== CASE STUDY STATS ===== */}
     {contentType === 'caseStudy' && stats.length > 0 && (
       <section class="stats-section">
