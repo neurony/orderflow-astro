@@ -27,6 +27,8 @@ Every page must have a distinct lens. A reader visiting two pages must NOT feel 
 | EN-B3 (complete guide OPA) | Comparison and decision framework | The decision the reader faces | What-is education, AI walkthrough, product pitch |
 | EN-B4 (how to automate PO processing) | How-to guide, receiving-side PO focus | Search intent mismatch (procurement vs receiving) | Full AI tech walkthrough, full comparison matrix, full Meesenburg narrative, ROI framework |
 | EN-B5 (order entry automation distributors) | Format-variability multiplier, format-specific error rates and ROI | CSR interpretation problem (not speed) | Full Meesenburg narrative, full AI comparison matrix, full "how it works" (links to EN-P1/B2) |
+| EN-B6 (conexiom alternatives) | Conexiom-specific evaluation, template maintenance as switching reason, 30% rule decision framework | Conexiom is good for structured, the problem is fit not quality | Full Meesenburg narrative, full AI tech walkthrough, full ROI framework (links out for all) |
+| EN-B7 (cost of order errors) | Error taxonomy (5 types), error cascade cost framework, hidden cost categories as primary focus | One specific error incident and its cascade | Full "how it works" walkthrough, full AI comparison matrix, full Meesenburg narrative (brief reference only), format-variability as primary lens (owned by EN-B5) |
 
 ## Meesenburg Rule (CRITICAL)
 
