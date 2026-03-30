@@ -122,7 +122,7 @@ When an AI system built for order processing reads "3 pallets of the 40mm ones, 
 
 The system assigns a confidence score to each interpreted line item. If it's certain, the line goes straight through. If it's uncertain — the "blue ones" could be two different SKUs, for example — it flags that line for human review before anything enters your ERP. The human sees the original message, the AI's interpretation, and the confidence score. They confirm or correct. The confirmed order enters the ERP.
 
-This is what makes the approach different from the tools that failed before. There's no template to maintain. When a customer changes how they send orders (which happens constantly), nothing breaks. The AI interprets the new message the same way it interpreted the first one.
+This is what makes the approach different from [the tools that failed before](/insights/why-templated-automation-fails). There's no template to maintain. When a customer changes how they send orders (which happens constantly), nothing breaks. The AI interprets the new message the same way it interpreted the first one.
 
 Voice notes work the same way, via transcription followed by interpretation. Photos of handwritten lists go through OCR to extract the text, then through the same language understanding layer.
 
@@ -148,7 +148,7 @@ The remaining 50% aren't failures: they go through the human-review step because
 
 The integration doesn't require your customers to change anything. They keep messaging the way they always have.
 
-On your end, incoming WhatsApp messages are processed through the same AI layer as email orders, PDF attachments, and any other format. The output is consistent regardless of input format: structured, ERP-ready order data with confidence scores and flagged exceptions.
+On your end, incoming WhatsApp messages are processed through the same AI layer as [email orders](/insights/how-ai-processes-email-orders), PDF attachments, and any other format. The output is consistent regardless of input format: structured, ERP-ready order data with confidence scores and flagged exceptions.
 
 Your team's role shifts. Instead of manually entering 80 orders a day, they're reviewing 8 flagged exceptions and confirming the line items the AI wasn't certain about. The [order entry work that currently consumes most of your CSR team's time](/insights/order-entry-automation-distributors) gets compressed to a fraction.
 
