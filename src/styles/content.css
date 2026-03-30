@@ -381,6 +381,19 @@
   color: rgba(255, 255, 255, 0.6);
 }
 
+.insight-hero__author {
+  display: flex;
+  align-items: center;
+  gap: var(--space-8);
+  font-size: var(--text-sm);
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.insight-hero__author-role::before {
+  content: '·';
+  margin-right: var(--space-8);
+}
+
 .insight-hero__title {
   font-size: var(--text-4xl);
   font-weight: var(--weight-medium);
