@@ -94,12 +94,14 @@ const allJsonLd = [
   <script is:inline>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
-    // Deny all storage by default — prevents third-party cookies (Lighthouse Best Practices)
+    // Grant analytics storage by default to enable Google Ads attribution (gclid → google/cpc in GA4).
+    // Ad storage remains denied until explicit user consent (GDPR — no PII stored without consent).
     gtag('consent', 'default', {
-      'analytics_storage': 'denied',
+      'analytics_storage': 'granted',
       'ad_storage': 'denied',
       'ad_user_data': 'denied',
-      'ad_personalization': 'denied'
+      'ad_personalization': 'denied',
+      'url_passthrough': true
     });
 
     // Defer gtag.js until first user interaction or idle (max 3 s)
@@ -114,7 +116,9 @@ const allJsonLd = [
         s.async = true;
         s.onload = function() {
           gtag('js', new Date());
-          gtag('config', GA_ID);
+          gtag('config', GA_ID, {
+            'url_passthrough': true
+          });
           gtag('config', 'AW-16637671261', {
             'url_passthrough': true,
             'allow_enhanced_conversions': true
