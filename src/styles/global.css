@@ -167,6 +167,8 @@ h1, h2, h3, h4, h5, h6 {
   border-radius: var(--radius-xl);
   overflow: hidden;
   width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
   padding: var(--space-64) var(--space-72) var(--space-96);
 }
 
