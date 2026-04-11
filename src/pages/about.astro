@@ -299,9 +299,15 @@ const aboutPageSchema = {
           calendlyStep.style.display = 'block';
 
           var widgetEl = document.getElementById(prefix + '-calendly-widget');
+          var urlParams = new URLSearchParams(window.location.search);
+          var utmQuery = ['utm_source','utm_medium','utm_campaign','utm_term','utm_content','gclid']
+            .filter(function(k) { return urlParams.has(k); })
+            .map(function(k) { return k + '=' + encodeURIComponent(urlParams.get(k)); })
+            .join('&');
           var calendlyUrl = 'https://calendly.com/robert-mihai-neurony/30min?hide_event_type_details=1&hide_gdpr_banner=1'
             + '&email=' + encodeURIComponent(email)
-            + '&a1=' + encodeURIComponent(company);
+            + '&a1=' + encodeURIComponent(company)
+            + (utmQuery ? '&' + utmQuery : '');
           widgetEl.classList.add('calendly-inline-widget');
           widgetEl.setAttribute('data-url', calendlyUrl);
           widgetEl.style.minWidth = '320px';
