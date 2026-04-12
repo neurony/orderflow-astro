@@ -791,9 +791,10 @@ main {
   background-size: cover;
   background-position: center;
   background-color: var(--color-neutral-900);
-  margin: var(--space-16);
+  margin: var(--space-16) auto;
   border-radius: var(--radius-2xl);
   overflow: hidden;
+  max-width: calc(var(--max-width) - 2 * var(--space-16));
 }
 
 .insight-hero__overlay {
