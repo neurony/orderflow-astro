@@ -560,7 +560,8 @@ main {
 
 .section--related-articles .insight-card__image-wrap {
   position: relative;
-  height: 240px;
+  aspect-ratio: 408 / 320;
+  height: auto;
   overflow: hidden;
   border-radius: var(--radius-xl);
 }
