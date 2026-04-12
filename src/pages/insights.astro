@@ -329,6 +329,13 @@ const allTags = [...new Set(allItems.map((item) => item.filterTag))];
   text-overflow: ellipsis;
 }
 
+/* ----- Large-screen breakpoint ----- */
+@media (min-width: 1400px) {
+  .article-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
 /* ----- Responsive ----- */
 @media (max-width: 1024px) {
   .article-grid {
