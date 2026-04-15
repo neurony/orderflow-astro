@@ -166,6 +166,10 @@ const contactSchema = {
           });
 
           if (typeof gtag === 'function') {
+            gtag('event', 'form_submit', {
+              form_id: 'contact',
+              page_path: '/contact'
+            });
             gtag('event', 'calendly_opened', {
               event_category: 'conversion',
               event_label: prefix,
