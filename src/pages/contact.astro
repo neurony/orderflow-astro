@@ -183,7 +183,7 @@ const contactSchema = {
       window.addEventListener('message', function(e) {
         if (e.data.event && e.data.event === 'calendly.event_scheduled') {
           if (typeof gtag === 'function') {
-            gtag('event', 'calendly_meeting_scheduled', {
+            gtag('event', 'schedule_demo', {
               event_category: 'conversion',
               event_label: 'meeting_booked'
             });
