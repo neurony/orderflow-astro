@@ -32,7 +32,6 @@ const { Content } = await render(entry);
 // --- SEO fields (unified across content types) ---
 const pageTitle = entry.data.seoTitle || `${entry.data.title} | Orderflow`;
 const pageDescription = entry.data.seoDescription || (entry.data as any).description || '';
-const canonicalUrl = entry.data.canonicalUrl || undefined;
 
 // Image: prefer heroImage field, fall back to image (articles) or ogImage (pages/caseStudies)
 const heroImage = (entry.data as any).heroImage
@@ -186,7 +185,6 @@ function formatDate(dateStr: string): string {
 <BaseLayout
   title={pageTitle}
   description={pageDescription}
-  canonical={canonicalUrl}
   ogImage={heroImage}
   ogType={ogType}
   noindex={noindex}
