@@ -5,9 +5,8 @@ import { getCollection, render } from 'astro:content';
 
 export async function getStaticPaths() {
   const articles = await getCollection('articles');
-  const nonBofuArticles = articles.filter((a) => a.data.funnel !== 'BOFU');
 
-  return nonBofuArticles.map((entry) => ({
+  return articles.map((entry) => ({
     params: { slug: entry.id },
     props: { entry, contentType: 'article' as const, allArticles: articles },
   }));

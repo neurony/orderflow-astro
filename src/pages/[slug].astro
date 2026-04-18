@@ -4,19 +4,12 @@ import '../styles/content.css';
 import { getCollection, render } from 'astro:content';
 
 export async function getStaticPaths() {
-  const [articles, pages, caseStudies] = await Promise.all([
-    getCollection('articles'),
+  const [pages, caseStudies] = await Promise.all([
     getCollection('pages'),
     getCollection('caseStudies'),
   ]);
 
-  const bofuArticles = articles.filter((a) => a.data.funnel === 'BOFU');
-
   return [
-    ...bofuArticles.map((entry) => ({
-      params: { slug: entry.id },
-      props: { entry, contentType: 'article' as const, allArticles: articles },
-    })),
     ...pages.map((entry) => ({
       params: { slug: entry.id },
       props: { entry, contentType: 'page' as const },
