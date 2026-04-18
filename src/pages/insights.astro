@@ -87,6 +87,7 @@ const allTags = [...new Set(allItems.map((item) => item.filterTag))];
 <BaseLayout
   title="Insights | Order Processing Automation | Orderflow"
   description="Explore articles and insights on AI-powered order processing, distribution automation, and ERP integration for modern businesses."
+  lcpImage={sortedItems[0]?.image}
   jsonLd={breadcrumbSchema}
 >
   <main>
@@ -94,8 +95,8 @@ const allTags = [...new Set(allItems.map((item) => item.filterTag))];
     <section class="section section--insights-hero">
       <div class="section__card section__card--muted insights-hero">
         <div class="insights-hero__text">
-          <h1 class="insights-hero__title" data-reveal="up">Insights</h1>
-          <p class="insights-hero__subtitle" data-reveal="up" style="--delay:0.1s">Explore our latest insights on order automation, industry updates, and scaling distribution operations.</p>
+          <h1 class="insights-hero__title">Insights</h1>
+          <p class="insights-hero__subtitle">Explore our latest insights on order automation, industry updates, and scaling distribution operations.</p>
         </div>
         <div class="insights-hero__tags" data-reveal="up" style="--delay:0.2s">
           <button class="tag tag--active" data-filter="all">All</button>
@@ -117,7 +118,7 @@ const allTags = [...new Set(allItems.map((item) => item.filterTag))];
         <!-- Article grid -->
         <div class="article-grid" id="article-grid" data-reveal-stagger>
           {sortedItems.map((item, index) => (
-            <a href={item.url} class="article-card" data-reveal="up" data-tag={item.filterTag}>
+            <a href={item.url} class="article-card" data-tag={item.filterTag} {...(index > 0 ? {'data-reveal': 'up'} : {})}>
               <div class="article-card__image-wrap">
                 {item.image && <img src={item.image} alt={item.title} class="article-card__image" width="816" height="640" loading={index === 0 ? 'eager' : 'lazy'} fetchpriority={index === 0 ? 'high' : undefined}>}
                 {(item.category || item.contentTypeLabel) && (
