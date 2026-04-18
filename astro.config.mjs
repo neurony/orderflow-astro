@@ -19,12 +19,13 @@ export default defineConfig({
   redirects: {
     '/demo': '/contact',
     '/articles': '/insights',
-    '/insights/esker-alternatives/': '/esker-alternatives/',
-    '/insights/conexiom-alternatives/': '/conexiom-alternatives/',
     '/insights/meesenburg-order-automation/': '/meesenburg-order-automation/',
-    '/insights/order-processing-software-distributors/': '/order-processing-software-distributors/',
     '/insights/sales-order-automation/': '/sales-order-automation/',
     '/insights/what-is-sales-order/': '/insights/what-is-sales-order-automation/',
+    '/esker-alternatives/': '/insights/esker-alternatives/',
+    '/conexiom-alternatives/': '/insights/conexiom-alternatives/',
+    '/order-processing-software-distributors/': '/insights/order-processing-software-distributors/',
+    '/purchase-order-automation-software/': '/insights/purchase-order-automation-software/',
   },
   integrations: [
     react(),

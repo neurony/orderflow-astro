@@ -35,7 +35,7 @@ type InsightItem = {
 const allItems: InsightItem[] = [
   ...articles.map((a) => ({
     id: a.id,
-    url: a.data.funnel === 'BOFU' ? `/${a.id}` : `/insights/${a.id}`,
+    url: `/insights/${a.id}`,
     title: a.data.title,
     date: a.data.date || '',
     dateFormatted: formatDate(a.data.date || ''),
