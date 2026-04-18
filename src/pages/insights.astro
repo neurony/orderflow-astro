@@ -22,6 +22,7 @@ function formatDate(dateStr: string): string {
 // Normalize into a unified list
 type InsightItem = {
   id: string;
+  url: string;
   title: string;
   date: string;
   dateFormatted: string;
@@ -34,6 +35,7 @@ type InsightItem = {
 const allItems: InsightItem[] = [
   ...articles.map((a) => ({
     id: a.id,
+    url: a.data.funnel === 'BOFU' ? `/${a.id}` : `/insights/${a.id}`,
     title: a.data.title,
     date: a.data.date || '',
     dateFormatted: formatDate(a.data.date || ''),
@@ -44,6 +46,7 @@ const allItems: InsightItem[] = [
   })),
   ...pages.map((p) => ({
     id: p.id,
+    url: `/${p.id}`,
     title: p.data.title,
     date: (p.data as any).pubDate || '',
     dateFormatted: formatDate((p.data as any).pubDate || ''),
@@ -54,6 +57,7 @@ const allItems: InsightItem[] = [
   })),
   ...caseStudies.map((c) => ({
     id: c.id,
+    url: `/${c.id}`,
     title: c.data.title,
     date: (c.data as any).pubDate || '',
     dateFormatted: formatDate((c.data as any).pubDate || ''),
@@ -113,7 +117,7 @@ const allTags = [...new Set(allItems.map((item) => item.filterTag))];
         <!-- Article grid -->
         <div class="article-grid" id="article-grid" data-reveal-stagger>
           {sortedItems.map((item, index) => (
-            <a href={`/insights/${item.id}`} class="article-card" data-reveal="up" data-tag={item.filterTag}>
+            <a href={item.url} class="article-card" data-reveal="up" data-tag={item.filterTag}>
               <div class="article-card__image-wrap">
                 {item.image && <img src={item.image} alt={item.title} class="article-card__image" width="816" height="640" loading={index === 0 ? 'eager' : 'lazy'} fetchpriority={index === 0 ? 'high' : undefined}>}
                 {(item.category || item.contentTypeLabel) && (

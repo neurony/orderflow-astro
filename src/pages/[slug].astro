@@ -1,44 +1,53 @@
 ---
-import BaseLayout from '../../layouts/BaseLayout.astro';
-import '../../styles/content.css';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import '../styles/content.css';
 import { getCollection, render } from 'astro:content';
 
 export async function getStaticPaths() {
-  const articles = await getCollection('articles');
-  const nonBofuArticles = articles.filter((a) => a.data.funnel !== 'BOFU');
+  const [articles, pages, caseStudies] = await Promise.all([
+    getCollection('articles'),
+    getCollection('pages'),
+    getCollection('caseStudies'),
+  ]);
 
-  return nonBofuArticles.map((entry) => ({
-    params: { slug: entry.id },
-    props: { entry, contentType: 'article' as const, allArticles: articles },
-  }));
+  const bofuArticles = articles.filter((a) => a.data.funnel === 'BOFU');
+
+  return [
+    ...bofuArticles.map((entry) => ({
+      params: { slug: entry.id },
+      props: { entry, contentType: 'article' as const, allArticles: articles },
+    })),
+    ...pages.map((entry) => ({
+      params: { slug: entry.id },
+      props: { entry, contentType: 'page' as const },
+    })),
+    ...caseStudies.map((entry) => ({
+      params: { slug: entry.id },
+      props: { entry, contentType: 'caseStudy' as const },
+    })),
+  ];
 }
 
 const { entry, contentType, allArticles = [] } = Astro.props;
 const { Content } = await render(entry);
 
-// --- SEO fields (unified across content types) ---
 const pageTitle = entry.data.seoTitle || `${entry.data.title} | Orderflow`;
 const pageDescription = entry.data.seoDescription || (entry.data as any).description || '';
 
-// Image: prefer heroImage field, fall back to image (articles) or ogImage (pages/caseStudies)
 const heroImage = (entry.data as any).heroImage
   || (contentType === 'article' ? (entry.data as any).image : (entry.data as any).ogImage);
 
-// OG type
 const ogType = contentType === 'page'
   ? ((entry.data as any).ogType || 'website')
   : 'article';
 
-// Noindex (pages only)
 const noindex = contentType === 'page' ? ((entry.data as any).noindex || false) : false;
 
-// Date fields
 const publishDate = contentType === 'article'
   ? (entry.data as any).date
   : (entry.data as any).pubDate;
 const updatedDate = (entry.data as any).updatedDate;
 
-// Article OG metadata
 const articleMeta = contentType !== 'page' ? {
   publishedTime: publishDate || '',
   modifiedTime: updatedDate,
@@ -48,22 +57,20 @@ const articleMeta = contentType !== 'page' ? {
   section: contentType === 'article' ? (entry.data as any).category : undefined,
 } : undefined;
 
-// --- JSON-LD schemas ---
+const pageUrl = `https://orderflow.biz/${entry.id}`;
+
 const jsonLdSchemas: Record<string, any>[] = [];
 
-// Breadcrumb schema (all types: Home > Insights > title)
 const breadcrumbSchema = {
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
   itemListElement: [
     { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://orderflow.biz' },
-    { '@type': 'ListItem', position: 2, name: 'Insights', item: 'https://orderflow.biz/insights' },
-    { '@type': 'ListItem', position: 3, name: entry.data.title },
+    { '@type': 'ListItem', position: 2, name: entry.data.title },
   ],
 };
 jsonLdSchemas.push(breadcrumbSchema);
 
-// Content-type-specific schemas
 if (contentType === 'article') {
   const articleSchema = {
     '@context': 'https://schema.org',
@@ -81,7 +88,7 @@ if (contentType === 'article') {
     publisher: { '@id': 'https://orderflow.biz/#organization' },
     mainEntityOfPage: {
       '@type': 'WebPage',
-      '@id': `https://orderflow.biz/insights/${entry.id}`,
+      '@id': pageUrl,
     },
   };
   jsonLdSchemas.push(articleSchema);
@@ -120,13 +127,12 @@ if (contentType === 'article') {
     publisher: { '@id': 'https://orderflow.biz/#organization' },
     mainEntityOfPage: {
       '@type': 'WebPage',
-      '@id': `https://orderflow.biz/insights/${entry.id}`,
+      '@id': pageUrl,
     },
   };
   jsonLdSchemas.push(caseStudySchema);
 }
 
-// FAQ schema (all content types)
 const faqItems = (entry.data as any).faq || [];
 if (faqItems.length > 0) {
   const faqSchema = {
@@ -144,11 +150,9 @@ if (faqItems.length > 0) {
   jsonLdSchemas.push(faqSchema);
 }
 
-// Reading time (articles only)
 const wordCount = entry.body ? entry.body.trim().split(/\s+/).length : 0;
 const readingTime = Math.max(1, Math.round(wordCount / 200));
 
-// Related articles (for article content type) — allArticles passed via props from getStaticPaths()
 const manualRelatedSlugs: string[] = (entry.data as any).relatedArticles || [];
 const relatedArticles = allArticles.filter((a) => a.id !== entry.id && (
   manualRelatedSlugs.length > 0
@@ -156,7 +160,6 @@ const relatedArticles = allArticles.filter((a) => a.id !== entry.id && (
     : a.data.category === (entry.data as any).category
 )).slice(0, 3);
 
-// Case study specific data
 const stats = contentType === 'caseStudy' ? ((entry.data as any).stats || []) : [];
 
 function formatDate(dateStr: string): string {
@@ -166,12 +169,12 @@ function formatDate(dateStr: string): string {
   const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
   return `${day} ${months[d.getMonth()]} ${d.getFullYear()}`;
 }
-
 ---
 
 <BaseLayout
   title={pageTitle}
   description={pageDescription}
+  canonical={pageUrl}
   ogImage={heroImage}
   ogType={ogType}
   noindex={noindex}
@@ -192,7 +195,6 @@ function formatDate(dateStr: string): string {
         </a>
 
         <div class="insight-hero__meta">
-          {/* Category / content type badge */}
           {contentType === 'article' && (entry.data as any).category && (
             <span class="insight-hero__badge">{(entry.data as any).category}</span>
           )}
@@ -203,12 +205,10 @@ function formatDate(dateStr: string): string {
             <span class="insight-hero__badge">Case Study</span>
           )}
 
-          {/* Date */}
           <span class="insight-hero__date">
             {contentType === 'article' ? (entry.data as any).date : (entry.data as any).pubDate}
           </span>
 
-          {/* Reading time (articles only) */}
           {contentType === 'article' && (
             <span class="insight-hero__reading-time">{readingTime} min read</span>
           )}
@@ -216,7 +216,6 @@ function formatDate(dateStr: string): string {
 
         <h1 class="insight-hero__title">{entry.data.title}</h1>
 
-        {/* Author (articles only) */}
         {contentType === 'article' && (entry.data as any).author && (
           <div class="insight-hero__author">
             <span class="insight-hero__author-name">{(entry.data as any).author.name}</span>
@@ -226,12 +225,10 @@ function formatDate(dateStr: string): string {
           </div>
         )}
 
-        {/* Subtitle for product pages */}
         {contentType === 'page' && (entry.data as any).seoDescription && (
           <p class="insight-hero__subtitle">{(entry.data as any).seoDescription}</p>
         )}
 
-        {/* Case study client info */}
         {contentType === 'caseStudy' && (entry.data as any).clientCompany && (
           <p class="insight-hero__subtitle">
             {(entry.data as any).clientCompany}
@@ -241,14 +238,12 @@ function formatDate(dateStr: string): string {
       </div>
     </section>
 
-    {/* ===== READING TIME (articles only) ===== */}
     {contentType === 'article' && (
       <div class="article-reading-time">
         <span>🕐 {readingTime} min read</span>
       </div>
     )}
 
-    {/* ===== CASE STUDY STATS ===== */}
     {contentType === 'caseStudy' && stats.length > 0 && (
       <section class="stats-section">
         <div class="stats-grid">
@@ -262,17 +257,14 @@ function formatDate(dateStr: string): string {
       </section>
     )}
 
-    {/* ===== BODY ===== */}
     <section class="section section--article-body">
       <div class="article-body-wrapper">
         <article class="article-prose">
           <Content />
-
         </article>
       </div>
     </section>
 
-    {/* ===== RELATED ARTICLES (articles only) ===== */}
     {contentType === 'article' && relatedArticles.length > 0 && (
       <section class="section section--related-articles">
         <div class="section__card section__card--white">
@@ -297,7 +289,6 @@ function formatDate(dateStr: string): string {
       </section>
     )}
 
-    {/* ===== FAQ SECTION (all content types) ===== */}
     {faqItems.length > 0 && (
       <section class="section section--faq">
         <div class="section__card section__card--white">
@@ -317,5 +308,4 @@ function formatDate(dateStr: string): string {
     )}
 
   </main>
-
 </BaseLayout>
