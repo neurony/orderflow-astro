@@ -168,9 +168,8 @@ const allJsonLd = [
   <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
   <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
 
-  <!-- Fonts -->
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Stack+Sans+Headline:wght@400;500;600&family=Caveat:wght@400&display=optional" />
-  <link href="https://fonts.googleapis.com/css2?family=Stack+Sans+Headline:wght@400;500;600&family=Caveat:wght@400&display=optional" rel="stylesheet" media="print" onload="this.media='all'" />
+  <!-- Fonts — synchronous load with font-display:optional prevents CLS from async @font-face injection (NEU-585) -->
+  <link href="https://fonts.googleapis.com/css2?family=Stack+Sans+Headline:wght@400;500;600&family=Caveat:wght@400&display=optional" rel="stylesheet" />
 
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
