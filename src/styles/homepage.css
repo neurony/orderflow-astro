@@ -1307,10 +1307,10 @@
    ANIMATIONS — HERO FLOATING ELEMENTS
    ============================================= */
 
-/* --- Hero floating elements: gentle parallax float using margin-top to preserve inline transforms --- */
+/* --- Hero floating elements: use standalone translate so it composites independently of the per-element transform (rotate/translate set in class rules) --- */
 @keyframes heroFloat {
-  0%, 100% { margin-top: 0; }
-  50%      { margin-top: -10px; }
+  0%, 100% { translate: 0 0; }
+  50%      { translate: 0 -10px; }
 }
 
 .format-float {
@@ -1326,10 +1326,10 @@
 .format-float--photos    { animation-delay: 1.5s; }
 .format-float--scans     { animation-delay: 2.1s; }
 
-/* --- Hero badges mobile: gentle bob using margin-top to avoid overriding inline transforms --- */
+/* --- Hero badges mobile: standalone translate composites independently of inline transform (translate/rotate set via inline style) --- */
 @keyframes badgeBob {
-  0%, 100% { margin-top: 0; }
-  50%      { margin-top: -6px; }
+  0%, 100% { translate: 0 0; }
+  50%      { translate: 0 -6px; }
 }
 
 @media (max-width: 640px) {
