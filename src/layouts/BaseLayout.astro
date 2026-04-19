@@ -11,6 +11,7 @@ interface Props {
   canonical?: string;
   ogImage?: string;
   ogType?: string;
+  lcpImage?: string;
   article?: {
     publishedTime: string;
     modifiedTime?: string;
@@ -152,7 +153,15 @@ const allJsonLd = [
     .site-header{position:absolute;top:0;left:0;right:0;z-index:50;background-color:var(--color-white);overflow:hidden}
     :root{--header-height:88px}
     main{padding-top:var(--header-height)}
+    .site-header__inner{display:flex;align-items:center;gap:var(--space-64);padding:var(--space-24) var(--space-32) var(--space-16);max-width:var(--max-width);margin:0 auto}
+    .nav-links{display:flex;flex:1;gap:var(--space-8);align-items:center;list-style:none}
+    .mobile-menu-toggle{display:none}
+    .insight-hero{position:relative;min-height:420px;margin:var(--space-16);overflow:hidden}
+    .insight-hero__overlay{position:absolute;inset:0}
   </style>
+
+  <!-- LCP image preload — injects a high-priority preload hint so the browser fetches the above-fold hero image as early as possible (before the HTML parser reaches the <img> element) -->
+  {props.lcpImage && <link rel="preload" as="image" href={props.lcpImage} fetchpriority="high" />}
 
   <!-- Preconnect to critical origins -->
   <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
