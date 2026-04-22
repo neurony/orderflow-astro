@@ -4,10 +4,21 @@ import '../styles/content.css';
 import { getCollection, render } from 'astro:content';
 
 export async function getStaticPaths() {
-  const [pages, caseStudies] = await Promise.all([
+  // BOFU article slugs that need top-level routes (instead of /insights/ prefix)
+  const bofuSlugs = new Set([
+    'purchase-order-automation-software',
+    'order-processing-software-distributors',
+    'conexiom-alternatives',
+    'esker-alternatives',
+  ]);
+
+  const [pages, caseStudies, articles] = await Promise.all([
     getCollection('pages'),
     getCollection('caseStudies'),
+    getCollection('articles'),
   ]);
+
+  const bofuArticles = articles.filter((a) => bofuSlugs.has(a.id));
 
   return [
     ...pages.map((entry) => ({
@@ -17,6 +28,10 @@ export async function getStaticPaths() {
     ...caseStudies.map((entry) => ({
       params: { slug: entry.id },
       props: { entry, contentType: 'caseStudy' as const },
+    })),
+    ...bofuArticles.map((entry) => ({
+      params: { slug: entry.id },
+      props: { entry, contentType: 'article' as const, allArticles: articles },
     })),
   ];
 }
