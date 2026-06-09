@@ -136,6 +136,7 @@ const contactSchema = {
           document.getElementById(prefix + '-form-step').style.display = 'none';
           var calendlyStep = document.getElementById(prefix + '-calendly-step');
           calendlyStep.style.display = 'block';
+          calendlyStep.scrollIntoView({ behavior: 'smooth', block: 'start' });
 
           var widgetEl = document.getElementById(prefix + '-calendly-widget');
           var urlParams = new URLSearchParams(window.location.search);
@@ -150,7 +151,7 @@ const contactSchema = {
           widgetEl.classList.add('calendly-inline-widget');
           widgetEl.setAttribute('data-url', calendlyUrl);
           widgetEl.style.minWidth = '320px';
-          widgetEl.style.height = '600px';
+          widgetEl.style.height = window.innerWidth <= 768 ? '900px' : '700px';
           loadCalendly(function() {
             Calendly.initInlineWidget({
               url: calendlyUrl,
